@@ -1,0 +1,19 @@
+{
+  "name": "work_month_pattern",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/jasmine-node src/specs --color --autotest --watch src",
+    "start": "node src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jasmine-node": "^1.14.5"
+  },
+  "dependencies": {
+    "lodash": "^4.2.1",
+    "require-dir": "^0.3.0"
+  }
+}
