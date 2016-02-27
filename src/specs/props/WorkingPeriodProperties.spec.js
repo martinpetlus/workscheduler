@@ -1,7 +1,7 @@
 
 'use strict';
 
-const WorkingPeriodProperties = require('./../../props/WorkingPeriodProperties');
+const WorkingPeriodProperties = require('../../props/WorkingPeriodProperties');
 
 describe('WorkingPeriodProperties', function() {
   let iter, current;

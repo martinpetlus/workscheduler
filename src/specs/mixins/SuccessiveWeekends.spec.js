@@ -1,10 +1,10 @@
 
 'use strict';
 
-const Chromosome = require('./../../Chromosome')
-  , WorkingPeriodProperties = require('./../../props/WorkingPeriodProperties')
-  , SuccessiveWeekends = require('./../../mixins/SuccessiveWeekends')
-  , setParamTrue = require('./../set-param-true');
+const Chromosome = require('../../Chromosome')
+  , WorkingPeriodProperties = require('../../props/WorkingPeriodProperties')
+  , SuccessiveWeekends = require('../../mixins/SuccessiveWeekends')
+  , setParamTrue = require('../set-param-true');
 
 describe('SuccessiveWeekends mixin', function() {
   describe('super methods calls', function() {

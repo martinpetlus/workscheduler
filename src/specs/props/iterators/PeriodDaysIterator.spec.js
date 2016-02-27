@@ -1,7 +1,7 @@
 
 'use strict';
 
-const PeriodDaysIterator = require('./../../../props/iterators/PeriodDaysIterator');
+const PeriodDaysIterator = require('../../../props/iterators/PeriodDaysIterator');
 
 describe('PeriodDaysIterator', function() {
   let iter;

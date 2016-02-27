@@ -1,8 +1,8 @@
 
 'use strict';
 
-const WorkingPeriodFactory = require('./../WorkingPeriodFactory')
-  , Chromosome = require('./../Chromosome');
+const WorkingPeriodFactory = require('../WorkingPeriodFactory')
+  , Chromosome = require('../Chromosome');
 
 describe('WorkingPeriodFactory', function() {
   let workingPeriodFactory, opts;

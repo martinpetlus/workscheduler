@@ -1,7 +1,7 @@
 
 'use strict';
 
-const EmployeesIterator = require('./../EmployeesIterator');
+const EmployeesIterator = require('../EmployeesIterator');
 
 const EmployeesIteratorMixin = Base => class extends Base {
 

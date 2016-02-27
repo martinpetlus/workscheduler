@@ -2,7 +2,7 @@
 'use strict'
 
 const mixins = require('./iterators/mixins')
-  , constants = require('./../utils/constants');
+  , constants = require('../utils/constants');
 
 const slice = Array.prototype.slice;
 

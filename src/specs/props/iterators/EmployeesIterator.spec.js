@@ -1,7 +1,7 @@
 
 'use strict';
 
-const EmployeesIterator = require('./../../../props/iterators/EmployeesIterator');
+const EmployeesIterator = require('../../../props/iterators/EmployeesIterator');
 
 describe('EmployeesIterator', function() {
   let iter;

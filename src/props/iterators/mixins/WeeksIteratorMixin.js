@@ -1,7 +1,7 @@
 
 'use strict';
 
-const WeeksIterator = require('./../WeeksIterator');
+const WeeksIterator = require('../WeeksIterator');
 
 const WeeksIteratorMixin = Base => class extends Base {
 

@@ -1,10 +1,10 @@
 
 'use strict';
 
-const Chromosome = require('./../../Chromosome')
-  , WorkingPeriodProperties = require('./../../props/WorkingPeriodProperties')
-  , MaxSuccessiveWorkingDays = require('./../../mixins/MaxSuccessiveWorkingDays')
-  , setParamTrue = require('./../set-param-true');
+const Chromosome = require('../../Chromosome')
+  , WorkingPeriodProperties = require('../../props/WorkingPeriodProperties')
+  , MaxSuccessiveWorkingDays = require('../../mixins/MaxSuccessiveWorkingDays')
+  , setParamTrue = require('../set-param-true');
 
 describe('MaxSuccessiveWorkingDays mixin', function() {
   let chr, props;

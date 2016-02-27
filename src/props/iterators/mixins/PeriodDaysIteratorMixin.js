@@ -1,7 +1,7 @@
 
 'use strict';
 
-const PeriodDaysIterator = require('./../PeriodDaysIterator');
+const PeriodDaysIterator = require('../PeriodDaysIterator');
 
 const PeriodDaysIteratorMixin = Base => class extends Base {
 

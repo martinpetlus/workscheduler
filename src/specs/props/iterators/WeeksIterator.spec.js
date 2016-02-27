@@ -1,7 +1,7 @@
 
 'use strict';
 
-const WeeksIterator = require('./../../../props/iterators/WeeksIterator');
+const WeeksIterator = require('../../../props/iterators/WeeksIterator');
 
 describe('WeeksIterator', function() {
   let iter;

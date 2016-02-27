@@ -1,7 +1,7 @@
 
 'use strict';
 
-const constants = require('./../../utils/constants');
+const constants = require('../../utils/constants');
 
 class DaysIterator {
 
