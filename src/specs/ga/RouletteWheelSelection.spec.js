@@ -1,7 +1,7 @@
 
 'use strict';
 
-const RouletteWheelSelection = require('../../gas/RouletteWheelSelection');
+const RouletteWheelSelection = require('../../ga/sel/roulette/RouletteWheelSelection');
 
 describe('RouletteWheelSelection', function() {
   let selection, population;
