@@ -17,7 +17,7 @@ describe('PositiveFitnessScaler', function() {
     ];
   });
 
-  it('it should scale fitness of chromosomes', function() {
+  it('should scale fitness of chromosomes', function() {
     const scaled = scaler.scale(population);
 
     expect(scaled[0].fitness).toBe(0.5);
