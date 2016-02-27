@@ -15,7 +15,7 @@ class PositiveFitnessScaler {
     }, 0);
 
     scaled.forEach(entry => {
-      entry.fitness = entry.fitness / sum;
+      entry.fitness /= sum;
     });
 
     return scaled;

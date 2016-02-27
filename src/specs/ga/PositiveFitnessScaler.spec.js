@@ -13,7 +13,7 @@ describe('PositiveFitnessScaler', function() {
       {fitness: -2},
       {fitness: -4},
       {fitness: -8},
-      {fitness: -8},
+      {fitness: -8}
     ];
   });
 
