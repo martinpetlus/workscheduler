@@ -6,32 +6,27 @@ class RouletteWheelSelection {
   selectParent() {
     const random = Math.random();
 
-    for (let i = 0; i < this.individuals.length - 1; i += 1) {
-      const individual = this.individuals[i];
+    for (let i = 0; i < this.population.length - 1; i += 1) {
+      const entry = this.population[i];
 
-      if (random < this.individuals[i].probability &&
-          random >= (i > 0 ? this.individuals[i - 1].probability : 0)) {
-        return individual.chromosome;
+      if (random < this.population[i].probability &&
+          random >= (i > 0 ? this.population[i - 1].probability : 0)) {
+        return entry.chromosome;
       }
     }
 
-    return this.individuals[this.individuals.length - 1].chromosome;
+    return this.population[this.population.length - 1].chromosome;
   }
 
   setPopulation(population) {
-    this.individuals = population.map(chromosome => {
-      return {
-        chromosome,
-        fitness: chromosome.fitness()
-      };
-    });
+    this.population = population;
 
-    const sum = this.individuals.reduce((acc, individual) => {
-      return acc + individual.fitness;
+    const sum = this.population.reduce((acc, entry) => {
+      return acc + entry.fitness;
     }, 0);
 
-    this.individuals.reduce((acc, individual) => {
-      return (individual.probability = acc + individual.fitness / sum);
+    this.population.reduce((acc, entry) => {
+      return (entry.probability = acc + entry.fitness / sum);
     }, 0);
   }
 
