@@ -7,7 +7,11 @@ describe('RouletteWheelSelection', function() {
   let selection, population;
 
   beforeEach(function() {
-    selection = new RouletteWheelSelection();
+    selection = new RouletteWheelSelection({
+      scale(population) {
+        return population;
+      }
+    });
     population = [
       {chromosome: {}, fitness: 3},
       {chromosome: {}, fitness: 3},

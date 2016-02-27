@@ -3,6 +3,10 @@
 
 class RouletteWheelSelection {
 
+  constructor(scaler) {
+    this.scaler = scaler;
+  }
+
   selectParent() {
     const random = Math.random();
 
@@ -19,7 +23,7 @@ class RouletteWheelSelection {
   }
 
   setPopulation(population) {
-    this.population = population;
+    this.population = this.scaler.scale(population);
 
     const sum = this.population.reduce((acc, entry) => {
       return acc + entry.fitness;
