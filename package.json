@@ -3,11 +3,15 @@
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/martinpetlus/workpattern.git"
+  },
   "scripts": {
     "test": "./node_modules/.bin/jasmine-node src/specs --color --autotest --watch src",
     "start": "node src/index.js"
   },
-  "author": "",
+  "author": "Martin Petluš <martinpetlus@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "jasmine-node": "^1.14.5"
