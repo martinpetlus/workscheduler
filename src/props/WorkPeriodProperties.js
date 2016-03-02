@@ -6,7 +6,7 @@ const mixins = require('./iterators/mixins')
 
 const slice = Array.prototype.slice;
 
-class WorkingPeriodProperties {
+class WorkPeriodProperties {
   constructor(opts) {
     this.opts = opts;
   }
@@ -37,7 +37,7 @@ class WorkingPeriodProperties {
 
 // Mix in iterators
 for (let name in mixins) {
-  WorkingPeriodProperties = mixins[name](WorkingPeriodProperties);
+  WorkPeriodProperties = mixins[name](WorkPeriodProperties);
 }
 
-module.exports = WorkingPeriodProperties;
+module.exports = WorkPeriodProperties;

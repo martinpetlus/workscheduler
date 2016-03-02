@@ -2,21 +2,21 @@
 'use strict';
 
 const Chromosome = require('../../Chromosome')
-  , WorkingPeriodProperties = require('../../props/WorkingPeriodProperties')
-  , MaxSuccessiveWorkingDays = require('../../mixins/MaxSuccessiveWorkingDays')
+  , WorkPeriodProperties = require('../../props/WorkPeriodProperties')
+  , MaxSuccessiveWorkDays = require('../../mixins/MaxSuccessiveWorkDays')
   , setParamTrue = require('../set-param-true');
 
-describe('MaxSuccessiveWorkingDays mixin', function() {
+describe('MaxSuccessiveWorkDays mixin', function() {
   let chr, props;
 
   beforeEach(function() {
-    props = new WorkingPeriodProperties({
+    props = new WorkPeriodProperties({
       weeks: 4,
       employees: 3,
-      maxSuccessiveWorkingDays: 3
+      maxSuccessiveWorkDays: 3
     });
 
-    const clazz = MaxSuccessiveWorkingDays(Chromosome, props);
+    const clazz = MaxSuccessiveWorkDays(Chromosome, props);
 
     chr = new clazz(props.length());
   });
@@ -29,7 +29,7 @@ describe('MaxSuccessiveWorkingDays mixin', function() {
     });
   });
 
-  describe('successive working days in the middle of period', function() {
+  describe('successive work days in the middle of period', function() {
     it('should compute correct fitness for one employee', function() {
       setParamTrue(chr, props, 1, 1, 1);
       setParamTrue(chr, props, 1, 1, 2);
@@ -72,7 +72,7 @@ describe('MaxSuccessiveWorkingDays mixin', function() {
     });
   });
 
-  describe('successive working days are at the end of period', function() {
+  describe('successive work days are at the end of period', function() {
     it('should compute correct fitness for one employee', function() {
       setParamTrue(chr, props, 1, 4, 4);
       setParamTrue(chr, props, 1, 4, 5);

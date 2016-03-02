@@ -3,10 +3,10 @@
 
 const mixins = require('./mixins')
   , Chromosome = require('./Chromosome')
-  , WorkingPeriodProperties = require('./props/WorkingPeriodProperties')
+  , WorkPeriodProperties = require('./props/WorkPeriodProperties')
   , logger = require('./utils/logger');
 
-class WorkingPeriodFactory {
+class WorkPeriodFactory {
 
   _conditionallyApplyMixin(mixin) {
     const apply = Object.keys(mixin.requiredOpts).every(opt => {
@@ -30,7 +30,7 @@ class WorkingPeriodFactory {
   }
 
   constructor(opts) {
-    this.props = new WorkingPeriodProperties(opts);
+    this.props = new WorkPeriodProperties(opts);
     this.clazz = Chromosome;
     this._extendClazz();
   }
@@ -47,4 +47,4 @@ class WorkingPeriodFactory {
 
 }
 
-module.exports = WorkingPeriodFactory;
+module.exports = WorkPeriodFactory;

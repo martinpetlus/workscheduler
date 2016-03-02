@@ -20,7 +20,7 @@ const MinEmployeesAtWork = (Base, props) => class extends Base {
 
         // Iterate through employees
         while (curr2 = employeesIter.next()) {
-          // Check for working day
+          // Check for work day
           if (this[props.shiftIndex(curr1, curr2)]) {
             employeesAtWork += 1;
           }

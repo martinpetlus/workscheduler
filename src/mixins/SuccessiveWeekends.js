@@ -1,7 +1,7 @@
 
 /*
  * Mixin to compute fitness regarding successive
- * free and working weekends in working period.
+ * free and work weekends in work period.
  */
 
 'use strict';
@@ -28,7 +28,7 @@ const SuccessiveWeekends = (Base, props) => class extends Base {
           // Switch state if successive weekends was reached
           if (weeks > (stateFree ?
               props.opts.successiveFreeWeekends :
-              props.opts.successiveWorkingWeekends)) {
+              props.opts.successiveWorkWeekends)) {
             weeks = 1;
             stateFree = !stateFree;
           }
@@ -55,7 +55,7 @@ const SuccessiveWeekends = (Base, props) => class extends Base {
 
 SuccessiveWeekends.requiredOpts = {
   successiveFreeWeekends: true,
-  successiveWorkingWeekends: true
+  successiveWorkWeekends: true
 };
 
 module.exports = SuccessiveWeekends;

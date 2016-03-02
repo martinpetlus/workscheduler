@@ -2,28 +2,28 @@
 'use strict';
 
 const Chromosome = require('../../Chromosome')
-  , WorkingPeriodProperties = require('../../props/WorkingPeriodProperties')
-  , WorkingDays = require('../../mixins/WorkingDays')
+  , WorkPeriodProperties = require('../../props/WorkPeriodProperties')
+  , WorkDays = require('../../mixins/WorkDays')
   , setParamTrue = require('../set-param-true');
 
-describe('WorkingDays mixin', function() {
+describe('WorkDays mixin', function() {
   let clazz, props;
 
   beforeEach(function() {
-    clazz = WorkingDays(Chromosome);
+    clazz = WorkDays(Chromosome);
   });
 
   describe('super methods calls', function() {
     let chr, props;
 
     beforeEach(function() {
-      props = new WorkingPeriodProperties({
+      props = new WorkPeriodProperties({
         weeks: 4,
         employees: 1,
-        workingDays: 6
+        workDays: 6
       });
 
-      const clazz = WorkingDays(Chromosome, props);
+      const clazz = WorkDays(Chromosome, props);
 
       chr = new clazz(props.length());
     });
@@ -39,13 +39,13 @@ describe('WorkingDays mixin', function() {
     let chr, props;
 
     beforeEach(function() {
-      props = new WorkingPeriodProperties({
+      props = new WorkPeriodProperties({
         weeks: 4,
         employees: 1,
-        workingDays: 6
+        workDays: 6
       });
 
-      const clazz = WorkingDays(Chromosome, props);
+      const clazz = WorkDays(Chromosome, props);
 
       chr = new clazz(props.length());
     });
@@ -72,13 +72,13 @@ describe('WorkingDays mixin', function() {
     let chr, props;
 
     beforeEach(function() {
-      props = new WorkingPeriodProperties({
+      props = new WorkPeriodProperties({
         weeks: 4,
         employees: 2,
-        workingDays: 6
+        workDays: 6
       });
 
-      const clazz = WorkingDays(Chromosome, props);
+      const clazz = WorkDays(Chromosome, props);
 
       chr = new clazz(props.length());
     });

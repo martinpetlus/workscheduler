@@ -2,7 +2,7 @@
 'use strict';
 
 const Chromosome = require('../../Chromosome')
-  , WorkingPeriodProperties = require('../../props/WorkingPeriodProperties')
+  , WorkPeriodProperties = require('../../props/WorkPeriodProperties')
   , MinEmployeesAtWork = require('../../mixins/MinEmployeesAtWork')
   , setParamTrue = require('../set-param-true');
 
@@ -10,7 +10,7 @@ describe('MinEmployeesAtWork mixin', function() {
   let chr, props;
 
   beforeEach(function() {
-    props = new WorkingPeriodProperties({
+    props = new WorkPeriodProperties({
       weeks: 4,
       employees: 3,
       minEmployeesAtWork: 1

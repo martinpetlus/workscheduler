@@ -1,12 +1,12 @@
 
 /*
  * Mixin to compute fitness regarding maximum
- * working days in week.
+ * work days in week.
  */
 
 'use strict';
 
-const MaxWorkingDaysInWeek = (Base, props) => class extends Base {
+const MaxWorkDaysInWeek = (Base, props) => class extends Base {
   fitness() {
     let curr1
       , result = super.fitness()
@@ -20,18 +20,18 @@ const MaxWorkingDaysInWeek = (Base, props) => class extends Base {
       // Iterate through weeks
       while (curr2 = weeksIter.next()) {
         let curr3
-          , workingDays = 0
+          , workDays = 0
           , daysIter = props.days();
 
-        // Compute number of working days in week
+        // Compute number of work days in week
         while (curr3 = daysIter.next()) {
           if (this[props.shiftIndex(curr1, curr2, curr3)]) {
-            workingDays += 1;
+            workDays += 1;
           }
         }
 
-        // Decrease fitness only if maximum of working days in week is exceeded
-        result += Math.min(0, props.opts.maxWorkingDaysInWeek - workingDays);
+        // Decrease fitness only if maximum of work days in week is exceeded
+        result += Math.min(0, props.opts.maxWorkDaysInWeek - workDays);
       }
     }
 
@@ -39,8 +39,8 @@ const MaxWorkingDaysInWeek = (Base, props) => class extends Base {
   }
 }
 
-MaxWorkingDaysInWeek.requiredOpts = {
-  maxWorkingDaysInWeek: true
+MaxWorkDaysInWeek.requiredOpts = {
+  maxWorkDaysInWeek: true
 };
 
-module.exports = MaxWorkingDaysInWeek;
+module.exports = MaxWorkDaysInWeek;

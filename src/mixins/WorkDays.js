@@ -1,12 +1,12 @@
 
 /*
  * Mixin to compute fitness regarding number
- * of working days in working period.
+ * of work days in work period.
  */
 
 'use strict';
 
-const WorkingDays = (Base, props) => class extends Base {
+const WorkDays = (Base, props) => class extends Base {
   fitness() {
     let curr1
       , result = super.fitness()
@@ -15,27 +15,27 @@ const WorkingDays = (Base, props) => class extends Base {
     // Iterate through employees
     while (curr1 = employeesIter.next()) {
       let curr2
-        , workingDays = 0
+        , workDays = 0
         , periodDaysIter = props.periodDays();
 
       // Iterate through period days
       while (curr2 = periodDaysIter.next()) {
-        // Check for working day
+        // Check for work day
         if (this[props.shiftIndex(curr1, curr2)]) {
-          workingDays += 1;
+          workDays += 1;
         }
       }
 
-      // Only exact working days produces 0 fitness decrease
-      result += -Math.abs(props.opts.workingDays - workingDays);
+      // Only exact work days produces 0 fitness decrease
+      result += -Math.abs(props.opts.workDays - workDays);
     }
 
     return result;
   };
 }
 
-WorkingDays.requiredOpts = {
-  workingDays: true
+WorkDays.requiredOpts = {
+  workDays: true
 };
 
-module.exports = WorkingDays;
+module.exports = WorkDays;

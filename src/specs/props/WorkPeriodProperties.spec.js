@@ -1,9 +1,9 @@
 
 'use strict';
 
-const WorkingPeriodProperties = require('../../props/WorkingPeriodProperties');
+const WorkPeriodProperties = require('../../props/WorkPeriodProperties');
 
-describe('WorkingPeriodProperties', function() {
+describe('WorkPeriodProperties', function() {
   let iter, current;
 
   beforeEach(function() {
@@ -21,7 +21,7 @@ describe('WorkingPeriodProperties', function() {
 
     describe('2 weeks period, 2 employees', function() {
       beforeEach(function() {
-        props = new WorkingPeriodProperties({
+        props = new WorkPeriodProperties({
           weeks: 2,
           employees: 2
         });
@@ -49,7 +49,7 @@ describe('WorkingPeriodProperties', function() {
 
     describe('4 weeks period, 3 employees', function() {
       beforeEach(function() {
-        props = new WorkingPeriodProperties({
+        props = new WorkPeriodProperties({
           weeks: 4,
           employees: 3
         });

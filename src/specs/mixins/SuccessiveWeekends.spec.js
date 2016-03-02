@@ -2,7 +2,7 @@
 'use strict';
 
 const Chromosome = require('../../Chromosome')
-  , WorkingPeriodProperties = require('../../props/WorkingPeriodProperties')
+  , WorkPeriodProperties = require('../../props/WorkPeriodProperties')
   , SuccessiveWeekends = require('../../mixins/SuccessiveWeekends')
   , setParamTrue = require('../set-param-true');
 
@@ -11,11 +11,11 @@ describe('SuccessiveWeekends mixin', function() {
     let chr, props;
 
     beforeEach(function() {
-      props = new WorkingPeriodProperties({
+      props = new WorkPeriodProperties({
         weeks: 4,
         employees: 1,
         successiveFreeWeekends: 2,
-        successiveWorkingWeekends: 2
+        successiveWorkWeekends: 2
       });
 
       const clazz = SuccessiveWeekends(Chromosome, props);
@@ -34,11 +34,11 @@ describe('SuccessiveWeekends mixin', function() {
     let chr, props;
 
     beforeEach(function() {
-      props = new WorkingPeriodProperties({
+      props = new WorkPeriodProperties({
         weeks: 4,
         employees: 1,
         successiveFreeWeekends: 2,
-        successiveWorkingWeekends: 2
+        successiveWorkWeekends: 2
       });
 
       const clazz = SuccessiveWeekends(Chromosome, props);
@@ -62,13 +62,13 @@ describe('SuccessiveWeekends mixin', function() {
       expect(chr.fitness()).toBe(0);
     });
 
-    it('last working weekend in 4 week period', function() {
+    it('last work weekend in 4 week period', function() {
       setParamTrue(chr, props, 1, 4, 6);
       setParamTrue(chr, props, 1, 4, 7);
       expect(chr.fitness()).toBe(-1);
     });
 
-    it('two working weekends in middle of period', function() {
+    it('two work weekends in middle of period', function() {
       setParamTrue(chr, props, 1, 2, 6);
       setParamTrue(chr, props, 1, 2, 7);
       setParamTrue(chr, props, 1, 3, 6);
@@ -80,11 +80,11 @@ describe('SuccessiveWeekends mixin', function() {
       let chr, props;
 
       beforeEach(function() {
-        props = new WorkingPeriodProperties({
+        props = new WorkPeriodProperties({
           weeks: 4,
           employees: 2,
           successiveFreeWeekends: 2,
-          successiveWorkingWeekends: 2
+          successiveWorkWeekends: 2
         });
 
         const clazz = SuccessiveWeekends(Chromosome, props);
@@ -115,11 +115,11 @@ describe('SuccessiveWeekends mixin', function() {
     let chr, props;
 
     beforeEach(function() {
-      props = new WorkingPeriodProperties({
+      props = new WorkPeriodProperties({
         weeks: 8,
         employees: 1,
         successiveFreeWeekends: 3,
-        successiveWorkingWeekends: 2
+        successiveWorkWeekends: 2
       });
 
       const clazz = SuccessiveWeekends(Chromosome, props);
@@ -127,7 +127,7 @@ describe('SuccessiveWeekends mixin', function() {
       chr = new clazz(props.length());
     });
 
-    describe('two working weekends in middle of period', function() {
+    describe('two work weekends in middle of period', function() {
       it('should compute correct fitness', function() {
         setParamTrue(chr, props, 1, 2, 6);
         setParamTrue(chr, props, 1, 2, 7);

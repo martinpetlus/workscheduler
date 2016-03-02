@@ -1,18 +1,18 @@
 
 'use strict';
 
-const WorkingPeriodFactory = require('./WorkingPeriodFactory')
+const WorkPeriodFactory = require('./WorkPeriodFactory')
   ,  GeneticAlgorithm = require('./GeneticAlgorithm');
 
-const factory = new WorkingPeriodFactory({
+const factory = new WorkPeriodFactory({
   weeks: 4,
   employees: 7,
   minEmployeesAtWork: 3,
-  workingDays: 16,
-  maxSuccessiveWorkingDays: 3,
-  maxWorkingDaysInWeek: 5,
+  workDays: 16,
+  maxSuccessiveWorkDays: 3,
+  maxWorkDaysInWeek: 5,
   successiveFreeWeekends: 2,
-  successiveWorkingWeekends: 2
+  successiveWorkWeekends: 2
 });
 
 const algorithm = new GeneticAlgorithm({
