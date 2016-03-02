@@ -1,7 +1,7 @@
 
 'use strict';
 
-const mathUtils = require('./utils/math');
+const utils = require('./utils');
 
 class GeneticAlgorithm {
   constructor(opts, factory) {
@@ -31,12 +31,12 @@ class GeneticAlgorithm {
   }
 
   mutate(chromosome) {
-    let pos = mathUtils.randomInt(0, chromosome.length - 1);
+    let pos = utils.math.randomInt(0, chromosome.length - 1);
     chromosome[pos] = !chromosome[pos];
   }
 
   crossover(chromosome1, chromosome2) {
-    const pos = mathUtils.randomInt(0, chromosome1.length - 1);
+    const pos = utils.math.randomInt(0, chromosome1.length - 1);
 
     for (let i = 0; i <= pos; i += 1) {
       let tmp = chromosome1[i];

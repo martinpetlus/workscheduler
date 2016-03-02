@@ -1,8 +1,6 @@
 
 'use strict';
 
-const mathUtils = require('../../utils/math');
-
 const PROBABILITY = 0.01;
 
 class StandardMutator {

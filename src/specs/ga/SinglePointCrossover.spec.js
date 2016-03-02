@@ -2,7 +2,7 @@
 'use strict';
 
 const SinglePointCrossover = require('../../ga/cross/SinglePointCrossover')
-  , mathUtils = require('../../utils/math');
+  , utils = require('../../utils');
 
 describe('SinglePointCrossover', function() {
   let crossover, chr1, chr2;
@@ -15,7 +15,7 @@ describe('SinglePointCrossover', function() {
   });
 
   it('should crossover parent chromosomes', function() {
-    spyOn(mathUtils, 'randomInt').andReturn(1);
+    spyOn(utils.math, 'randomInt').andReturn(1);
     crossover.crossover(chr1, chr2);
 
     expect(chr1[0]).toBe(true);

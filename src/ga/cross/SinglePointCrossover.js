@@ -1,7 +1,7 @@
 
 'use strict';
 
-const mathUtils = require('../../utils/math');
+const utils = require('../../utils');
 
 const PROBABILITY = 0.65;
 
@@ -10,7 +10,7 @@ class SinglePointCrossover {
   crossover(pr1, pr2) {
     if (Math.random() <= PROBABILITY) {
       // Last point of crossover is last but one
-      const pos = mathUtils.randomInt(0, pr1.length - 2);
+      const pos = utils.math.randomInt(0, pr1.length - 2);
 
       for (let i = 0; i <= pos; i += 1) {
         let tmp = pr1[i];
