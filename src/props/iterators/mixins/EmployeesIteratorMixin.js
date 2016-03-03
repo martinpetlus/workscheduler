@@ -11,5 +11,4 @@ const EmployeesIteratorMixin = Base => class extends Base {
 
 };
 
-
 module.exports = EmployeesIteratorMixin;

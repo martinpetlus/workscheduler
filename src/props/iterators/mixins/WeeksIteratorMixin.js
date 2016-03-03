@@ -11,5 +11,4 @@ const WeeksIteratorMixin = Base => class extends Base {
 
 };
 
-
 module.exports = WeeksIteratorMixin;

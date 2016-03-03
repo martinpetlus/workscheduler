@@ -11,5 +11,4 @@ const PeriodDaysIteratorMixin = Base => class extends Base {
 
 };
 
-
 module.exports = PeriodDaysIteratorMixin;
