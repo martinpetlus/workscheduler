@@ -4,7 +4,7 @@
 const mixins = require('./mixins')
   , Chromosome = require('./ga/Chromosome')
   , WorkPeriodProperties = require('./props/WorkPeriodProperties')
-  , logger = require('./utils/logger');
+  , utils = require('./utils');
 
 class WorkPeriodFactory {
 
@@ -15,16 +15,15 @@ class WorkPeriodFactory {
 
     if (apply) {
       this.clazz = mixin(this.clazz, this.props);
-      return true;
     }
 
-    return false
+    return apply;
   }
 
   _extendClazz() {
     for (let name in mixins) {
       if (this._conditionallyApplyMixin(mixins[name])) {
-        logger.log(`Applied fitness mixin: ${name}`);
+        utils.logger.log(`Applied fitness mixin: ${name}`);
       }
     }
   }
