@@ -18,35 +18,31 @@ class GeneticAlgorithm {
   }
 
   run() {
-    const scores = this.population.map((chromosome, i) => {
+    const newPopulation = [];
+
+    this.selection.setPopulation(this.population.map(chromosome => {
       return {
         fitness: chromosome.fitness(),
-        index: i
+        chromosome
       };
-    });
+    }));
 
-    // Sort chromosomes according their fitness value
-    scores.sort(function(a, b) {
-      return b.fitness - a.fitness;
-    });
+    while (newPopulation.length < this.opts.initialPopulation) {
+      const parents = this.selection.selectParents();
 
-    console.log(scores);
-  }
+      parents[0] = parents[0].clone();
+      parents[1] = parents[1].clone();
 
-  mutate(chromosome) {
-    let pos = utils.math.randomInt(0, chromosome.length - 1);
-    chromosome[pos] = !chromosome[pos];
-  }
+      this.crossover.crossover(parents);
 
-  crossover(chromosome1, chromosome2) {
-    const pos = utils.math.randomInt(0, chromosome1.length - 1);
-
-    for (let i = 0; i <= pos; i += 1) {
-      let tmp = chromosome1[i];
-      chromosome1[i] = chromosome2[i];
-      chromosome2[i] = tmp;
+      newPopulation.push(...parents);
     }
+
+    this.mutator.mutate(newPopulation);
+
+    this.population = newPopulation;
   }
+
 }
 
 module.exports = GeneticAlgorithm;
