@@ -19,10 +19,24 @@ describe('SinglePointCrossover', function() {
     crossover.crossover(chr1, chr2);
 
     expect(chr1[0]).toBe(true);
-    expect(chr2[0]).toBe(false);
     expect(chr1[1]).toBe(true);
-    expect(chr2[1]).toBe(false);
     expect(chr1[2]).toBe(false);
+
+    expect(chr2[0]).toBe(false);
+    expect(chr2[1]).toBe(false);
+    expect(chr2[2]).toBe(true);
+  });
+
+  it('should crossover parent chromosomes passed as array', function() {
+    spyOn(utils.math, 'randomInt').andReturn(0);
+    crossover.crossover([chr1, chr2]);
+
+    expect(chr1[0]).toBe(true);
+    expect(chr1[1]).toBe(false);
+    expect(chr1[2]).toBe(false);
+
+    expect(chr2[0]).toBe(false);
+    expect(chr2[1]).toBe(true);
     expect(chr2[2]).toBe(true);
   });
 });
