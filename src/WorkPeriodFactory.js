@@ -44,6 +44,12 @@ class WorkPeriodFactory {
     });
   }
 
+  clone(chromosome) {
+    const obj = Object.create(this.clazz.prototype);
+    Object.assign(obj, chromosome);
+    return obj;
+  }
+
   stringOf(chromosome) {
     return this.props.stringOf(chromosome);
   }

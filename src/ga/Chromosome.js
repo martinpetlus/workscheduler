@@ -29,12 +29,6 @@ class Chromosome {
     return this[i];
   }
 
-  clone() {
-    const obj = Object.create(Chromosome.prototype);
-    Object.assign(obj, this);
-    return obj;
-  }
-
 }
 
 module.exports = Chromosome;

@@ -50,8 +50,8 @@ class GeneticAlgorithm {
     while (newPopulation.length < this.opts.populationSize) {
       const parents = this.selection.selectParents();
 
-      parents[0] = parents[0].clone();
-      parents[1] = parents[1].clone();
+      parents[0] = this.factory.clone(parents[0]);
+      parents[1] = this.factory.clone(parents[1]);
 
       this.crossover.crossover(parents);
 
