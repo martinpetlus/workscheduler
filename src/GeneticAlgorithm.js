@@ -12,7 +12,7 @@ class GeneticAlgorithm {
     this.mutator = mutator;
     this.population = [];
 
-    for (let i = 0; i < this.opts.initialPopulation; i += 1) {
+    for (let i = 0; i < this.opts.populationSize; i += 1) {
       this.population.push(this.factory.createRandom());
     }
   }
@@ -45,7 +45,7 @@ class GeneticAlgorithm {
 
     this.selection.setEntries(entries);
 
-    while (newPopulation.length < this.opts.initialPopulation) {
+    while (newPopulation.length < this.opts.populationSize) {
       const parents = this.selection.selectParents();
 
       parents[0] = parents[0].clone();
