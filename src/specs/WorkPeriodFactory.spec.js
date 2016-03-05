@@ -61,4 +61,20 @@ describe('WorkPeriodFactory', function() {
       expect(instance.getParam(2)).toBe(true);
     });
   });
+
+  describe('clone', function() {
+    it('should clone chromosome', function() {
+      workPeriodFactory.clazz = class extends Chromosome {};
+
+      const chr = {0: false, 1: true, 2: false, length: 3};
+
+      const clone = workPeriodFactory.clone(chr);
+
+      expect(clone instanceof workPeriodFactory.clazz).toBe(true);
+      expect(chr.length).toBe(clone.length);
+      expect(chr[0]).toBe(clone[0]);
+      expect(chr[1]).toBe(clone[1]);
+      expect(chr[2]).toBe(clone[2]);
+    });
+  })
 });
