@@ -18,14 +18,32 @@ class GeneticAlgorithm {
   }
 
   run() {
+    while (true) {
+      const entries = this.population.map(chromosome => {
+        return {
+          fitness: chromosome.fitness(),
+          chromosome
+        };
+      });
+
+      const entry = entries.reduce((prev, curr) => {
+        return prev.fitness > curr.fitness ? prev : curr;
+      });
+
+      utils.logger.log(entry.fitness);
+
+      if (entry.fitness >= 0) {
+        return;
+      }
+
+      this.population = this.runStep(entries);
+    }
+  }
+
+  runStep(entries) {
     const newPopulation = [];
 
-    this.selection.setPopulation(this.population.map(chromosome => {
-      return {
-        fitness: chromosome.fitness(),
-        chromosome
-      };
-    }));
+    this.selection.setEntries(entries);
 
     while (newPopulation.length < this.opts.initialPopulation) {
       const parents = this.selection.selectParents();
@@ -40,7 +58,7 @@ class GeneticAlgorithm {
 
     this.mutator.mutate(newPopulation);
 
-    this.population = newPopulation;
+    return newPopulation;
   }
 
 }
