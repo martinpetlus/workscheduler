@@ -2,7 +2,11 @@
 'use strict';
 
 const WorkPeriodFactory = require('./WorkPeriodFactory')
-  ,  GeneticAlgorithm = require('./GeneticAlgorithm');
+  , GeneticAlgorithm = require('./GeneticAlgorithm')
+  , RouletteWheelSelection = require('./ga/sel/roulette/RouletteWheelSelection')
+  , PositiveFitnessScaler = require('./ga/PositiveFitnessScaler')
+  , StandardMutator = require('./ga/mut/StandardMutator')
+  , SinglePointCrossover = require('./ga/cross/SinglePointCrossover');
 
 const factory = new WorkPeriodFactory({
   weeks: 4,
@@ -15,9 +19,16 @@ const factory = new WorkPeriodFactory({
   successiveWorkWeekends: 2
 });
 
-const algorithm = new GeneticAlgorithm({
-  initialPopulation: 100,
-  eliteCount: 2
-}, factory);
+const selection = new RouletteWheelSelection(
+  new PositiveFitnessScaler()
+);
 
-algorithm.runStep();
+const algorithm = new GeneticAlgorithm(
+  {initialPopulation: 100},
+  factory,
+  selection,
+  new SinglePointCrossover(),
+  new StandardMutator()
+);
+
+algorithm.run();

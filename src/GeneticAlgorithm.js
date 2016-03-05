@@ -4,9 +4,12 @@
 const utils = require('./utils');
 
 class GeneticAlgorithm {
-  constructor(opts, factory) {
+  constructor(opts, factory, selection, crossover, mutator) {
     this.opts = opts;
     this.factory = factory;
+    this.selection = selection;
+    this.crossover = crossover;
+    this.mutator = mutator;
     this.population = [];
 
     for (let i = 0; i < this.opts.initialPopulation; i += 1) {
@@ -14,7 +17,7 @@ class GeneticAlgorithm {
     }
   }
 
-  runStep() {
+  run() {
     const scores = this.population.map((chromosome, i) => {
       return {
         fitness: chromosome.fitness(),
