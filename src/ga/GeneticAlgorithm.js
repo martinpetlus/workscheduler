@@ -4,6 +4,7 @@
 const utils = require('./../utils');
 
 class GeneticAlgorithm {
+
   constructor(opts, factory, selection, crossover, mutator) {
     this.opts = opts;
     this.factory = factory;

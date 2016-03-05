@@ -34,6 +34,7 @@ class Chromosome {
     Object.assign(obj, this);
     return obj;
   }
+
 }
 
 module.exports = Chromosome;
