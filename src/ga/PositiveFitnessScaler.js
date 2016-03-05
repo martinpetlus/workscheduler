@@ -3,8 +3,8 @@
 
 class PositiveFitnessScaler {
 
-  scale(population) {
-    const scaled = population.map(entry => {
+  scale(entries) {
+    const scaled = entries.map(entry => {
       return Object.assign({}, entry, {
         fitness: 1 / -entry.fitness
       });
