@@ -24,7 +24,7 @@ const selection = new RouletteWheelSelection(
 );
 
 const algorithm = new GeneticAlgorithm(
-  {populationSize: 100},
+  {populationSize: 100, eliteCount: 4},
   factory,
   selection,
   new SinglePointCrossover(),

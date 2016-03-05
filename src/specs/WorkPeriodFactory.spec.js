@@ -76,5 +76,27 @@ describe('WorkPeriodFactory', function() {
       expect(chr[1]).toBe(clone[1]);
       expect(chr[2]).toBe(clone[2]);
     });
-  })
+  });
+
+  describe('descFitnessComparator', function() {
+    const arr = [
+      {fitness: -5},
+      {fitness: -1},
+      {fitness: 0},
+      {fitness: 7},
+      {fitness: -7},
+      {fitness: 2}
+    ];
+
+    arr.sort(WorkPeriodFactory.descFitnessComparator);
+
+    expect(arr).toEqual([
+      {fitness: 7},
+      {fitness: 2},
+      {fitness: 0},
+      {fitness: -1},
+      {fitness: -5},
+      {fitness: -7}
+    ]);
+  });
 });

@@ -8,6 +8,10 @@ const mixins = require('./mixins')
 
 class WorkPeriodFactory {
 
+  static descFitnessComparator(entryA, entryB) {
+    return entryB.fitness - entryA.fitness;
+  }
+
   _conditionallyApplyMixin(mixin) {
     const apply = Object.keys(mixin.requiredOpts).every(opt => {
       return this.props.opts[opt] != null;

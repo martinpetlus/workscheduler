@@ -5,6 +5,15 @@ const utils = require('./../utils');
 
 class GeneticAlgorithm {
 
+  _elite(entries) {
+    entries = entries.slice(); // Copy array
+    entries.sort(this.factory.constructor.descFitnessComparator);
+
+    return entries.slice(0, this.opts.eliteCount).map(entry => {
+      return this.factory.clone(entry.chromosome);
+    });
+  }
+
   constructor(opts, factory, selection, crossover, mutator) {
     this.opts = opts;
     this.factory = factory;
@@ -45,6 +54,10 @@ class GeneticAlgorithm {
   runStep(entries) {
     const newPopulation = [];
 
+    if (this.opts.eliteCount != null) {
+      newPopulation.push(...this._elite(entries));
+    }
+
     this.selection.setEntries(entries);
 
     while (newPopulation.length < this.opts.populationSize) {
@@ -54,11 +67,10 @@ class GeneticAlgorithm {
       parents[1] = this.factory.clone(parents[1]);
 
       this.crossover.crossover(parents);
+      this.mutator.mutate(parents);
 
       newPopulation.push(...parents);
     }
-
-    this.mutator.mutate(newPopulation);
 
     return newPopulation;
   }

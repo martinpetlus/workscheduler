@@ -5,9 +5,9 @@ const PROBABILITY = 0.01;
 
 class StandardMutator {
 
-  mutate(population) {
-    for (let i = 0; i < population.length; i += 1) {
-      const chromosome = population[i];
+  mutate(chromosomes) {
+    for (let i = 0; i < chromosomes.length; i += 1) {
+      const chromosome = chromosomes[i];
 
       for (let j = 0; j < chromosome.length; j += 1) {
         const random = Math.random();
