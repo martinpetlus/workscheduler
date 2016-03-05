@@ -8,7 +8,7 @@ const PROBABILITY = 0.65;
 class SinglePointCrossover {
 
   /**
-   * Performs inplace crossover on two parent chromosomes
+   * Performs inplace crossover on two parent chromosomes.
    */
   crossover(pr1, pr2) {
     if (Array.isArray(pr1)) {

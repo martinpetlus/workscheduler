@@ -22,6 +22,12 @@ class RouletteWheelSelection {
     return this.population[this.population.length - 1].chromosome;
   }
 
+  /**
+   * Set population to select parents from.
+   *
+   * @param {array<object>} population Each entry is and object
+   *   with `chromosome` and computed `fitness` properties.
+   */
   setPopulation(population) {
     this.population = this.scaler.scale(population);
 
