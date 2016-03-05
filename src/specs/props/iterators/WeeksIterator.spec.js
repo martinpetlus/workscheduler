@@ -23,4 +23,12 @@ describe('WeeksIterator', function() {
     expect(iter.current()).toBe(null);
     expect(iter.next()).toBe(null);
   });
+
+  it('should reset iterator', function() {
+    iter.next();
+    expect(iter.current()).toEqual({week: 2});
+    iter.reset();
+    expect(iter.current()).toEqual({week: 1});
+    expect(iter.next()).toEqual({week: 1});
+  });
 });

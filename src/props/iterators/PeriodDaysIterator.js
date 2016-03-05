@@ -31,6 +31,11 @@ class PeriodDaysIterator {
     return curr;
   }
 
+  reset() {
+    this.weeksIter.reset();
+    this.daysIter.reset();
+  }
+
   isDone() {
     return (
       this.weeksIter.isDone() &&

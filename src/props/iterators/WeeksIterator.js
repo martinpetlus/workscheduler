@@ -19,6 +19,10 @@ class WeeksIterator {
     return curr;
   }
 
+  reset() {
+    this.week = 1;
+  }
+
   isDone() {
     return this.week > this.opts.weeks;
   }
