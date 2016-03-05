@@ -1,7 +1,7 @@
 
 'use strict';
 
-const utils = require('./utils');
+const utils = require('./../utils');
 
 class GeneticAlgorithm {
   constructor(opts, factory, selection, crossover, mutator) {

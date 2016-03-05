@@ -1,7 +1,7 @@
 
 'use strict';
 
-const Chromosome = require('../../Chromosome')
+const Chromosome = require('../../ga/Chromosome')
   , WorkPeriodProperties = require('../../props/WorkPeriodProperties')
   , MaxSuccessiveWorkDays = require('../../mixins/MaxSuccessiveWorkDays')
   , setParamTrue = require('../set-param-true');

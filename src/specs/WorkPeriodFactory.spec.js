@@ -2,7 +2,7 @@
 'use strict';
 
 const WorkPeriodFactory = require('../WorkPeriodFactory')
-  , Chromosome = require('../Chromosome');
+  , Chromosome = require('../ga/Chromosome');
 
 describe('WorkPeriodFactory', function() {
   let workPeriodFactory, opts;

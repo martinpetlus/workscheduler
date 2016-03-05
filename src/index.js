@@ -2,7 +2,7 @@
 'use strict';
 
 const WorkPeriodFactory = require('./WorkPeriodFactory')
-  , GeneticAlgorithm = require('./GeneticAlgorithm')
+  , GeneticAlgorithm = require('./ga/GeneticAlgorithm')
   , RouletteWheelSelection = require('./ga/sel/roulette/RouletteWheelSelection')
   , PositiveFitnessScaler = require('./ga/PositiveFitnessScaler')
   , StandardMutator = require('./ga/mut/StandardMutator')

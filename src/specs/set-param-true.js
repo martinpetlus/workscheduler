@@ -1,7 +1,7 @@
 
 'use strict';
 
-const Chromosome = require('../Chromosome');
+const Chromosome = require('../ga/Chromosome');
 
 module.exports = function(chr, props, id, week, day) {
   chr.setParam(props.shiftIndex({

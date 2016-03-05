@@ -2,7 +2,7 @@
 'use strict';
 
 const mixins = require('./mixins')
-  , Chromosome = require('./Chromosome')
+  , Chromosome = require('./ga/Chromosome')
   , WorkPeriodProperties = require('./props/WorkPeriodProperties')
   , logger = require('./utils/logger');
 

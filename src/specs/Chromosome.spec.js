@@ -1,7 +1,7 @@
 
 'use strict';
 
-const Chromosome = require('../Chromosome')
+const Chromosome = require('../ga/Chromosome')
   , constants = require('../utils/constants');
 
 describe('Chromosome', function() {
