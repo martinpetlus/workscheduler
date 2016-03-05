@@ -34,6 +34,7 @@ class GeneticAlgorithm {
       utils.logger.log(entry.fitness);
 
       if (entry.fitness >= 0) {
+        utils.logger.log(this.factory.stringOf(entry.chromosome));
         return;
       }
 

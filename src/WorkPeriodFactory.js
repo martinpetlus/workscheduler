@@ -44,6 +44,10 @@ class WorkPeriodFactory {
     });
   }
 
+  stringOf(chromosome) {
+    return this.props.stringOf(chromosome);
+  }
+
 }
 
 module.exports = WorkPeriodFactory;

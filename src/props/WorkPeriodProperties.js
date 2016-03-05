@@ -33,6 +33,41 @@ class WorkPeriodProperties {
   length() {
     return this.opts.employees * constants.DAYS_IN_WEEK * this.opts.weeks;
   }
+
+  stringOf(chromosome) {
+    let curr1
+      , header = ''
+      , result = ''
+      , employeesIter = this.employees();
+
+    while (curr1 = employeesIter.next()) {
+      let curr2
+        , periodDaysIter = this.periodDays();
+
+      if (!header) {
+        let curr;
+
+        while (curr = periodDaysIter.next()) {
+          header += `${curr.day} | `;
+        }
+
+        header += '\n';
+        periodDaysIter.reset();
+      }
+
+      while (curr2 = periodDaysIter.next()) {
+        if (chromosome[this.shiftIndex(curr1, curr2)]) {
+          result += 'W | ';
+        } else {
+          result += 'F | ';
+        }
+      }
+
+      result += '\n';
+    }
+
+    return header + result;
+  }
 }
 
 // Mix in iterators
