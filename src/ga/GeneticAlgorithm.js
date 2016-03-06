@@ -61,7 +61,10 @@ class GeneticAlgorithm {
       });
 
       const entry = entries.reduce((prev, curr) => {
-        return prev.fitness > curr.fitness ? prev : curr;
+        return (this.factory.constructor.descFitnessComparator(prev, curr) < 0 ?
+          prev :
+          curr
+        );
       });
 
       utils.logger.log(entry.fitness);
