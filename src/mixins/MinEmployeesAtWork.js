@@ -18,15 +18,15 @@ const MinEmployeesAtWork = (Base, props) => class extends Base {
         , employeesAtWork = 0
         , employeesIter = props.employees();
 
-        // Iterate through employees
-        while (curr2 = employeesIter.next()) {
-          // Check for work day
-          if (this[props.shiftIndex(curr1, curr2)]) {
-            employeesAtWork += 1;
-          }
+      // Iterate through employees
+      while (curr2 = employeesIter.next()) {
+        // Check for work day
+        if (this[props.shiftIndex(curr1, curr2)]) {
+          employeesAtWork += 1;
         }
+      }
 
-        result += Math.min(0, employeesAtWork - props.opts.minEmployeesAtWork);
+      result += Math.min(0, employeesAtWork - props.opts.minEmployeesAtWork);
     }
 
     return result;

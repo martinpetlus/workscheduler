@@ -18,26 +18,26 @@ const MaxSuccessiveWorkDays = (Base, props) => class extends Base {
         , successiveWorkDays = 0
         , periodDaysIter = props.periodDays();
 
-        while (curr2 = periodDaysIter.next()) {
-          if (this[props.shiftIndex(curr1, curr2)]) {
-            successiveWorkDays += 1; // Day at work
-          } else { // Free day
-            // If maximum of successive work days is exceeded
-            result += Math.min(
-              props.opts.maxSuccessiveWorkDays - successiveWorkDays,
-              0
-            );
+      while (curr2 = periodDaysIter.next()) {
+        if (this[props.shiftIndex(curr1, curr2)]) {
+          successiveWorkDays += 1; // Day at work
+        } else { // Free day
+          // If maximum of successive work days is exceeded
+          result += Math.min(
+            props.opts.maxSuccessiveWorkDays - successiveWorkDays,
+            0
+          );
 
-            // Reset the counter of successive work days
-            successiveWorkDays = 0;
-          }
+          // Reset the counter of successive work days
+          successiveWorkDays = 0;
         }
+      }
 
-        // Check last days of period for successive work days
-        result += Math.min(
-          props.opts.maxSuccessiveWorkDays - successiveWorkDays,
-          0
-        );
+      // Check last days of period for successive work days
+      result += Math.min(
+        props.opts.maxSuccessiveWorkDays - successiveWorkDays,
+        0
+      );
     }
 
     return result;
