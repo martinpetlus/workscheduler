@@ -6,6 +6,7 @@ const WorkPeriodFactory = require('./WorkPeriodFactory')
   , RouletteWheelSelection = require('./ga/sel/roulette/RouletteWheelSelection')
   , PositiveFitnessScaler = require('./ga/PositiveFitnessScaler')
   , StandardMutator = require('./ga/mut/StandardMutator')
+  , TwoPointCrossover = require('./ga/cross/TwoPointCrossover')
   , SinglePointCrossover = require('./ga/cross/SinglePointCrossover');
 
 const factory = new WorkPeriodFactory({
@@ -27,7 +28,7 @@ const algorithm = new GeneticAlgorithm(
   {populationSize: 100, eliteCount: 4},
   factory,
   selection,
-  new SinglePointCrossover(),
+  new TwoPointCrossover(),
   new StandardMutator()
 );
 
