@@ -66,6 +66,10 @@ class GeneticAlgorithm {
 
       utils.logger.log(entry.fitness);
 
+      if (__DEV__) {
+        utils.logger.log(debugs.fitness.toString(entry.chromosome));
+      }
+
       if (entry.fitness >= 0) {
         utils.logger.log(this.factory.stringOf(entry.chromosome));
         break;

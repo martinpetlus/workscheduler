@@ -1,6 +1,12 @@
 
 'use strict';
 
+GLOBAL.__DEV__ = true;
+
+if (__DEV__) {
+  Object.assign(GLOBAL, require('./debug/DebugsMixin'));
+}
+
 const WorkPeriodFactory = require('./WorkPeriodFactory')
   , GeneticAlgorithm = require('./ga/GeneticAlgorithm')
   , RouletteWheelSelection = require('./ga/sel/roulette/RouletteWheelSelection')

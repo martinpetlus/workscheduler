@@ -9,7 +9,7 @@
 const MaxSuccessiveWorkDays = (Base, props) => class extends Base {
   fitness() {
     let curr1
-      , result = super.fitness()
+      , result = 0
       , employeesIter = props.employees();
 
     // Iterate through all employees
@@ -40,7 +40,11 @@ const MaxSuccessiveWorkDays = (Base, props) => class extends Base {
       );
     }
 
-    return result;
+    if (__DEV__) {
+      debugs.fitness.log(this, 'MaxSuccessiveWorkDays', result);
+    }
+
+    return super.fitness() + result;
   }
 }
 

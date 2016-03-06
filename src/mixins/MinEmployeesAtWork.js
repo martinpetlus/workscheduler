@@ -10,7 +10,7 @@ const MinEmployeesAtWork = (Base, props) => class extends Base {
   fitness() {
     let curr1
       , periodDaysIter = props.periodDays()
-      , result = super.fitness();
+      , result = 0;
 
     // Iterate through period days
     while (curr1 = periodDaysIter.next()) {
@@ -29,7 +29,11 @@ const MinEmployeesAtWork = (Base, props) => class extends Base {
       result += Math.min(0, employeesAtWork - props.opts.minEmployeesAtWork);
     }
 
-    return result;
+    if (__DEV__) {
+      debugs.fitness.log(this, 'MinEmployeesAtWork', result);
+    }
+
+    return super.fitness() + result;
   }
 }
 

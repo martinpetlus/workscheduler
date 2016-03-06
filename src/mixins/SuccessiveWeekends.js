@@ -9,7 +9,7 @@
 const SuccessiveWeekends = (Base, props) => class extends Base {
   fitness() {
     let curr1
-      , result = super.fitness()
+      , result = 0
       , employeesIter = props.employees();
 
     // Iterate through all employees
@@ -49,7 +49,11 @@ const SuccessiveWeekends = (Base, props) => class extends Base {
       result += -diffs;
     }
 
-    return result;
+    if (__DEV__) {
+      debugs.fitness.log(this, 'SuccessiveWeekends', result);
+    }
+
+    return super.fitness() + result;
   }
 }
 

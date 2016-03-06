@@ -9,7 +9,7 @@
 const WorkDays = (Base, props) => class extends Base {
   fitness() {
     let curr1
-      , result = super.fitness()
+      , result = 0
       , employeesIter = props.employees();
 
     // Iterate through employees
@@ -30,7 +30,11 @@ const WorkDays = (Base, props) => class extends Base {
       result += -Math.abs(props.opts.workDays - workDays);
     }
 
-    return result;
+    if (__DEV__) {
+      debugs.fitness.log(this, 'WorkDays', result);
+    }
+
+    return super.fitness() + result;
   };
 }
 
