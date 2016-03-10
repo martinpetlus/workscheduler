@@ -20,8 +20,8 @@ const SuccessiveWeekends = (Base, props) => class extends Base {
 
       // Iterate through weeks of period
       while (curr2 = weeksIter.next()) {
-        let day6 = this[props.shiftIndex(curr1, curr2, { day: 6 })]
-          , day7 = this[props.shiftIndex(curr1, curr2, { day: 7 })]
+        let day6 = this[props.shiftIndex(curr1, curr2, {day: 6})]
+          , day7 = this[props.shiftIndex(curr1, curr2, {day: 7})]
           , currFree = !day6 && !day7;
 
         if (curr2.week > 1) {
