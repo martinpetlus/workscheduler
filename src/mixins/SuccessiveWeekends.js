@@ -6,6 +6,14 @@
 
 'use strict';
 
+function diff(free, day) {
+  if (free) {
+    return day ? 1 : 0;
+  } else {
+    return day ? 0 : 1;
+  }
+}
+
 const SuccessiveWeekends = (Base, props) => class extends Base {
   fitness() {
     let curr1
@@ -14,34 +22,30 @@ const SuccessiveWeekends = (Base, props) => class extends Base {
 
     // Iterate through all employees
     while (curr1 = employeesIter.next()) {
-      let curr2, stateFree, weeks
+      let curr2, currFree, weeks
         , diffs = 0
         , weeksIter = props.weeks();
 
       // Iterate through weeks of period
       while (curr2 = weeksIter.next()) {
         let day6 = this[props.shiftIndex(curr1, curr2, {day: 6})]
-          , day7 = this[props.shiftIndex(curr1, curr2, {day: 7})]
-          , currFree = !day6 && !day7;
+          , day7 = this[props.shiftIndex(curr1, curr2, {day: 7})];
 
         if (curr2.week > 1) {
           // Switch state if successive weekends was reached
-          if (weeks > (stateFree ?
+          if (weeks > (currFree ?
               props.opts.successiveFreeWeekends :
               props.opts.successiveWorkWeekends)) {
             weeks = 1;
-            stateFree = !stateFree;
-          }
-
-          // Increment diff if state and current weekend state doesn't match
-          if (stateFree !== currFree) {
-            diffs += 1;
+            currFree = !currFree;
           }
         } else {
-          // Initialize state from first weekend
-          stateFree = currFree;
+          // Initialize weekend state from first weekend in period
+          currFree = !day6 && !day7;
           weeks = 1;
         }
+
+        diffs += diff(currFree, day6) + diff(currFree, day7);
 
         weeks += 1;
       }

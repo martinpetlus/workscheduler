@@ -25,7 +25,7 @@ describe('SuccessiveWeekends mixin', function() {
 
     it('should call super fitness', function() {
       spyOn(Chromosome.prototype, 'fitness').andReturn(-2);
-      expect(chr.fitness()).toBe(-4);
+      expect(chr.fitness()).toBe(-6);
       expect(Chromosome.prototype.fitness).toHaveBeenCalled();
     });
   });
@@ -65,15 +65,14 @@ describe('SuccessiveWeekends mixin', function() {
     it('last work weekend in 4 week period', function() {
       setParamTrue(chr, props, 1, 4, 6);
       setParamTrue(chr, props, 1, 4, 7);
-      expect(chr.fitness()).toBe(-1);
+      expect(chr.fitness()).toBe(-2);
     });
 
     it('two work weekends in middle of period', function() {
       setParamTrue(chr, props, 1, 2, 6);
       setParamTrue(chr, props, 1, 2, 7);
       setParamTrue(chr, props, 1, 3, 6);
-      setParamTrue(chr, props, 1, 3, 7);
-      expect(chr.fitness()).toBe(-2);
+      expect(chr.fitness()).toBe(-5);
     });
 
     describe('two employees', function() {
@@ -93,12 +92,12 @@ describe('SuccessiveWeekends mixin', function() {
       });
 
       it('should compute correct fitness', function() {
-        expect(chr.fitness()).toBe(-4);
+        expect(chr.fitness()).toBe(-8);
         setParamTrue(chr, props, 1, 3, 6);
         setParamTrue(chr, props, 1, 3, 7);
         setParamTrue(chr, props, 2, 4, 6);
         setParamTrue(chr, props, 2, 4, 7);
-        expect(chr.fitness()).toBe(-2);
+        expect(chr.fitness()).toBe(-4);
         setParamTrue(chr, props, 1, 4, 6);
         setParamTrue(chr, props, 1, 4, 7);
         setParamTrue(chr, props, 2, 3, 6);
@@ -137,7 +136,7 @@ describe('SuccessiveWeekends mixin', function() {
         setParamTrue(chr, props, 1, 7, 7);
         setParamTrue(chr, props, 1, 8, 6);
         setParamTrue(chr, props, 1, 8, 7);
-        expect(chr.fitness()).toBe(-4);
+        expect(chr.fitness()).toBe(-8);
       });
     });
   });
