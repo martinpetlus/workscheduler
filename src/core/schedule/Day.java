@@ -11,13 +11,13 @@ public enum Day {
 
         @Override
         public Day following() {
-            return values[MONDAY.ordinal()];
+            return enums[MONDAY.ordinal()];
         }
     };
 
-    private static final Day[] values = values();
+    private static final Day[] enums = values();
 
     public Day following() {
-        return values[ordinal() + 1];
+        return enums[ordinal() + 1];
     }
 }

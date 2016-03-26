@@ -9,7 +9,7 @@ public final class ScheduleProperties {
         return new DayIterator();
     }
 
-    private final class DayIterator implements Iterator<Day> {
+    private static final class DayIterator implements Iterator<Day> {
 
         private Day day = Day.MONDAY;
 
@@ -24,7 +24,7 @@ public final class ScheduleProperties {
             // Advance to the following day
             day = day.following();
 
-            // Terminate iterator at the start of next week
+            // Iterate from monday to sunday
             if (day == Day.MONDAY) {
                 day = null;
             }
