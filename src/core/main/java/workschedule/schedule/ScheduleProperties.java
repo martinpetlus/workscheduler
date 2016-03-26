@@ -1,4 +1,4 @@
-package core.schedule;
+package workschedule.schedule;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;

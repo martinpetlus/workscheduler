@@ -1,4 +1,4 @@
-package core.schedule;
+package workschedule.schedule;
 
 public enum Day {
     MONDAY,

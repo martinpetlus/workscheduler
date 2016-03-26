@@ -1,7 +1,15 @@
-node_modules
-npm-debug.log
+# NPM
+node_modules/
 
 # IntelliJ IDEA
-.idea
-*.?ml
-out
+.idea/
+*.ipr
+*.iws
+
+# Gradle
+.gradle/
+gradle/
+build/
+
+# Logs
+*.log
