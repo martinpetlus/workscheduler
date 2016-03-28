@@ -84,7 +84,5 @@ public final class SchedulePropertiesTest {
         assertFalse(iterator.hasNext());
         thrown.expect(NoSuchElementException.class);
         iterator.next();
-
-        verify(optsMock);
     }
 }
