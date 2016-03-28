@@ -23,3 +23,9 @@ sourceSets {
         }
     }
 }
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'workschedule.Core'
+    }
+}
