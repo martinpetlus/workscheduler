@@ -8,6 +8,8 @@ repositories {
 }
 
 dependencies {
+    compile 'com.google.code.gson:gson:2.6.2'
+
     testCompile 'junit:junit:4.12'
 }
 
@@ -27,5 +29,10 @@ sourceSets {
 jar {
     manifest {
         attributes 'Main-Class': 'workschedule.Core'
+    }
+
+    // http://stackoverflow.com/questions/4871656/using-gradle-to-build-a-jar-with-dependencies
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
