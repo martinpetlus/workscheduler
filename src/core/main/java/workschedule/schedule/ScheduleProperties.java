@@ -5,8 +5,46 @@ import java.util.NoSuchElementException;
 
 public final class ScheduleProperties {
 
+    private final ScheduleOptions opts;
+
+    public ScheduleProperties(final ScheduleOptions opts) {
+        this.opts = opts;
+    }
+
     public Iterator<Day> days() {
         return new DayIterator();
+    }
+
+    public Iterator<Integer> weeks() {
+        return new WeekIterator();
+    }
+
+    private final class WeekIterator implements Iterator<Integer> {
+
+        private int week = 1;
+
+        @Override
+        public boolean hasNext() {
+            return week > 0;
+        }
+
+        @Override
+        public Integer next() {
+            if (week < 0) {
+                throw new NoSuchElementException();
+            }
+
+            final int next = week;
+
+            week += 1;
+
+            // Iterate only from 1 to number of weeks in period
+            if (week > ScheduleProperties.this.opts.getWeeks()) {
+                week = -1;
+            }
+
+            return next;
+        }
     }
 
     private static final class DayIterator implements Iterator<Day> {
@@ -24,7 +62,7 @@ public final class ScheduleProperties {
             // Advance to the following day
             day = day.following();
 
-            // Iterate from monday to sunday
+            // Iterate only from monday to sunday
             if (day == Day.MONDAY) {
                 day = null;
             }
