@@ -38,7 +38,7 @@ public final class SchedulePropertiesTest {
 
     @Test
     public void daysIteratorShouldIterateThroughDaysOfWeek() {
-        final Iterator<Day> iterator = props.days();
+        final ResettableIterator<Day> iterator = props.days();
 
         assertTrue(iterator.hasNext());
         assertEquals(Day.MONDAY, iterator.next());
@@ -48,6 +48,13 @@ public final class SchedulePropertiesTest {
 
         assertTrue(iterator.hasNext());
         assertEquals(Day.WEDNESDAY, iterator.next());
+
+        // Test iterator's reset method
+        iterator.reset();
+        assertTrue(iterator.hasNext());
+        assertEquals(Day.MONDAY, iterator.next());
+        iterator.next();
+        iterator.next();
 
         assertTrue(iterator.hasNext());
         assertEquals(Day.THURSDAY, iterator.next());
@@ -68,7 +75,7 @@ public final class SchedulePropertiesTest {
 
     @Test
     public void weeksIteratorShouldIterateThroughWeeksOfPeriod() {
-        final Iterator<Integer> iterator = props.weeks();
+        final ResettableIterator<Integer> iterator = props.weeks();
 
         expect(optsMock.getWeeks()).andReturn(2).anyTimes();
 
@@ -80,6 +87,12 @@ public final class SchedulePropertiesTest {
         assertTrue(iterator.hasNext());
         assertEquals(2, iterator.next().intValue());
 
+        // Test iterator's reset method
+        iterator.reset();
+        assertTrue(iterator.hasNext());
+        assertEquals(1, iterator.next().intValue());
+        iterator.next();
+
         assertFalse(iterator.hasNext());
         thrown.expect(NoSuchElementException.class);
         iterator.next();
@@ -87,7 +100,7 @@ public final class SchedulePropertiesTest {
 
     @Test
     public void employeesIteratorShouldIterateThroughAllEmployees() {
-        final Iterator<Integer> iterator = props.employees();
+        final ResettableIterator<Integer> iterator = props.employees();
 
         expect(optsMock.getEmployees()).andReturn(2).anyTimes();
 
@@ -98,6 +111,12 @@ public final class SchedulePropertiesTest {
 
         assertTrue(iterator.hasNext());
         assertEquals(2, iterator.next().intValue());
+
+        // Test iterator's reset method
+        iterator.reset();
+        assertTrue(iterator.hasNext());
+        assertEquals(1, iterator.next().intValue());
+        iterator.next();
 
         assertFalse(iterator.hasNext());
         thrown.expect(NoSuchElementException.class);

@@ -11,19 +11,19 @@ public final class ScheduleProperties {
         this.opts = opts;
     }
 
-    public Iterator<Day> days() {
+    public ResettableIterator<Day> days() {
         return new DayIterator();
     }
 
-    public Iterator<Integer> weeks() {
+    public ResettableIterator<Integer> weeks() {
         return new WeekIterator();
     }
 
-    public Iterator<Integer> employees() {
+    public ResettableIterator<Integer> employees() {
         return new EmployeeIterator();
     }
 
-    private final class EmployeeIterator implements Iterator<Integer> {
+    private final class EmployeeIterator implements ResettableIterator<Integer> {
 
         private int employee = 1;
 
@@ -49,9 +49,14 @@ public final class ScheduleProperties {
 
             return next;
         }
+
+        @Override
+        public void reset() {
+            employee = 1;
+        }
     }
 
-    private final class WeekIterator implements Iterator<Integer> {
+    private final class WeekIterator implements ResettableIterator<Integer> {
 
         private int week = 1;
 
@@ -77,9 +82,14 @@ public final class ScheduleProperties {
 
             return next;
         }
+
+        @Override
+        public void reset() {
+            week = 1;
+        }
     }
 
-    private static final class DayIterator implements Iterator<Day> {
+    private static final class DayIterator implements ResettableIterator<Day> {
 
         private Day day = Day.MONDAY;
 
@@ -105,6 +115,11 @@ public final class ScheduleProperties {
         @Override
         public boolean hasNext() {
             return day != null;
+        }
+
+        @Override
+        public void reset() {
+            day = Day.MONDAY;
         }
     }
 }
