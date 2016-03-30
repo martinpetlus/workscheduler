@@ -19,6 +19,38 @@ public final class ScheduleProperties {
         return new WeekIterator();
     }
 
+    public Iterator<Integer> employees() {
+        return new EmployeeIterator();
+    }
+
+    private final class EmployeeIterator implements Iterator<Integer> {
+
+        private int employee = 1;
+
+        @Override
+        public boolean hasNext() {
+            return employee > 0;
+        }
+
+        @Override
+        public Integer next() {
+            if (employee < 0) {
+                throw new NoSuchElementException();
+            }
+
+            final int next = employee;
+
+            employee += 1;
+
+            // Iterate only from 1 to number of employees
+            if (employee > ScheduleProperties.this.opts.getEmployees()) {
+                employee = -1;
+            }
+
+            return next;
+        }
+    }
+
     private final class WeekIterator implements Iterator<Integer> {
 
         private int week = 1;

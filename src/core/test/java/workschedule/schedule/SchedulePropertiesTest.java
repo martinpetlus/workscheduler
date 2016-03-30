@@ -18,7 +18,6 @@ import org.powermock.modules.junit4.PowerMockRunner;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import static org.powermock.api.easymock.PowerMock.createMock;
 import static org.powermock.api.easymock.PowerMock.replay;
-import static org.powermock.api.easymock.PowerMock.verify;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({ ScheduleOptions.class })
@@ -72,6 +71,25 @@ public final class SchedulePropertiesTest {
         final Iterator<Integer> iterator = props.weeks();
 
         expect(optsMock.getWeeks()).andReturn(2).anyTimes();
+
+        replay(optsMock);
+
+        assertTrue(iterator.hasNext());
+        assertEquals(1, iterator.next().intValue());
+
+        assertTrue(iterator.hasNext());
+        assertEquals(2, iterator.next().intValue());
+
+        assertFalse(iterator.hasNext());
+        thrown.expect(NoSuchElementException.class);
+        iterator.next();
+    }
+
+    @Test
+    public void employeesIteratorShouldIterateThroughAllEmployees() {
+        final Iterator<Integer> iterator = props.employees();
+
+        expect(optsMock.getEmployees()).andReturn(2).anyTimes();
 
         replay(optsMock);
 
