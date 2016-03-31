@@ -1,6 +1,5 @@
 package workschedule.schedule;
 
-import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 import org.junit.Before;
@@ -121,5 +120,123 @@ public final class SchedulePropertiesTest {
         assertFalse(iterator.hasNext());
         thrown.expect(NoSuchElementException.class);
         iterator.next();
+    }
+
+    @Test
+    public void scheduleDaysIteratorShouldIterateThroughDaysOfSchedule() {
+        final ResettableIterator<ScheduleDay> iterator = props.scheduleDays();
+
+        ScheduleDay next;
+
+        expect(optsMock.getWeeks()).andReturn(2).anyTimes();
+
+        replay(optsMock);
+
+        assertTrue(iterator.hasNext());
+        next = iterator.next();
+        assertEquals(Day.MONDAY, next.getDay());
+        assertEquals(1, next.getWeek().intValue());
+
+        assertTrue(iterator.hasNext());
+        next = iterator.next();
+        assertEquals(Day.TUESDAY, next.getDay());
+        assertEquals(1, next.getWeek().intValue());
+
+        assertTrue(iterator.hasNext());
+        next = iterator.next();
+        assertEquals(Day.WEDNESDAY, next.getDay());
+        assertEquals(1, next.getWeek().intValue());
+
+        assertTrue(iterator.hasNext());
+        next = iterator.next();
+        assertEquals(Day.THURSDAY, next.getDay());
+        assertEquals(1, next.getWeek().intValue());
+
+        assertTrue(iterator.hasNext());
+        next = iterator.next();
+        assertEquals(Day.FRIDAY, next.getDay());
+        assertEquals(1, next.getWeek().intValue());
+
+        assertTrue(iterator.hasNext());
+        next = iterator.next();
+        assertEquals(Day.SATURDAY, next.getDay());
+        assertEquals(1, next.getWeek().intValue());
+
+        assertTrue(iterator.hasNext());
+        next = iterator.next();
+        assertEquals(Day.SUNDAY, next.getDay());
+        assertEquals(1, next.getWeek().intValue());
+
+        assertTrue(iterator.hasNext());
+        next = iterator.next();
+        assertEquals(Day.MONDAY, next.getDay());
+        assertEquals(2, next.getWeek().intValue());
+
+        assertTrue(iterator.hasNext());
+        next = iterator.next();
+        assertEquals(Day.TUESDAY, next.getDay());
+        assertEquals(2, next.getWeek().intValue());
+
+        assertTrue(iterator.hasNext());
+        next = iterator.next();
+        assertEquals(Day.WEDNESDAY, next.getDay());
+        assertEquals(2, next.getWeek().intValue());
+
+        assertTrue(iterator.hasNext());
+        next = iterator.next();
+        assertEquals(Day.THURSDAY, next.getDay());
+        assertEquals(2, next.getWeek().intValue());
+
+        assertTrue(iterator.hasNext());
+        next = iterator.next();
+        assertEquals(Day.FRIDAY, next.getDay());
+        assertEquals(2, next.getWeek().intValue());
+
+        assertTrue(iterator.hasNext());
+        next = iterator.next();
+        assertEquals(Day.SATURDAY, next.getDay());
+        assertEquals(2, next.getWeek().intValue());
+
+        assertTrue(iterator.hasNext());
+        next = iterator.next();
+        assertEquals(Day.SUNDAY, next.getDay());
+        assertEquals(2, next.getWeek().intValue());
+
+        assertFalse(iterator.hasNext());
+        thrown.expect(NoSuchElementException.class);
+        iterator.next();
+    }
+
+    @Test
+    public void scheduleDaysIteratorShouldBeResettable() {
+        final ResettableIterator<ScheduleDay> iterator = props.scheduleDays();
+
+        ScheduleDay next;
+
+        expect(optsMock.getWeeks()).andReturn(2).anyTimes();
+
+        replay(optsMock);
+
+        iterator.next();
+        iterator.next();
+        iterator.next();
+        iterator.next();
+        iterator.next();
+        iterator.next();
+        iterator.next();
+        iterator.next();
+        iterator.next();
+
+        iterator.reset();
+
+        assertTrue(iterator.hasNext());
+        next = iterator.next();
+        assertEquals(Day.MONDAY, next.getDay());
+        assertEquals(1, next.getWeek().intValue());
+
+        assertTrue(iterator.hasNext());
+        next = iterator.next();
+        assertEquals(Day.TUESDAY, next.getDay());
+        assertEquals(1, next.getWeek().intValue());
     }
 }

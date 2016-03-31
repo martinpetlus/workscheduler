@@ -1,6 +1,5 @@
 package workschedule.schedule;
 
-import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public final class ScheduleProperties {
@@ -21,6 +20,49 @@ public final class ScheduleProperties {
 
     public ResettableIterator<Integer> employees() {
         return new EmployeeIterator();
+    }
+
+    public ResettableIterator<ScheduleDay> scheduleDays() {
+        return new ScheduleDayIterator();
+    }
+
+    private final class ScheduleDayIterator implements  ResettableIterator<ScheduleDay> {
+
+        private final ResettableIterator<Day> dayIterator = days();
+
+        private final ResettableIterator<Integer> weekIterator = weeks();
+
+        private Integer nextWeek;
+
+        @Override
+        public void reset() {
+            dayIterator.reset();
+            weekIterator.reset();
+            nextWeek = null;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return dayIterator.hasNext() || weekIterator.hasNext();
+        }
+
+        @Override
+        public ScheduleDay next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            
+            if (nextWeek == null) {
+                nextWeek = weekIterator.next();
+            }
+
+            if (!dayIterator.hasNext()) {
+                dayIterator.reset();
+                nextWeek = weekIterator.next();
+            }
+
+            return new ScheduleDay(dayIterator.next(), nextWeek);
+        }
     }
 
     private final class EmployeeIterator implements ResettableIterator<Integer> {
