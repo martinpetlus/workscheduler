@@ -4,10 +4,22 @@ import java.util.NoSuchElementException;
 
 public final class ScheduleProperties {
 
+    private static final int DAYS_IN_WEEK = Day.values().length;
+
     private final ScheduleOptions opts;
 
     public ScheduleProperties(final ScheduleOptions opts) {
         this.opts = opts;
+    }
+
+    public int getShiftIndex(final int employee, final int week, final Day day) {
+        return (employee - 1) * DAYS_IN_WEEK * this.opts.getWeeks() +
+            (week - 1) * DAYS_IN_WEEK +
+            (day.numeric() - 1);
+    }
+
+    public int getShiftIndex(final int employee, final ScheduleDay day) {
+        return getShiftIndex(employee, day.getWeek(), day.getDay());
     }
 
     public ResettableIterator<Day> days() {
@@ -51,7 +63,7 @@ public final class ScheduleProperties {
             if (!hasNext()) {
                 throw new NoSuchElementException();
             }
-            
+
             if (nextWeek == null) {
                 nextWeek = weekIterator.next();
             }

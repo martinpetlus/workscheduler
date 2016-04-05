@@ -239,4 +239,31 @@ public final class SchedulePropertiesTest {
         assertEquals(Day.TUESDAY, next.getDay());
         assertEquals(1, next.getWeek().intValue());
     }
+
+    @Test
+    public void shouldComputeIndexOfShiftWithTwoEmployeesAndTwoWeeksSchedule() {
+        expect(optsMock.getEmployees()).andReturn(2).anyTimes();
+        expect(optsMock.getWeeks()).andReturn(2).anyTimes();
+
+        replay(optsMock);
+
+        assertEquals(props.getShiftIndex(1, 1, Day.MONDAY), 0);
+        assertEquals(props.getShiftIndex(1, 1, Day.WEDNESDAY), 2);
+        assertEquals(props.getShiftIndex(1, 1, Day.SUNDAY), 6);
+        assertEquals(props.getShiftIndex(1, 2, Day.MONDAY), 7);
+        assertEquals(props.getShiftIndex(1, 2, Day.SUNDAY), 13);
+        assertEquals(props.getShiftIndex(2, 1, Day.MONDAY), 14);
+        assertEquals(props.getShiftIndex(2, 1, Day.SUNDAY), 20);
+    }
+
+    @Test
+    public void shouldComputeIndexOfShiftWithThreeEmployeesAndFourWeeksSchedule() {
+        expect(optsMock.getEmployees()).andReturn(3).anyTimes();
+        expect(optsMock.getWeeks()).andReturn(4).anyTimes();
+
+        replay(optsMock);
+
+        assertEquals(props.getShiftIndex(1, 1, Day.MONDAY), 0);
+        assertEquals(props.getShiftIndex(2, 1, Day.MONDAY), 28);
+    }
 }
