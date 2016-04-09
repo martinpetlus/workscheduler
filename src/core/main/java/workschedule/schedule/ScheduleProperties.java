@@ -3,7 +3,6 @@ package workschedule.schedule;
 import java.util.NoSuchElementException;
 
 public final class ScheduleProperties {
-
     private static final int DAYS_IN_WEEK = Day.values().length;
 
     private final ScheduleOptions opts;
@@ -12,8 +11,16 @@ public final class ScheduleProperties {
         this.opts = opts;
     }
 
+    public int getLength() {
+        return opts.getEmployees() * DAYS_IN_WEEK * opts.getWeeks();
+    }
+
+    public ScheduleOptions getOpts() {
+        return opts;
+    }
+
     public int getShiftIndex(final int employee, final int week, final Day day) {
-        return (employee - 1) * DAYS_IN_WEEK * this.opts.getWeeks() +
+        return (employee - 1) * DAYS_IN_WEEK * opts.getWeeks() +
             (week - 1) * DAYS_IN_WEEK +
             (day.numeric() - 1);
     }
