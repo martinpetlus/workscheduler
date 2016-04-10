@@ -11,6 +11,8 @@ public final class ScheduleOptions {
 
     private int minEmployeesAtWork;
 
+    private int maxWorkDaysInWeek;
+
     public int getWeeks() {
         return weeks;
     }
@@ -21,6 +23,10 @@ public final class ScheduleOptions {
 
     public int getMinEmployeesAtWork() {
         return minEmployeesAtWork;
+    }
+
+    public int getMaxWorkDaysInWeek() {
+        return maxWorkDaysInWeek;
     }
 
     public static ScheduleOptions of(final String json) {

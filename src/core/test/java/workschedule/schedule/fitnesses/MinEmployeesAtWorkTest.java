@@ -24,7 +24,7 @@ public final class MinEmployeesAtWorkTest {
 
     private ScheduleProperties props;
 
-    private MinEmployeesAtWork fitness;
+    private Fitness fitness;
 
     @Before
     public void setUp() {

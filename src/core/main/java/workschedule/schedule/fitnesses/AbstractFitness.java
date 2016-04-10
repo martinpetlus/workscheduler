@@ -8,7 +8,7 @@ abstract class AbstractFitness implements Fitness {
 
     protected final ScheduleOptions opts;
 
-    AbstractFitness(final ScheduleProperties props) {
+    protected AbstractFitness(final ScheduleProperties props) {
         this.props = props;
         this.opts = this.props.getOpts();
     }
