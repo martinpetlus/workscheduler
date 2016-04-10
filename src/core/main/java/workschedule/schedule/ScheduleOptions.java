@@ -15,6 +15,12 @@ public final class ScheduleOptions {
 
     private int workDays;
 
+    private int maxSuccessiveWorkDays;
+
+    public int getMaxSuccessiveWorkDays() {
+        return maxSuccessiveWorkDays;
+    }
+
     public int getWorkDays() {
         return workDays;
     }
