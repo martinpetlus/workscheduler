@@ -19,7 +19,7 @@ import workschedule.schedule.ScheduleProperties;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({ ScheduleOptions.class })
-public final class MaxWorkDaysInWeekTest {
+public final class WorkDaysTest {
     private ScheduleOptions optsMock;
 
     private ScheduleProperties props;
@@ -32,11 +32,14 @@ public final class MaxWorkDaysInWeekTest {
     public void setUp() {
         optsMock = createMock(ScheduleOptions.class);
         props = new ScheduleProperties(optsMock);
-        fitness = new MaxWorkDaysInWeek(props);
+        fitness = new WorkDays(props);
 
         expect(optsMock.getWeeks()).andReturn(4).anyTimes();
-        expect(optsMock.getEmployees()).andReturn(3).anyTimes();
-        expect(optsMock.getMaxWorkDaysInWeek()).andReturn(5).anyTimes();
+        expect(optsMock.getWorkDays()).andReturn(6).anyTimes();
+    }
+
+    private void setUpEmployees(final int employees) {
+        expect(optsMock.getEmployees()).andReturn(employees).anyTimes();
 
         replay(optsMock);
 
@@ -44,43 +47,53 @@ public final class MaxWorkDaysInWeekTest {
     }
 
     @Test
-    public void shouldComputeCorrectFitnessForOneEmployeeExceedingLimit() {
+    public void shouldComputeCorrectFitnessForOneEmployee() {
+        setUpEmployees(1);
+
+        assertEquals(fitness.fitness(chr), -6);
+
         chr.setParam(props.getShiftIndex(1, 1, Day.MONDAY), true);
         chr.setParam(props.getShiftIndex(1, 1, Day.TUESDAY), true);
         chr.setParam(props.getShiftIndex(1, 1, Day.WEDNESDAY), true);
         chr.setParam(props.getShiftIndex(1, 1, Day.THURSDAY), true);
-        assertEquals(fitness.fitness(chr), 0);
+        assertEquals(fitness.fitness(chr), -2);
 
         chr.setParam(props.getShiftIndex(1, 1, Day.FRIDAY), true);
         chr.setParam(props.getShiftIndex(1, 1, Day.SATURDAY), true);
-        assertEquals(fitness.fitness(chr), -1);
+        assertEquals(fitness.fitness(chr), 0);
 
-        chr.setParam(props.getShiftIndex(1, 4, Day.MONDAY), true);
-        chr.setParam(props.getShiftIndex(1, 4, Day.TUESDAY), true);
-        chr.setParam(props.getShiftIndex(1, 4, Day.WEDNESDAY), true);
-        chr.setParam(props.getShiftIndex(1, 4, Day.THURSDAY), true);
-        chr.setParam(props.getShiftIndex(1, 4, Day.FRIDAY), true);
-        chr.setParam(props.getShiftIndex(1, 4, Day.SATURDAY), true);
-        chr.setParam(props.getShiftIndex(1, 4, Day.SUNDAY), true);
-        assertEquals(fitness.fitness(chr), -3);
+        chr.setParam(props.getShiftIndex(1, 1, Day.SUNDAY), true);
+        assertEquals(fitness.fitness(chr), -1);
     }
 
     @Test
-    public void shouldComputeCorrectFitnessForTwoEmployeesExceedingLimit() {
+    public void shouldComputeCorrectFitnessForTwoEmployees() {
+        setUpEmployees(2);
+
+        assertEquals(fitness.fitness(chr), -12);
+
         chr.setParam(props.getShiftIndex(1, 1, Day.MONDAY), true);
-        chr.setParam(props.getShiftIndex(1, 1, Day.TUESDAY), true);
         chr.setParam(props.getShiftIndex(1, 1, Day.WEDNESDAY), true);
-        chr.setParam(props.getShiftIndex(1, 1, Day.THURSDAY), true);
-        chr.setParam(props.getShiftIndex(2, 1, Day.MONDAY), true);
         chr.setParam(props.getShiftIndex(2, 1, Day.TUESDAY), true);
-        chr.setParam(props.getShiftIndex(2, 1, Day.WEDNESDAY), true);
         chr.setParam(props.getShiftIndex(2, 1, Day.THURSDAY), true);
+        assertEquals(fitness.fitness(chr), -8);
+
+        chr.setParam(props.getShiftIndex(1, 2, Day.FRIDAY), true);
+        chr.setParam(props.getShiftIndex(1, 2, Day.SATURDAY), true);
+        chr.setParam(props.getShiftIndex(2, 2, Day.FRIDAY), true);
+        chr.setParam(props.getShiftIndex(2, 2, Day.SATURDAY), true);
+        assertEquals(fitness.fitness(chr), -4);
+
+        chr.setParam(props.getShiftIndex(1, 3, Day.FRIDAY), true);
+        chr.setParam(props.getShiftIndex(1, 3, Day.SATURDAY), true);
+        chr.setParam(props.getShiftIndex(2, 3, Day.FRIDAY), true);
+        chr.setParam(props.getShiftIndex(2, 3, Day.SATURDAY), true);
         assertEquals(fitness.fitness(chr), 0);
 
-        chr.setParam(props.getShiftIndex(1, 1, Day.FRIDAY), true);
-        chr.setParam(props.getShiftIndex(1, 1, Day.SATURDAY), true);
-        chr.setParam(props.getShiftIndex(2, 1, Day.FRIDAY), true);
-        chr.setParam(props.getShiftIndex(2, 1, Day.SATURDAY), true);
-        assertEquals(fitness.fitness(chr), -2);
+        chr.setParam(props.getShiftIndex(1, 4, Day.FRIDAY), true);
+        chr.setParam(props.getShiftIndex(1, 4, Day.SATURDAY), true);
+        chr.setParam(props.getShiftIndex(2, 4, Day.FRIDAY), true);
+        chr.setParam(props.getShiftIndex(2, 4, Day.SATURDAY), true);
+        assertEquals(fitness.fitness(chr), -4);
     }
 }

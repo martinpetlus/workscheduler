@@ -13,6 +13,12 @@ public final class ScheduleOptions {
 
     private int maxWorkDaysInWeek;
 
+    private int workDays;
+
+    public int getWorkDays() {
+        return workDays;
+    }
+
     public int getWeeks() {
         return weeks;
     }
