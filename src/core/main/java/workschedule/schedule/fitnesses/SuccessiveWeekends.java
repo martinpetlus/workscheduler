@@ -31,7 +31,7 @@ public final class SuccessiveWeekends extends AbstractFitness {
             int weeks = 1;
 
             // Prevent compiler error with this useless initialization
-            // FIXME: Refactor algorithm to to avoid this initialization
+            // FIXME: Refactor algorithm to avoid this initialization
             boolean freeWeekend = false;
 
             Integer employee = employeeIterator.next();
