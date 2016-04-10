@@ -17,6 +17,12 @@ public final class ScheduleOptions {
 
     private int maxSuccessiveWorkDays;
 
+    private WeekendsOptions weekendsOptions;
+
+    public WeekendsOptions getWeekendsOptions() {
+        return weekendsOptions;
+    }
+
     public int getMaxSuccessiveWorkDays() {
         return maxSuccessiveWorkDays;
     }
@@ -43,5 +49,21 @@ public final class ScheduleOptions {
 
     public static ScheduleOptions of(final String json) {
         return new Gson().fromJson(json, ScheduleOptions.class);
+    }
+
+    public static final class WeekendsOptions {
+        private WeekendsOptions() {}
+
+        private int successiveFree;
+
+        private int successiveWork;
+
+        public int getSuccessiveFree() {
+            return successiveFree;
+        }
+
+        public int getSuccessiveWork() {
+            return successiveWork;
+        }
     }
 }
