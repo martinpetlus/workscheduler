@@ -1,7 +1,6 @@
 package workschedule.schedule;
 
 public final class ScheduleDay {
-
     private final Day day;
 
     private final Integer week;

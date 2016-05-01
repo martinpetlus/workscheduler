@@ -2,7 +2,10 @@ package workschedule.schedule;
 
 import workschedule.Chromosome;
 import workschedule.ChromosomeFactory;
-import workschedule.schedule.fitnesses.*;
+import workschedule.schedule.fitnesses.CompositeFitness;
+import workschedule.schedule.fitnesses.Fitness;
+import workschedule.schedule.fitnesses.FitnessProvider;
+import workschedule.schedule.fitnesses.FitnessRegistry;
 import workschedule.schedule.options.ScheduleOptions;
 
 import java.util.ArrayList;

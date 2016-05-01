@@ -56,7 +56,6 @@ public final class ScheduleProperties {
     }
 
     private final class ScheduleDayIterator implements  ResettableIterator<ScheduleDay> {
-
         private final ResettableIterator<Day> dayIterator = days();
 
         private final ResettableIterator<Integer> weekIterator = weeks();
@@ -95,7 +94,6 @@ public final class ScheduleProperties {
     }
 
     private final class EmployeeIterator implements ResettableIterator<Integer> {
-
         private int employee = 1;
 
         @Override
@@ -128,7 +126,6 @@ public final class ScheduleProperties {
     }
 
     private final class WeekIterator implements ResettableIterator<Integer> {
-
         private int week = 1;
 
         @Override
@@ -161,7 +158,6 @@ public final class ScheduleProperties {
     }
 
     private static final class DayIterator implements ResettableIterator<Day> {
-
         private Day day = Day.MONDAY;
 
         @Override
