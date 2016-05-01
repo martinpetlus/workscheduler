@@ -14,4 +14,8 @@ public final class ScheduleOptions {
     public <O extends Option> void add(final Class<O> implementation, final O option) {
         implementationToOption.put(implementation, option);
     }
+
+    public boolean contains(final Class<? extends Option> implementation) {
+        return implementationToOption.containsKey(implementation);
+    }
 }

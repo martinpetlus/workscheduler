@@ -4,10 +4,23 @@ import workschedule.Chromosome;
 import workschedule.schedule.ScheduleDay;
 import workschedule.schedule.ScheduleProperties;
 import workschedule.schedule.options.MaxSuccessiveWorkDaysOption;
+import workschedule.schedule.options.ScheduleOptions;
 
 import java.util.Iterator;
 
 public final class MaxSuccessiveWorkDays extends AbstractFitness {
+    final static FitnessProvider PROVIDER = new FitnessProvider() {
+        @Override
+        public boolean shouldApply(final ScheduleOptions opts) {
+            return opts.contains(MaxSuccessiveWorkDaysOption.class);
+        }
+
+        @Override
+        public Fitness create(final ScheduleProperties props) {
+            return new MaxSuccessiveWorkDays(props);
+        }
+    };
+
     private final MaxSuccessiveWorkDaysOption option;
 
     public MaxSuccessiveWorkDays(final ScheduleProperties props) {

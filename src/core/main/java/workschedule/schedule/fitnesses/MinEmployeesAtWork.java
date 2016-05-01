@@ -4,10 +4,23 @@ import workschedule.Chromosome;
 import workschedule.schedule.ScheduleDay;
 import workschedule.schedule.ScheduleProperties;
 import workschedule.schedule.options.MinEmployeesAtWorkOption;
+import workschedule.schedule.options.ScheduleOptions;
 
 import java.util.Iterator;
 
 public final class MinEmployeesAtWork extends AbstractFitness {
+    final static FitnessProvider PROVIDER = new FitnessProvider() {
+        @Override
+        public boolean shouldApply(final ScheduleOptions opts) {
+            return opts.contains(MinEmployeesAtWorkOption.class);
+        }
+
+        @Override
+        public Fitness create(final ScheduleProperties props) {
+            return new MinEmployeesAtWork(props);
+        }
+    };
+
     private final MinEmployeesAtWorkOption option;
 
     public MinEmployeesAtWork(final ScheduleProperties props) {

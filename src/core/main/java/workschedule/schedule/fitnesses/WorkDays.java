@@ -3,11 +3,24 @@ package workschedule.schedule.fitnesses;
 import workschedule.Chromosome;
 import workschedule.schedule.ScheduleDay;
 import workschedule.schedule.ScheduleProperties;
+import workschedule.schedule.options.ScheduleOptions;
 import workschedule.schedule.options.WorkDaysOption;
 
 import java.util.Iterator;
 
 public final class WorkDays extends AbstractFitness {
+    final static FitnessProvider PROVIDER = new FitnessProvider() {
+        @Override
+        public boolean shouldApply(final ScheduleOptions opts) {
+            return opts.contains(WorkDaysOption.class);
+        }
+
+        @Override
+        public Fitness create(final ScheduleProperties props) {
+            return new WorkDays(props);
+        }
+    };
+
     private final WorkDaysOption option;
 
     public WorkDays(final ScheduleProperties props) {

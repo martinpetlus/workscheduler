@@ -3,6 +3,7 @@ package workschedule.schedule.fitnesses;
 import workschedule.Chromosome;
 import workschedule.schedule.Day;
 import workschedule.schedule.ScheduleProperties;
+import workschedule.schedule.options.ScheduleOptions;
 import workschedule.schedule.options.SuccessiveWeekendsOption;
 
 import java.util.Iterator;
@@ -15,6 +16,18 @@ public final class SuccessiveWeekends extends AbstractFitness {
             return isWorkDay ? 0 : 1;
         }
     }
+
+    final static FitnessProvider PROVIDER = new FitnessProvider() {
+        @Override
+        public boolean shouldApply(final ScheduleOptions opts) {
+            return opts.contains(SuccessiveWeekendsOption.class);
+        }
+
+        @Override
+        public Fitness create(final ScheduleProperties props) {
+            return new SuccessiveWeekends(props);
+        }
+    };
 
     private final SuccessiveWeekendsOption option;
 
