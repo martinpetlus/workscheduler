@@ -2,17 +2,27 @@ package workschedule.schedule;
 
 import java.util.NoSuchElementException;
 
+import workschedule.schedule.options.EmployeesOption;
+import workschedule.schedule.options.ScheduleOptions;
+import workschedule.schedule.options.WeeksOption;
+
 public final class ScheduleProperties {
     private static final int DAYS_IN_WEEK = Day.values().length;
+
+    private final EmployeesOption employees;
+
+    private final WeeksOption weeks;
 
     private final ScheduleOptions opts;
 
     public ScheduleProperties(final ScheduleOptions opts) {
         this.opts = opts;
+        this.employees = this.opts.forClass(EmployeesOption.class);
+        this.weeks = this.opts.forClass(WeeksOption.class);
     }
 
     public int getLength() {
-        return opts.getEmployees() * DAYS_IN_WEEK * opts.getWeeks();
+        return employees.get() * DAYS_IN_WEEK * weeks.get();
     }
 
     public ScheduleOptions getOpts() {
@@ -20,7 +30,7 @@ public final class ScheduleProperties {
     }
 
     public int getShiftIndex(final int employee, final int week, final Day day) {
-        return (employee - 1) * DAYS_IN_WEEK * opts.getWeeks() +
+        return (employee - 1) * DAYS_IN_WEEK * weeks.get() +
             (week - 1) * DAYS_IN_WEEK +
             (day.numeric() - 1);
     }
@@ -104,7 +114,7 @@ public final class ScheduleProperties {
             employee += 1;
 
             // Iterate only from 1 to number of employees
-            if (employee > ScheduleProperties.this.opts.getEmployees()) {
+            if (employee > ScheduleProperties.this.employees.get()) {
                 employee = -1;
             }
 
@@ -137,7 +147,7 @@ public final class ScheduleProperties {
             week += 1;
 
             // Iterate only from 1 to number of weeks in period
-            if (week > ScheduleProperties.this.opts.getWeeks()) {
+            if (week > ScheduleProperties.this.weeks.get()) {
                 week = -1;
             }
 

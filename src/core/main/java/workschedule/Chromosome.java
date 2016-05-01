@@ -1,10 +1,23 @@
 package workschedule;
 
+import workschedule.schedule.fitnesses.Fitness;
+
 public final class Chromosome {
     private final boolean[] params;
 
-    public Chromosome(final int length) {
-        params = new boolean[length];
+    private final Fitness fitness;
+
+    public Chromosome(final int length, final Fitness fitness) {
+        this.params = new boolean[length];
+        this.fitness = fitness;
+    }
+
+    public int getLength() {
+        return params.length;
+    }
+
+    public int fitness() {
+        return fitness.fitness(this);
     }
 
     public boolean getParam(final int index) {

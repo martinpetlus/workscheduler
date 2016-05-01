@@ -3,12 +3,16 @@ package workschedule.schedule.fitnesses;
 import workschedule.Chromosome;
 import workschedule.schedule.ScheduleDay;
 import workschedule.schedule.ScheduleProperties;
+import workschedule.schedule.options.MinEmployeesAtWorkOption;
 
 import java.util.Iterator;
 
 public final class MinEmployeesAtWork extends AbstractFitness {
+    private final MinEmployeesAtWorkOption option;
+
     public MinEmployeesAtWork(final ScheduleProperties props) {
         super(props);
+        option = opts.forClass(MinEmployeesAtWorkOption.class);
     }
 
     @Override
@@ -30,7 +34,7 @@ public final class MinEmployeesAtWork extends AbstractFitness {
                 }
             }
 
-            result += Math.min(0, employeesAtWork - opts.getMinEmployeesAtWork());
+            result += Math.min(0, employeesAtWork - option.get());
         }
 
         return result;

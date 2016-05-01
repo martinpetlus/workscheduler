@@ -1,6 +1,6 @@
 package workschedule.schedule.fitnesses;
 
-import workschedule.schedule.ScheduleOptions;
+import workschedule.schedule.options.ScheduleOptions;
 import workschedule.schedule.ScheduleProperties;
 
 abstract class AbstractFitness implements Fitness {

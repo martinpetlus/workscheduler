@@ -3,12 +3,16 @@ package workschedule.schedule.fitnesses;
 import workschedule.Chromosome;
 import workschedule.schedule.ScheduleDay;
 import workschedule.schedule.ScheduleProperties;
+import workschedule.schedule.options.MaxSuccessiveWorkDaysOption;
 
 import java.util.Iterator;
 
 public final class MaxSuccessiveWorkDays extends AbstractFitness {
+    private final MaxSuccessiveWorkDaysOption option;
+
     public MaxSuccessiveWorkDays(final ScheduleProperties props) {
         super(props);
+        option = opts.forClass(MaxSuccessiveWorkDaysOption.class);
     }
 
     @Override
@@ -33,7 +37,7 @@ public final class MaxSuccessiveWorkDays extends AbstractFitness {
                 } else { // Free day
                     // If maximum successive work days is exceeded
                     result += Math.min(
-                        opts.getMaxSuccessiveWorkDays() - successiveWorkDays,
+                        option.get() - successiveWorkDays,
                         0
                     );
 
@@ -44,7 +48,7 @@ public final class MaxSuccessiveWorkDays extends AbstractFitness {
 
             // Check last days of schedule for successive work days
             result += Math.min(
-                opts.getMaxSuccessiveWorkDays() - successiveWorkDays,
+                option.get() - successiveWorkDays,
                 0
             );
         }

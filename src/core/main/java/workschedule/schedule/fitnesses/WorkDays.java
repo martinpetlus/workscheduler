@@ -3,12 +3,16 @@ package workschedule.schedule.fitnesses;
 import workschedule.Chromosome;
 import workschedule.schedule.ScheduleDay;
 import workschedule.schedule.ScheduleProperties;
+import workschedule.schedule.options.WorkDaysOption;
 
 import java.util.Iterator;
 
 public final class WorkDays extends AbstractFitness {
+    private final WorkDaysOption option;
+
     public WorkDays(final ScheduleProperties props) {
         super(props);
+        option = opts.forClass(WorkDaysOption.class);
     }
 
     @Override
@@ -33,7 +37,7 @@ public final class WorkDays extends AbstractFitness {
             }
 
             // Only exact number of work days produces 0 fitness decrease
-            result -= Math.abs(opts.getWorkDays() - workDays);
+            result -= Math.abs(option.get() - workDays);
         }
 
         return result;

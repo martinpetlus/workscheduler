@@ -3,6 +3,7 @@ package workschedule.schedule.fitnesses;
 import workschedule.Chromosome;
 import workschedule.schedule.Day;
 import workschedule.schedule.ScheduleProperties;
+import workschedule.schedule.options.SuccessiveWeekendsOption;
 
 import java.util.Iterator;
 
@@ -15,8 +16,11 @@ public final class SuccessiveWeekends extends AbstractFitness {
         }
     }
 
+    private final SuccessiveWeekendsOption option;
+
     public SuccessiveWeekends(final ScheduleProperties props) {
         super(props);
+        option = opts.forClass(SuccessiveWeekendsOption.class);
     }
 
     @Override
@@ -48,8 +52,8 @@ public final class SuccessiveWeekends extends AbstractFitness {
                 if (week > 1) {
                     // Switch state if successive weekends was reached
                     if (weeks > (freeWeekend ?
-                            opts.getWeekendsOptions().getSuccessiveFree() :
-                            opts.getWeekendsOptions().getSuccessiveWork())) {
+                            option.getSuccessiveFree() :
+                            option.getSuccessiveWork())) {
                         weeks = 1;
                         freeWeekend = !freeWeekend;
                     }
