@@ -14,13 +14,18 @@ import static org.easymock.EasyMock.expect;
 
 import workschedule.Chromosome;
 import workschedule.schedule.Day;
-import workschedule.schedule.ScheduleOptions;
+import workschedule.schedule.options.EmployeesOption;
+import workschedule.schedule.options.ScheduleOptions;
 import workschedule.schedule.ScheduleProperties;
+import workschedule.schedule.options.WeeksOption;
+import workschedule.schedule.options.WorkDaysOption;
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest({ ScheduleOptions.class })
+@PrepareForTest({ ScheduleOptions.class, EmployeesOption.class })
 public final class WorkDaysTest {
     private ScheduleOptions optsMock;
+
+    private EmployeesOption employeesOptionMock;
 
     private ScheduleProperties props;
 
@@ -31,19 +36,22 @@ public final class WorkDaysTest {
     @Before
     public void setUp() {
         optsMock = createMock(ScheduleOptions.class);
+        employeesOptionMock = createMock(EmployeesOption.class);
+
+        expect(optsMock.forClass(WeeksOption.class)).andReturn(new WeeksOption(4)).anyTimes();
+        expect(optsMock.forClass(WorkDaysOption.class)).andReturn(new WorkDaysOption(6)).anyTimes();
+        expect(optsMock.forClass(EmployeesOption.class)).andReturn(employeesOptionMock).anyTimes();
+        replay(optsMock);
+
         props = new ScheduleProperties(optsMock);
         fitness = new WorkDays(props);
-
-        expect(optsMock.getWeeks()).andReturn(4).anyTimes();
-        expect(optsMock.getWorkDays()).andReturn(6).anyTimes();
     }
 
     private void setUpEmployees(final int employees) {
-        expect(optsMock.getEmployees()).andReturn(employees).anyTimes();
+        expect(employeesOptionMock.get()).andReturn(employees).anyTimes();
+        replay(employeesOptionMock);
 
-        replay(optsMock);
-
-        chr = new Chromosome(props.getLength());
+        chr = new Chromosome(props.getLength(), null);
     }
 
     @Test

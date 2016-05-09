@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public final class ScheduleOptions {
-
     private final Map<Class<? extends Option>, Option> implementationToOption = new HashMap<>();
 
     public <O extends Option> O forClass(final Class<O> implementation) {

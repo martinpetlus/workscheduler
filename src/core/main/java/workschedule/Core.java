@@ -1,11 +1,20 @@
 package workschedule;
 
-import workschedule.schedule.ScheduleOptions;
+import workschedule.schedule.WorkScheduleFactory;
+import workschedule.schedule.options.*;
 
-public class Core {
+public final class Core {
 
     public static void main(final String[] args) {
-        // Parse options passed as JSON
-        final ScheduleOptions opts = ScheduleOptions.of(args[0]);
+        ScheduleOptions opts = new ScheduleOptions();
+
+        opts.add(EmployeesOption.class, new EmployeesOption(2));
+        opts.add(WeeksOption.class, new WeeksOption(4));
+        opts.add(WorkDaysOption.class, new WorkDaysOption(16));
+        opts.add(MinEmployeesAtWorkOption.class, new MinEmployeesAtWorkOption(1));
+
+        ChromosomeFactory factory = new WorkScheduleFactory(opts);
+
+        System.out.println(factory.createRandom().fitness());
     }
 }

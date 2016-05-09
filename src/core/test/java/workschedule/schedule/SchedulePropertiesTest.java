@@ -2,6 +2,10 @@ package workschedule.schedule;
 
 import java.util.NoSuchElementException;
 
+import workschedule.schedule.options.EmployeesOption;
+import workschedule.schedule.options.ScheduleOptions;
+import workschedule.schedule.options.WeeksOption;
+
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -19,12 +23,20 @@ import static org.powermock.api.easymock.PowerMock.createMock;
 import static org.powermock.api.easymock.PowerMock.replay;
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest({ ScheduleOptions.class })
+@PrepareForTest({
+    ScheduleOptions.class,
+    WeeksOption.class,
+    EmployeesOption.class
+})
 public final class SchedulePropertiesTest {
 
     private ScheduleProperties props;
 
     private ScheduleOptions optsMock;
+
+    private WeeksOption weeksOptionMock;
+
+    private EmployeesOption employeesOptionMock;
 
     @Rule
     public final ExpectedException thrown = ExpectedException.none();
@@ -32,7 +44,24 @@ public final class SchedulePropertiesTest {
     @Before
     public void setUp() {
         optsMock = createMock(ScheduleOptions.class);
+        weeksOptionMock = createMock(WeeksOption.class);
+        employeesOptionMock = createMock(EmployeesOption.class);
+
+        expect(optsMock.forClass(WeeksOption.class)).andReturn(weeksOptionMock).anyTimes();
+        expect(optsMock.forClass(EmployeesOption.class)).andReturn(employeesOptionMock).anyTimes();
+        replay(optsMock);
+
         props = new ScheduleProperties(optsMock);
+    }
+
+    private void setUpWeeksOption(final int weeks) {
+        expect(weeksOptionMock.get()).andReturn(weeks).anyTimes();
+        replay(weeksOptionMock);
+    }
+
+    private void setUpEmployeesOption(final int employees) {
+        expect(employeesOptionMock.get()).andReturn(employees).anyTimes();
+        replay(employeesOptionMock);
     }
 
     @Test
@@ -74,11 +103,9 @@ public final class SchedulePropertiesTest {
 
     @Test
     public void weeksIteratorShouldIterateThroughWeeksOfPeriod() {
+        setUpWeeksOption(2);
+
         final ResettableIterator<Integer> iterator = props.weeks();
-
-        expect(optsMock.getWeeks()).andReturn(2).anyTimes();
-
-        replay(optsMock);
 
         assertTrue(iterator.hasNext());
         assertEquals(1, iterator.next().intValue());
@@ -99,11 +126,9 @@ public final class SchedulePropertiesTest {
 
     @Test
     public void employeesIteratorShouldIterateThroughAllEmployees() {
+        setUpEmployeesOption(2);
+
         final ResettableIterator<Integer> iterator = props.employees();
-
-        expect(optsMock.getEmployees()).andReturn(2).anyTimes();
-
-        replay(optsMock);
 
         assertTrue(iterator.hasNext());
         assertEquals(1, iterator.next().intValue());
@@ -124,13 +149,11 @@ public final class SchedulePropertiesTest {
 
     @Test
     public void scheduleDaysIteratorShouldIterateThroughDaysOfSchedule() {
+        setUpWeeksOption(2);
+
         final ResettableIterator<ScheduleDay> iterator = props.scheduleDays();
 
         ScheduleDay next;
-
-        expect(optsMock.getWeeks()).andReturn(2).anyTimes();
-
-        replay(optsMock);
 
         assertTrue(iterator.hasNext());
         next = iterator.next();
@@ -209,13 +232,11 @@ public final class SchedulePropertiesTest {
 
     @Test
     public void scheduleDaysIteratorShouldBeResettable() {
+        setUpWeeksOption(2);
+
         final ResettableIterator<ScheduleDay> iterator = props.scheduleDays();
 
         ScheduleDay next;
-
-        expect(optsMock.getWeeks()).andReturn(2).anyTimes();
-
-        replay(optsMock);
 
         iterator.next();
         iterator.next();
@@ -242,10 +263,8 @@ public final class SchedulePropertiesTest {
 
     @Test
     public void shouldComputeIndexOfShiftWithTwoEmployeesAndTwoWeeksSchedule() {
-        expect(optsMock.getEmployees()).andReturn(2).anyTimes();
-        expect(optsMock.getWeeks()).andReturn(2).anyTimes();
-
-        replay(optsMock);
+        setUpEmployeesOption(2);
+        setUpWeeksOption(2);
 
         assertEquals(props.getShiftIndex(1, 1, Day.MONDAY), 0);
         assertEquals(props.getShiftIndex(1, 1, Day.WEDNESDAY), 2);
@@ -258,10 +277,8 @@ public final class SchedulePropertiesTest {
 
     @Test
     public void shouldComputeIndexOfShiftWithThreeEmployeesAndFourWeeksSchedule() {
-        expect(optsMock.getEmployees()).andReturn(3).anyTimes();
-        expect(optsMock.getWeeks()).andReturn(4).anyTimes();
-
-        replay(optsMock);
+        setUpEmployeesOption(3);
+        setUpWeeksOption(4);
 
         assertEquals(props.getShiftIndex(1, 1, Day.MONDAY), 0);
         assertEquals(props.getShiftIndex(2, 1, Day.MONDAY), 28);

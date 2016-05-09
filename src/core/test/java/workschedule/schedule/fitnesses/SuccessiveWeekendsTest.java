@@ -14,15 +14,27 @@ import static org.easymock.EasyMock.expect;
 
 import workschedule.Chromosome;
 import workschedule.schedule.Day;
-import workschedule.schedule.ScheduleOptions;
+import workschedule.schedule.options.EmployeesOption;
+import workschedule.schedule.options.ScheduleOptions;
 import workschedule.schedule.ScheduleProperties;
+import workschedule.schedule.options.SuccessiveWeekendsOption;
+import workschedule.schedule.options.WeeksOption;
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest({ ScheduleOptions.class })
+@PrepareForTest({
+    ScheduleOptions.class,
+    EmployeesOption.class,
+    SuccessiveWeekendsOption.class,
+    WeeksOption.class
+})
 public final class SuccessiveWeekendsTest {
     private ScheduleOptions optsMock;
 
-    private ScheduleOptions.WeekendsOptions weekendsOptsMock;
+    private EmployeesOption employeesOptionMock;
+
+    private WeeksOption weeksOptionMock;
+
+    private SuccessiveWeekendsOption successiveWeekendsOptionMock;
 
     private ScheduleProperties props;
 
@@ -33,24 +45,31 @@ public final class SuccessiveWeekendsTest {
     @Before
     public void setUp() {
         optsMock = createMock(ScheduleOptions.class);
-        weekendsOptsMock = createMock(ScheduleOptions.WeekendsOptions.class);
+        employeesOptionMock = createMock(EmployeesOption.class);
+        successiveWeekendsOptionMock = createMock(SuccessiveWeekendsOption.class);
+        weeksOptionMock = createMock(WeeksOption.class);
+
+        expect(optsMock.forClass(EmployeesOption.class)).andReturn(employeesOptionMock).anyTimes();
+        expect(optsMock.forClass(SuccessiveWeekendsOption.class)).andReturn(successiveWeekendsOptionMock).anyTimes();
+        expect(optsMock.forClass(WeeksOption.class)).andReturn(weeksOptionMock).anyTimes();
+        replay(optsMock);
 
         props = new ScheduleProperties(optsMock);
         fitness = new SuccessiveWeekends(props);
     }
 
-    private void setUpOther(final int employees, final int weeks, final int successiveFree, final int successiveWork) {
-        expect(optsMock.getEmployees()).andReturn(employees).anyTimes();
-        expect(optsMock.getWeeks()).andReturn(weeks).anyTimes();
-        expect(optsMock.getWeekendsOptions()).andReturn(weekendsOptsMock).anyTimes();
+    private void setUpOther(final int employees, final int weeks, final int free, final int work) {
+        expect(employeesOptionMock.get()).andReturn(employees).anyTimes();
+        replay(employeesOptionMock);
 
-        expect(weekendsOptsMock.getSuccessiveFree()).andReturn(successiveFree).anyTimes();
-        expect(weekendsOptsMock.getSuccessiveWork()).andReturn(successiveWork).anyTimes();
+        expect(weeksOptionMock.get()).andReturn(weeks).anyTimes();
+        replay(weeksOptionMock);
 
-        replay(optsMock);
-        replay(weekendsOptsMock);
+        expect(successiveWeekendsOptionMock.getSuccessiveWork()).andReturn(work).anyTimes();
+        expect(successiveWeekendsOptionMock.getSuccessiveFree()).andReturn(free).anyTimes();
+        replay(successiveWeekendsOptionMock);
 
-        chr = new Chromosome(props.getLength());
+        chr = new Chromosome(props.getLength(), null);
     }
 
     @Test
