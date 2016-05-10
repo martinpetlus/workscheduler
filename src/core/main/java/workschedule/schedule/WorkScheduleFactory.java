@@ -16,10 +16,6 @@ public final class WorkScheduleFactory implements ChromosomeFactory {
 
     private final Fitness fitness;
 
-    private Chromosome create() {
-        return new Chromosome(props.getLength(), fitness);
-    }
-
     public WorkScheduleFactory(final ScheduleOptions opts) {
         props = new ScheduleProperties(opts);
 
@@ -36,6 +32,14 @@ public final class WorkScheduleFactory implements ChromosomeFactory {
 
     @Override
     public Chromosome createRandom() {
-        return create();
+        Chromosome chr = new Chromosome(props.getLength(), fitness);
+
+        for (int i = 0; i < chr.getLength(); i++) {
+            if (Math.random() >= 0.5) {
+                chr.setParam(i, true);
+            }
+        }
+
+        return chr;
     }
 }
