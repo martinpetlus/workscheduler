@@ -1,4 +1,4 @@
-package workschedule;
+package workschedule.genetics;
 
 import workschedule.schedule.fitnesses.Fitness;
 

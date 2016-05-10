@@ -1,5 +1,6 @@
 package workschedule;
 
+import workschedule.genetics.ChromosomeFactory;
 import workschedule.schedule.WorkScheduleFactory;
 import workschedule.schedule.options.*;
 

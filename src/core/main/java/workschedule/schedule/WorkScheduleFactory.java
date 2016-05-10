@@ -1,7 +1,7 @@
 package workschedule.schedule;
 
-import workschedule.Chromosome;
-import workschedule.ChromosomeFactory;
+import workschedule.genetics.Chromosome;
+import workschedule.genetics.ChromosomeFactory;
 import workschedule.schedule.fitnesses.CompositeFitness;
 import workschedule.schedule.fitnesses.Fitness;
 import workschedule.schedule.fitnesses.FitnessProvider;
@@ -19,7 +19,7 @@ public final class WorkScheduleFactory implements ChromosomeFactory {
     public WorkScheduleFactory(final ScheduleOptions opts) {
         props = new ScheduleProperties(opts);
 
-        List<Fitness> applied = new ArrayList<Fitness>();
+        List<Fitness> applied = new ArrayList<>();
 
         for (FitnessProvider provider : FitnessRegistry.INSTANCE) {
             if (provider.shouldApply(opts)) {

@@ -12,7 +12,7 @@ import static org.powermock.api.easymock.PowerMock.replay;
 
 import static org.easymock.EasyMock.expect;
 
-import workschedule.Chromosome;
+import workschedule.genetics.Chromosome;
 import workschedule.schedule.Day;
 import workschedule.schedule.options.EmployeesOption;
 import workschedule.schedule.options.MaxSuccessiveWorkDaysOption;

@@ -1,6 +1,6 @@
 package workschedule.schedule.fitnesses;
 
-import workschedule.Chromosome;
+import workschedule.genetics.Chromosome;
 import workschedule.schedule.Day;
 import workschedule.schedule.ScheduleProperties;
 import workschedule.schedule.options.ScheduleOptions;

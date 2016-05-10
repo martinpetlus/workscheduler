@@ -1,6 +1,6 @@
 package workschedule.schedule.fitnesses;
 
-import workschedule.Chromosome;
+import workschedule.genetics.Chromosome;
 
 import java.util.ArrayList;
 import java.util.List;
