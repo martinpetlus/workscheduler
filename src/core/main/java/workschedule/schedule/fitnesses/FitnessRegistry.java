@@ -14,11 +14,11 @@ public enum FitnessRegistry implements Iterable<FitnessProvider> {
     }
 
     static {
-        register(WorkDays.PROVIDER);
-        register(SuccessiveWeekends.PROVIDER);
-        register(MinEmployeesAtWork.PROVIDER);
-        register(MaxSuccessiveWorkDays.PROVIDER);
-        register(MaxWorkDaysInWeek.PROVIDER);
+        register(WorkDaysFitness.PROVIDER);
+        register(SuccessiveWeekendsFitness.PROVIDER);
+        register(MinEmployeesAtWorkFitness.PROVIDER);
+        register(MaxSuccessiveWorkDaysFitness.PROVIDER);
+        register(MaxWorkDaysInWeekFitness.PROVIDER);
     }
 
     @Override

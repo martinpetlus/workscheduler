@@ -8,7 +8,7 @@ import workschedule.schedule.options.ScheduleOptions;
 
 import java.util.Iterator;
 
-public final class MinEmployeesAtWork extends AbstractFitness {
+public final class MinEmployeesAtWorkFitness extends AbstractFitness {
     final static FitnessProvider PROVIDER = new FitnessProvider() {
         @Override
         public boolean shouldApply(final ScheduleOptions opts) {
@@ -17,13 +17,13 @@ public final class MinEmployeesAtWork extends AbstractFitness {
 
         @Override
         public Fitness create(final ScheduleProperties props) {
-            return new MinEmployeesAtWork(props);
+            return new MinEmployeesAtWorkFitness(props);
         }
     };
 
     private final MinEmployeesAtWorkOption option;
 
-    public MinEmployeesAtWork(final ScheduleProperties props) {
+    public MinEmployeesAtWorkFitness(final ScheduleProperties props) {
         super(props);
         option = opts.forClass(MinEmployeesAtWorkOption.class);
     }

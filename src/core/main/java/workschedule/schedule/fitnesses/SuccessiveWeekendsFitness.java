@@ -8,7 +8,7 @@ import workschedule.schedule.options.SuccessiveWeekendsOption;
 
 import java.util.Iterator;
 
-public final class SuccessiveWeekends extends AbstractFitness {
+public final class SuccessiveWeekendsFitness extends AbstractFitness {
     private static int cost(final boolean shouldDayBeFree, final boolean isWorkDay) {
         if (shouldDayBeFree) {
             return isWorkDay ? 1 : 0;
@@ -25,13 +25,13 @@ public final class SuccessiveWeekends extends AbstractFitness {
 
         @Override
         public Fitness create(final ScheduleProperties props) {
-            return new SuccessiveWeekends(props);
+            return new SuccessiveWeekendsFitness(props);
         }
     };
 
     private final SuccessiveWeekendsOption option;
 
-    public SuccessiveWeekends(final ScheduleProperties props) {
+    public SuccessiveWeekendsFitness(final ScheduleProperties props) {
         super(props);
         option = opts.forClass(SuccessiveWeekendsOption.class);
     }

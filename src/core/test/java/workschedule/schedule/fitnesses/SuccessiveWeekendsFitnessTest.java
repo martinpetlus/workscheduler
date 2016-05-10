@@ -27,7 +27,7 @@ import workschedule.schedule.options.WeeksOption;
     SuccessiveWeekendsOption.class,
     WeeksOption.class
 })
-public final class SuccessiveWeekendsTest {
+public final class SuccessiveWeekendsFitnessTest {
     private ScheduleOptions optsMock;
 
     private EmployeesOption employeesOptionMock;
@@ -55,7 +55,7 @@ public final class SuccessiveWeekendsTest {
         replay(optsMock);
 
         props = new ScheduleProperties(optsMock);
-        fitness = new SuccessiveWeekends(props);
+        fitness = new SuccessiveWeekendsFitness(props);
     }
 
     private void setUpOther(final int employees, final int weeks, final int free, final int work) {

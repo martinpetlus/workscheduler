@@ -22,7 +22,7 @@ import workschedule.schedule.options.WeeksOption;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({ ScheduleOptions.class })
-public final class MaxWorkDaysInWeekTest {
+public final class MaxWorkDaysInWeekFitnessTest {
     private ScheduleOptions optsMock;
 
     private ScheduleProperties props;
@@ -43,7 +43,7 @@ public final class MaxWorkDaysInWeekTest {
         replay(optsMock);
 
         props = new ScheduleProperties(optsMock);
-        fitness = new MaxWorkDaysInWeek(props);
+        fitness = new MaxWorkDaysInWeekFitness(props);
         chr = new Chromosome(props.getLength(), null);
     }
 

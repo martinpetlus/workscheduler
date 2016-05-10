@@ -8,7 +8,7 @@ import workschedule.schedule.options.ScheduleOptions;
 
 import java.util.Iterator;
 
-public final class MaxWorkDaysInWeek extends AbstractFitness {
+public final class MaxWorkDaysInWeekFitness extends AbstractFitness {
     final static FitnessProvider PROVIDER = new FitnessProvider() {
         @Override
         public boolean shouldApply(final ScheduleOptions opts) {
@@ -17,13 +17,13 @@ public final class MaxWorkDaysInWeek extends AbstractFitness {
 
         @Override
         public Fitness create(final ScheduleProperties props) {
-            return new MaxWorkDaysInWeek(props);
+            return new MaxWorkDaysInWeekFitness(props);
         }
     };
 
     private final MaxWorkDaysInWeekOption option;
 
-    public MaxWorkDaysInWeek(final ScheduleProperties props) {
+    public MaxWorkDaysInWeekFitness(final ScheduleProperties props) {
         super(props);
         option = opts.forClass(MaxWorkDaysInWeekOption.class);
     }

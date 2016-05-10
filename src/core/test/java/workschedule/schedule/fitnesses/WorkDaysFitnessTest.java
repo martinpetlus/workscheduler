@@ -22,7 +22,7 @@ import workschedule.schedule.options.WorkDaysOption;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({ ScheduleOptions.class, EmployeesOption.class })
-public final class WorkDaysTest {
+public final class WorkDaysFitnessTest {
     private ScheduleOptions optsMock;
 
     private EmployeesOption employeesOptionMock;
@@ -44,7 +44,7 @@ public final class WorkDaysTest {
         replay(optsMock);
 
         props = new ScheduleProperties(optsMock);
-        fitness = new WorkDays(props);
+        fitness = new WorkDaysFitness(props);
     }
 
     private void setUpEmployees(final int employees) {

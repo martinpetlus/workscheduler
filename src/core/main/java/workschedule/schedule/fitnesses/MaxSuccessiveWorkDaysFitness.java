@@ -8,7 +8,7 @@ import workschedule.schedule.options.ScheduleOptions;
 
 import java.util.Iterator;
 
-public final class MaxSuccessiveWorkDays extends AbstractFitness {
+public final class MaxSuccessiveWorkDaysFitness extends AbstractFitness {
     final static FitnessProvider PROVIDER = new FitnessProvider() {
         @Override
         public boolean shouldApply(final ScheduleOptions opts) {
@@ -17,13 +17,13 @@ public final class MaxSuccessiveWorkDays extends AbstractFitness {
 
         @Override
         public Fitness create(final ScheduleProperties props) {
-            return new MaxSuccessiveWorkDays(props);
+            return new MaxSuccessiveWorkDaysFitness(props);
         }
     };
 
     private final MaxSuccessiveWorkDaysOption option;
 
-    public MaxSuccessiveWorkDays(final ScheduleProperties props) {
+    public MaxSuccessiveWorkDaysFitness(final ScheduleProperties props) {
         super(props);
         option = opts.forClass(MaxSuccessiveWorkDaysOption.class);
     }

@@ -22,7 +22,7 @@ import workschedule.schedule.options.WeeksOption;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({ ScheduleOptions.class })
-public final class MinEmployeesAtWorkTest {
+public final class MinEmployeesAtWorkFitnessTest {
     private ScheduleOptions optsMock;
 
     private ScheduleProperties props;
@@ -43,7 +43,7 @@ public final class MinEmployeesAtWorkTest {
         replay(optsMock);
 
         props = new ScheduleProperties(optsMock);
-        fitness = new MinEmployeesAtWork(props);
+        fitness = new MinEmployeesAtWorkFitness(props);
         chr = new Chromosome(props.getLength(), null);
     }
 
