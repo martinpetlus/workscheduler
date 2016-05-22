@@ -4,7 +4,6 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public final class DayTest {
-
     @Test
     public void tuesdayShouldFollowMonday() {
         assertEquals(Day.TUESDAY, Day.MONDAY.following());

@@ -29,7 +29,6 @@ import static org.powermock.api.easymock.PowerMock.replay;
     EmployeesOption.class
 })
 public final class SchedulePropertiesTest {
-
     private ScheduleProperties props;
 
     private ScheduleOptions optsMock;
