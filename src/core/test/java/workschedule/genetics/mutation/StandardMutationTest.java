@@ -1,4 +1,4 @@
-package workschedule.genetics;
+package workschedule.genetics.mutation;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -12,6 +12,7 @@ import static org.powermock.api.easymock.PowerMock.replay;
 
 import static org.easymock.EasyMock.expect;
 
+import workschedule.genetics.Chromosome;
 import workschedule.genetics.mutation.Mutation;
 import workschedule.genetics.mutation.StandardMutation;
 
