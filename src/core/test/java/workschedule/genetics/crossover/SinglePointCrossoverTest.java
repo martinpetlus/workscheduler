@@ -25,8 +25,6 @@ public final class SinglePointCrossoverTest {
 
     private Chromosome chromosome2;
 
-    private Pair<Chromosome> parents;
-
     @Before
     public void setUp() {
         crossover = new SinglePointCrossover();
@@ -37,8 +35,6 @@ public final class SinglePointCrossoverTest {
         chromosome2.setParam(0, true);
         chromosome2.setParam(1, true);
         chromosome2.setParam(2, true);
-
-        parents = new Pair<>(chromosome1, chromosome2);
     }
 
     @Test
@@ -51,7 +47,7 @@ public final class SinglePointCrossoverTest {
 
         replayAll();
 
-        crossover.crossover(parents);
+        crossover.crossover(Pair.of(chromosome1, chromosome2));
 
         assertEquals(chromosome1.getParam(0), true);
         assertEquals(chromosome1.getParam(1), true);
