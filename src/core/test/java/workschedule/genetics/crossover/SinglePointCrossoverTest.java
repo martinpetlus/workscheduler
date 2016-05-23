@@ -14,6 +14,7 @@ import static org.easymock.EasyMock.expect;
 
 import workschedule.genetics.Chromosome;
 import workschedule.utils.MathUtils;
+import workschedule.utils.Pair;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({ SinglePointCrossover.class, MathUtils.class })
@@ -24,19 +25,20 @@ public final class SinglePointCrossoverTest {
 
     private Chromosome chromosome2;
 
-    private Chromosome[] parents;
+    private Pair<Chromosome> parents;
 
     @Before
     public void setUp() {
         crossover = new SinglePointCrossover();
 
         chromosome1 = new Chromosome(3, null);
+
         chromosome2 = new Chromosome(3, null);
         chromosome2.setParam(0, true);
         chromosome2.setParam(1, true);
         chromosome2.setParam(2, true);
 
-        parents = new Chromosome[]{chromosome1, chromosome2};
+        parents = new Pair<>(chromosome1, chromosome2);
     }
 
     @Test
