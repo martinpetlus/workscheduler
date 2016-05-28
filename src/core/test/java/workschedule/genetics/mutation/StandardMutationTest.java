@@ -13,8 +13,6 @@ import static org.powermock.api.easymock.PowerMock.replay;
 import static org.easymock.EasyMock.expect;
 
 import workschedule.genetics.Chromosome;
-import workschedule.genetics.mutation.Mutation;
-import workschedule.genetics.mutation.StandardMutation;
 
 import java.util.ArrayList;
 import java.util.List;
