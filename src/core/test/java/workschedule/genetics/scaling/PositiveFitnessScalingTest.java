@@ -31,7 +31,7 @@ public final class PositiveFitnessScalingTest {
 
     @Test
     public void scalingShouldScaleEntries() {
-        scaling.scale(new HashSet<>(entries));
+        scaling.scale(entries);
 
         double delta = 0.00001;
 

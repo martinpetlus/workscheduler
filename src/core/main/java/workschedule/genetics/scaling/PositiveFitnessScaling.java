@@ -2,11 +2,11 @@ package workschedule.genetics.scaling;
 
 import workschedule.genetics.Entry;
 
-import java.util.Set;
+import java.util.List;
 
 public final class PositiveFitnessScaling implements Scaling {
     @Override
-    public void scale(final Set<Entry> entries) {
+    public void scale(final List<Entry> entries) {
         entries.forEach((entry) ->
             entry.setValue(1 / -entry.getValue())
         );

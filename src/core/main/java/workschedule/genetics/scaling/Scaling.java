@@ -2,8 +2,8 @@ package workschedule.genetics.scaling;
 
 import workschedule.genetics.Entry;
 
-import java.util.Set;
+import java.util.List;
 
 public interface Scaling {
-    public void scale(Set<Entry> entries);
+    public void scale(List<Entry> entries);
 }
