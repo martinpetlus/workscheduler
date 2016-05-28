@@ -9,57 +9,57 @@ import workschedule.schedule.options.ScheduleOptions;
 import java.util.Iterator;
 
 public final class MaxWorkDaysInWeekFitness extends AbstractFitness {
-    final static FitnessProvider PROVIDER = new FitnessProvider() {
-        @Override
-        public boolean shouldApply(final ScheduleOptions opts) {
-            return opts.contains(MaxWorkDaysInWeekOption.class);
-        }
-
-        @Override
-        public Fitness create(final ScheduleProperties props) {
-            return new MaxWorkDaysInWeekFitness(props);
-        }
-    };
-
-    private final MaxWorkDaysInWeekOption option;
-
-    public MaxWorkDaysInWeekFitness(final ScheduleProperties props) {
-        super(props);
-        option = opts.forClass(MaxWorkDaysInWeekOption.class);
+  final static FitnessProvider PROVIDER = new FitnessProvider() {
+    @Override
+    public boolean shouldApply(final ScheduleOptions opts) {
+      return opts.contains(MaxWorkDaysInWeekOption.class);
     }
 
     @Override
-    public int fitness(final Chromosome chr) {
-        int result = 0;
+    public Fitness create(final ScheduleProperties props) {
+      return new MaxWorkDaysInWeekFitness(props);
+    }
+  };
 
-        Iterator<Integer> employeeIterator = props.employees();
+  private final MaxWorkDaysInWeekOption option;
 
-        // Iterate through all employees
-        while (employeeIterator.hasNext()) {
-            int employee = employeeIterator.next();
+  public MaxWorkDaysInWeekFitness(final ScheduleProperties props) {
+    super(props);
+    option = opts.forClass(MaxWorkDaysInWeekOption.class);
+  }
 
-            Iterator<Integer> weekIterator = props.weeks();
+  @Override
+  public int fitness(final Chromosome chr) {
+    int result = 0;
 
-            // Iterate through weeks
-            while (weekIterator.hasNext()) {
-                int week = weekIterator.next();
+    Iterator<Integer> employeeIterator = props.employees();
 
-                int workDays = 0;
+    // Iterate through all employees
+    while (employeeIterator.hasNext()) {
+      int employee = employeeIterator.next();
 
-                Iterator<Day> dayIterator = props.days();
+      Iterator<Integer> weekIterator = props.weeks();
 
-                // Compute number of work days in week
-                while (dayIterator.hasNext()) {
-                    if (chr.getParam(props.getShiftIndex(employee, week, dayIterator.next()))) {
-                        workDays++;
-                    }
-                }
+      // Iterate through weeks
+      while (weekIterator.hasNext()) {
+        int week = weekIterator.next();
 
-                // Decrease fitness only if maximum of work days in week is exceeded
-                result += Math.min(0, option.get() - workDays);
-            }
+        int workDays = 0;
+
+        Iterator<Day> dayIterator = props.days();
+
+        // Compute number of work days in week
+        while (dayIterator.hasNext()) {
+          if (chr.getParam(props.getShiftIndex(employee, week, dayIterator.next()))) {
+            workDays++;
+          }
         }
 
-        return result;
+        // Decrease fitness only if maximum of work days in week is exceeded
+        result += Math.min(0, option.get() - workDays);
+      }
     }
+
+    return result;
+  }
 }

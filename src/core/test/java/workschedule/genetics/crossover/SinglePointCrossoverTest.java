@@ -19,42 +19,42 @@ import workschedule.utils.Pair;
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({ SinglePointCrossover.class, MathUtils.class })
 public final class SinglePointCrossoverTest {
-    private Crossover crossover;
+  private Crossover crossover;
 
-    private Chromosome chromosome1;
+  private Chromosome chromosome1;
 
-    private Chromosome chromosome2;
+  private Chromosome chromosome2;
 
-    @Before
-    public void setUp() {
-        crossover = new SinglePointCrossover();
+  @Before
+  public void setUp() {
+    crossover = new SinglePointCrossover();
 
-        chromosome1 = new Chromosome(3, null);
+    chromosome1 = new Chromosome(3, null);
 
-        chromosome2 = new Chromosome(3, null);
-        chromosome2.setParam(0, true);
-        chromosome2.setParam(1, true);
-        chromosome2.setParam(2, true);
-    }
+    chromosome2 = new Chromosome(3, null);
+    chromosome2.setParam(0, true);
+    chromosome2.setParam(1, true);
+    chromosome2.setParam(2, true);
+  }
 
-    @Test
-    public void crossoverMethodShouldCrossoverParentChromosomes() {
-        mockStatic(Math.class);
-        expect(Math.random()).andReturn(0.5);
+  @Test
+  public void crossoverMethodShouldCrossoverParentChromosomes() {
+    mockStatic(Math.class);
+    expect(Math.random()).andReturn(0.5);
 
-        mockStatic(MathUtils.class);
-        expect(MathUtils.randomInt(0, 1)).andReturn(1);
+    mockStatic(MathUtils.class);
+    expect(MathUtils.randomInt(0, 1)).andReturn(1);
 
-        replayAll();
+    replayAll();
 
-        crossover.crossover(Pair.of(chromosome1, chromosome2));
+    crossover.crossover(Pair.of(chromosome1, chromosome2));
 
-        assertEquals(chromosome1.getParam(0), true);
-        assertEquals(chromosome1.getParam(1), true);
-        assertEquals(chromosome1.getParam(2), false);
+    assertEquals(chromosome1.getParam(0), true);
+    assertEquals(chromosome1.getParam(1), true);
+    assertEquals(chromosome1.getParam(2), false);
 
-        assertEquals(chromosome2.getParam(0), false);
-        assertEquals(chromosome2.getParam(1), false);
-        assertEquals(chromosome2.getParam(2), true);
-    }
+    assertEquals(chromosome2.getParam(0), false);
+    assertEquals(chromosome2.getParam(1), false);
+    assertEquals(chromosome2.getParam(2), true);
+  }
 }

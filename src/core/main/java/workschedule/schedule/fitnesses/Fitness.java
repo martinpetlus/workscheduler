@@ -3,5 +3,5 @@ package workschedule.schedule.fitnesses;
 import workschedule.genetics.Chromosome;
 
 public interface Fitness {
-    public int fitness(Chromosome chr);
+  public int fitness(Chromosome chr);
 }

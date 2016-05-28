@@ -12,34 +12,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class WorkScheduleFactory implements ChromosomeFactory {
-    private final ScheduleProperties props;
+  private final ScheduleProperties props;
 
-    private final Fitness fitness;
+  private final Fitness fitness;
 
-    public WorkScheduleFactory(final ScheduleOptions opts) {
-        props = new ScheduleProperties(opts);
+  public WorkScheduleFactory(final ScheduleOptions opts) {
+    props = new ScheduleProperties(opts);
 
-        List<Fitness> applied = new ArrayList<>();
+    List<Fitness> applied = new ArrayList<>();
 
-        for (FitnessProvider provider : FitnessRegistry.INSTANCE) {
-            if (provider.shouldApply(opts)) {
-                applied.add(provider.create(props));
-            }
-        }
-
-        fitness = new CompositeFitness(applied);
+    for (FitnessProvider provider : FitnessRegistry.INSTANCE) {
+      if (provider.shouldApply(opts)) {
+        applied.add(provider.create(props));
+      }
     }
 
-    @Override
-    public Chromosome createRandom() {
-        Chromosome chr = new Chromosome(props.getLength(), fitness);
+    fitness = new CompositeFitness(applied);
+  }
 
-        for (int i = 0; i < chr.getLength(); i++) {
-            if (Math.random() >= 0.5) {
-                chr.setParam(i, true);
-            }
-        }
+  @Override
+  public Chromosome createRandom() {
+    Chromosome chr = new Chromosome(props.getLength(), fitness);
 
-        return chr;
+    for (int i = 0; i < chr.getLength(); i++) {
+      if (Math.random() >= 0.5) {
+        chr.setParam(i, true);
+      }
     }
+
+    return chr;
+  }
 }
