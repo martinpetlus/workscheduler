@@ -2,6 +2,7 @@ package workschedule.schedule;
 
 import workschedule.genetics.Chromosome;
 import workschedule.genetics.ChromosomeFactory;
+import workschedule.genetics.Entry;
 import workschedule.schedule.fitnesses.CompositeFitness;
 import workschedule.schedule.fitnesses.Fitness;
 import workschedule.schedule.fitnesses.FitnessProvider;
@@ -9,9 +10,14 @@ import workschedule.schedule.fitnesses.FitnessRegistry;
 import workschedule.schedule.options.ScheduleOptions;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public final class WorkScheduleFactory implements ChromosomeFactory {
+  public static final Comparator<Entry> DESCENDING =
+    (final Entry entry1, final Entry entry2) ->
+      (int) (entry2.getValue() - entry1.getValue());
+
   private final ScheduleProperties props;
 
   private final Fitness fitness;
@@ -41,5 +47,10 @@ public final class WorkScheduleFactory implements ChromosomeFactory {
     }
 
     return chr;
+  }
+
+  @Override
+  public Comparator<Entry> descending() {
+    return DESCENDING;
   }
 }
