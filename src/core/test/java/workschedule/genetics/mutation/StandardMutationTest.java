@@ -14,9 +14,6 @@ import static org.easymock.EasyMock.expect;
 
 import workschedule.genetics.Chromosome;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(StandardMutation.class)
 public final class StandardMutationTest {
@@ -26,21 +23,19 @@ public final class StandardMutationTest {
 
   private Chromosome chromosome2;
 
-  private List<Chromosome> population;
-
   @Before
   public void setUp() {
     mutation = new StandardMutation();
 
-    chromosome1 = new Chromosome(2, null);
+    chromosome1 = new Chromosome(3, null);
     chromosome1.setParam(0, true);
+    chromosome1.setParam(1, true);
+    chromosome1.setParam(2, false);
 
-    chromosome2 = new Chromosome(2, null);
+    chromosome2 = new Chromosome(3, null);
+    chromosome2.setParam(0, false);
     chromosome2.setParam(1, true);
-
-    population = new ArrayList<>();
-    population.add(chromosome1);
-    population.add(chromosome2);
+    chromosome2.setParam(2, false);
   }
 
   @Test
@@ -48,15 +43,21 @@ public final class StandardMutationTest {
     mockStatic(Math.class);
     expect(Math.random()).andReturn(0.001);
     expect(Math.random()).andReturn(0.5);
+    expect(Math.random()).andReturn(0.001);
+
     expect(Math.random()).andReturn(0.5);
     expect(Math.random()).andReturn(0.001);
+    expect(Math.random()).andReturn(0.5);
     replay(Math.class);
 
-    mutation.mutate(population);
+    mutation.mutate(chromosome1, chromosome2);
 
     assertEquals(chromosome1.getParam(0), false);
-    assertEquals(chromosome1.getParam(1), false);
+    assertEquals(chromosome1.getParam(1), true);
+    assertEquals(chromosome1.getParam(2), true);
+
     assertEquals(chromosome2.getParam(0), false);
     assertEquals(chromosome2.getParam(1), false);
+    assertEquals(chromosome2.getParam(2), false);
   }
 }
