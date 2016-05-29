@@ -3,7 +3,7 @@ package workschedule.genetics.crossover;
 import workschedule.genetics.Chromosome;
 import workschedule.utils.Pair;
 
-abstract class AbstractCrossover implements Crossover {
+public abstract class AbstractCrossover implements Crossover {
   @Override
   public void crossover(final Pair<Chromosome> parents) {
     if (Math.random() <= Crossover.PROBABILITY) {
@@ -11,5 +11,5 @@ abstract class AbstractCrossover implements Crossover {
     }
   }
 
-  abstract void implementation(final Pair<Chromosome> parents);
+  protected abstract void implementation(final Pair<Chromosome> parents);
 }
