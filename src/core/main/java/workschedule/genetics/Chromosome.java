@@ -12,6 +12,11 @@ public final class Chromosome {
     this.fitness = fitness;
   }
 
+  public Chromosome(final Chromosome other) {
+    this.params = other.params.clone();
+    this.fitness = other.fitness;
+  }
+
   public int getLength() {
     return params.length;
   }
@@ -26,5 +31,9 @@ public final class Chromosome {
 
   public void setParam(final int index, final boolean value) {
     params[index] = value;
+  }
+
+  public Chromosome clone() {
+    return new Chromosome(this);
   }
 }
