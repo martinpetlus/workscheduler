@@ -51,13 +51,13 @@ public final class MinEmployeesAtWorkFitnessTest {
   public void shouldComputeCorrectFitness() {
     assertEquals(fitness.fitness(chr), -28);
 
-    chr.setParam(props.getShiftIndex(1, 1, Day.FRIDAY), true);
+    chr.setGene(props.getShiftIndex(1, 1, Day.FRIDAY), true);
     assertEquals(fitness.fitness(chr), -27);
 
-    chr.setParam(props.getShiftIndex(2, 1, Day.FRIDAY), true);
+    chr.setGene(props.getShiftIndex(2, 1, Day.FRIDAY), true);
     assertEquals(fitness.fitness(chr), -27);
 
-    chr.setParam(props.getShiftIndex(2, 1, Day.SATURDAY), true);
+    chr.setGene(props.getShiftIndex(2, 1, Day.SATURDAY), true);
     assertEquals(fitness.fitness(chr), -26);
   }
 }

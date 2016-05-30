@@ -42,7 +42,7 @@ public final class WorkScheduleFactory implements ChromosomeFactory {
 
     for (int i = 0; i < chr.getLength(); i++) {
       if (Math.random() >= 0.5) {
-        chr.setParam(i, true);
+        chr.setGene(i, true);
       }
     }
 

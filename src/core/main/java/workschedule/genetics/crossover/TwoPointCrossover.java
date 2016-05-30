@@ -14,9 +14,9 @@ public final class TwoPointCrossover extends AbstractCrossover {
     int to = Math.max(pos1, pos2);
 
     for (int i = from; i <= to; i += 1) {
-      boolean tmp = parents.one.getParam(i);
-      parents.one.setParam(i, parents.two.getParam(i));
-      parents.two.setParam(i, tmp);
+      boolean tmp = parents.one.getGene(i);
+      parents.one.setGene(i, parents.two.getGene(i));
+      parents.two.setGene(i, tmp);
     }
   }
 }

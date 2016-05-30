@@ -49,42 +49,42 @@ public final class MaxWorkDaysInWeekFitnessTest {
 
   @Test
   public void shouldComputeCorrectFitnessForOneEmployeeExceedingLimit() {
-    chr.setParam(props.getShiftIndex(1, 1, Day.MONDAY), true);
-    chr.setParam(props.getShiftIndex(1, 1, Day.TUESDAY), true);
-    chr.setParam(props.getShiftIndex(1, 1, Day.WEDNESDAY), true);
-    chr.setParam(props.getShiftIndex(1, 1, Day.THURSDAY), true);
+    chr.setGene(props.getShiftIndex(1, 1, Day.MONDAY), true);
+    chr.setGene(props.getShiftIndex(1, 1, Day.TUESDAY), true);
+    chr.setGene(props.getShiftIndex(1, 1, Day.WEDNESDAY), true);
+    chr.setGene(props.getShiftIndex(1, 1, Day.THURSDAY), true);
     assertEquals(fitness.fitness(chr), 0);
 
-    chr.setParam(props.getShiftIndex(1, 1, Day.FRIDAY), true);
-    chr.setParam(props.getShiftIndex(1, 1, Day.SATURDAY), true);
+    chr.setGene(props.getShiftIndex(1, 1, Day.FRIDAY), true);
+    chr.setGene(props.getShiftIndex(1, 1, Day.SATURDAY), true);
     assertEquals(fitness.fitness(chr), -1);
 
-    chr.setParam(props.getShiftIndex(1, 4, Day.MONDAY), true);
-    chr.setParam(props.getShiftIndex(1, 4, Day.TUESDAY), true);
-    chr.setParam(props.getShiftIndex(1, 4, Day.WEDNESDAY), true);
-    chr.setParam(props.getShiftIndex(1, 4, Day.THURSDAY), true);
-    chr.setParam(props.getShiftIndex(1, 4, Day.FRIDAY), true);
-    chr.setParam(props.getShiftIndex(1, 4, Day.SATURDAY), true);
-    chr.setParam(props.getShiftIndex(1, 4, Day.SUNDAY), true);
+    chr.setGene(props.getShiftIndex(1, 4, Day.MONDAY), true);
+    chr.setGene(props.getShiftIndex(1, 4, Day.TUESDAY), true);
+    chr.setGene(props.getShiftIndex(1, 4, Day.WEDNESDAY), true);
+    chr.setGene(props.getShiftIndex(1, 4, Day.THURSDAY), true);
+    chr.setGene(props.getShiftIndex(1, 4, Day.FRIDAY), true);
+    chr.setGene(props.getShiftIndex(1, 4, Day.SATURDAY), true);
+    chr.setGene(props.getShiftIndex(1, 4, Day.SUNDAY), true);
     assertEquals(fitness.fitness(chr), -3);
   }
 
   @Test
   public void shouldComputeCorrectFitnessForTwoEmployeesExceedingLimit() {
-    chr.setParam(props.getShiftIndex(1, 1, Day.MONDAY), true);
-    chr.setParam(props.getShiftIndex(1, 1, Day.TUESDAY), true);
-    chr.setParam(props.getShiftIndex(1, 1, Day.WEDNESDAY), true);
-    chr.setParam(props.getShiftIndex(1, 1, Day.THURSDAY), true);
-    chr.setParam(props.getShiftIndex(2, 1, Day.MONDAY), true);
-    chr.setParam(props.getShiftIndex(2, 1, Day.TUESDAY), true);
-    chr.setParam(props.getShiftIndex(2, 1, Day.WEDNESDAY), true);
-    chr.setParam(props.getShiftIndex(2, 1, Day.THURSDAY), true);
+    chr.setGene(props.getShiftIndex(1, 1, Day.MONDAY), true);
+    chr.setGene(props.getShiftIndex(1, 1, Day.TUESDAY), true);
+    chr.setGene(props.getShiftIndex(1, 1, Day.WEDNESDAY), true);
+    chr.setGene(props.getShiftIndex(1, 1, Day.THURSDAY), true);
+    chr.setGene(props.getShiftIndex(2, 1, Day.MONDAY), true);
+    chr.setGene(props.getShiftIndex(2, 1, Day.TUESDAY), true);
+    chr.setGene(props.getShiftIndex(2, 1, Day.WEDNESDAY), true);
+    chr.setGene(props.getShiftIndex(2, 1, Day.THURSDAY), true);
     assertEquals(fitness.fitness(chr), 0);
 
-    chr.setParam(props.getShiftIndex(1, 1, Day.FRIDAY), true);
-    chr.setParam(props.getShiftIndex(1, 1, Day.SATURDAY), true);
-    chr.setParam(props.getShiftIndex(2, 1, Day.FRIDAY), true);
-    chr.setParam(props.getShiftIndex(2, 1, Day.SATURDAY), true);
+    chr.setGene(props.getShiftIndex(1, 1, Day.FRIDAY), true);
+    chr.setGene(props.getShiftIndex(1, 1, Day.SATURDAY), true);
+    chr.setGene(props.getShiftIndex(2, 1, Day.FRIDAY), true);
+    chr.setGene(props.getShiftIndex(2, 1, Day.SATURDAY), true);
     assertEquals(fitness.fitness(chr), -2);
   }
 }

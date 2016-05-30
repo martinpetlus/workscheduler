@@ -8,7 +8,7 @@ public final class StandardMutation implements Mutation {
     for (Chromosome chromosome : chromosomes) {
       for (int j = 0; j < chromosome.getLength(); j += 1) {
         if (Math.random() < Mutation.PROBABILITY) {
-          chromosome.setParam(j, !chromosome.getParam(j));
+          chromosome.setGene(j, !chromosome.getGene(j));
         }
       }
     }

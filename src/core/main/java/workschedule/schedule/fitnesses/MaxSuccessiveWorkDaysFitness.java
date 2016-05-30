@@ -45,7 +45,7 @@ public final class MaxSuccessiveWorkDaysFitness extends AbstractFitness {
       while (scheduleDayIterator.hasNext()) {
         ScheduleDay scheduleDay = scheduleDayIterator.next();
 
-        if (chr.getParam(props.getShiftIndex(employee, scheduleDay))) {
+        if (chr.getGene(props.getShiftIndex(employee, scheduleDay))) {
           successiveWorkDays++; // Day at work
         } else { // Free day
           // If maximum successive work days is exceeded

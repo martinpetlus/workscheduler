@@ -3,34 +3,34 @@ package workschedule.genetics;
 import workschedule.schedule.fitnesses.Fitness;
 
 public final class Chromosome {
-  private final boolean[] params;
+  private final boolean[] genes;
 
   private final Fitness fitness;
 
   public Chromosome(final int length, final Fitness fitness) {
-    this.params = new boolean[length];
+    this.genes = new boolean[length];
     this.fitness = fitness;
   }
 
   public Chromosome(final Chromosome other) {
-    this.params = other.params.clone();
+    this.genes = other.genes.clone();
     this.fitness = other.fitness;
   }
 
   public int getLength() {
-    return params.length;
+    return genes.length;
   }
 
   public int fitness() {
     return fitness.fitness(this);
   }
 
-  public boolean getParam(final int index) {
-    return params[index];
+  public boolean getGene(final int index) {
+    return genes[index];
   }
 
-  public void setParam(final int index, final boolean value) {
-    params[index] = value;
+  public void setGene(final int index, final boolean value) {
+    genes[index] = value;
   }
 
   public Chromosome clone() {

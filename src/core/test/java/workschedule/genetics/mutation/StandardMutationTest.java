@@ -28,14 +28,14 @@ public final class StandardMutationTest {
     mutation = new StandardMutation();
 
     chromosome1 = new Chromosome(3, null);
-    chromosome1.setParam(0, true);
-    chromosome1.setParam(1, true);
-    chromosome1.setParam(2, false);
+    chromosome1.setGene(0, true);
+    chromosome1.setGene(1, true);
+    chromosome1.setGene(2, false);
 
     chromosome2 = new Chromosome(3, null);
-    chromosome2.setParam(0, false);
-    chromosome2.setParam(1, true);
-    chromosome2.setParam(2, false);
+    chromosome2.setGene(0, false);
+    chromosome2.setGene(1, true);
+    chromosome2.setGene(2, false);
   }
 
   @Test
@@ -52,12 +52,12 @@ public final class StandardMutationTest {
 
     mutation.mutate(chromosome1, chromosome2);
 
-    assertEquals(chromosome1.getParam(0), false);
-    assertEquals(chromosome1.getParam(1), true);
-    assertEquals(chromosome1.getParam(2), true);
+    assertEquals(chromosome1.getGene(0), false);
+    assertEquals(chromosome1.getGene(1), true);
+    assertEquals(chromosome1.getGene(2), true);
 
-    assertEquals(chromosome2.getParam(0), false);
-    assertEquals(chromosome2.getParam(1), false);
-    assertEquals(chromosome2.getParam(2), false);
+    assertEquals(chromosome2.getGene(0), false);
+    assertEquals(chromosome2.getGene(1), false);
+    assertEquals(chromosome2.getGene(2), false);
   }
 }

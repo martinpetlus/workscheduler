@@ -59,8 +59,8 @@ public final class SuccessiveWeekendsFitness extends AbstractFitness {
       while (weekIterator.hasNext()) {
         Integer week = weekIterator.next();
 
-        boolean workSaturday = chr.getParam(props.getShiftIndex(employee, week, Day.SATURDAY));
-        boolean workSunday = chr.getParam(props.getShiftIndex(employee, week, Day.SUNDAY));
+        boolean workSaturday = chr.getGene(props.getShiftIndex(employee, week, Day.SATURDAY));
+        boolean workSunday = chr.getGene(props.getShiftIndex(employee, week, Day.SUNDAY));
 
         if (week > 1) {
           // Switch state if successive weekends was reached

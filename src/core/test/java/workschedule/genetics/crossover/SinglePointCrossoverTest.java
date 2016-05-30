@@ -36,9 +36,9 @@ public final class SinglePointCrossoverTest {
     chromosome1 = new Chromosome(3, null);
 
     chromosome2 = new Chromosome(3, null);
-    chromosome2.setParam(0, true);
-    chromosome2.setParam(1, true);
-    chromosome2.setParam(2, true);
+    chromosome2.setGene(0, true);
+    chromosome2.setGene(1, true);
+    chromosome2.setGene(2, true);
   }
 
   @Test
@@ -53,12 +53,12 @@ public final class SinglePointCrossoverTest {
 
     crossover.crossover(Pair.of(chromosome1, chromosome2));
 
-    assertEquals(true, chromosome1.getParam(0));
-    assertEquals(true, chromosome1.getParam(1));
-    assertEquals(false, chromosome1.getParam(2));
+    assertEquals(true, chromosome1.getGene(0));
+    assertEquals(true, chromosome1.getGene(1));
+    assertEquals(false, chromosome1.getGene(2));
 
-    assertEquals(false, chromosome2.getParam(0));
-    assertEquals(false, chromosome2.getParam(1));
-    assertEquals(true, chromosome2.getParam(2));
+    assertEquals(false, chromosome2.getGene(0));
+    assertEquals(false, chromosome2.getGene(1));
+    assertEquals(true, chromosome2.getGene(2));
   }
 }

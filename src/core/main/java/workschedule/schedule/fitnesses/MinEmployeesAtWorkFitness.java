@@ -42,7 +42,7 @@ public final class MinEmployeesAtWorkFitness extends AbstractFitness {
       Iterator<Integer> employeesIterator = props.employees();
 
       while (employeesIterator.hasNext()) {
-        if (chr.getParam(props.getShiftIndex(employeesIterator.next(), day))) {
+        if (chr.getGene(props.getShiftIndex(employeesIterator.next(), day))) {
           employeesAtWork += 1;
         }
       }

@@ -4,6 +4,7 @@ import workschedule.genetics.ChromosomeFactory;
 import workschedule.genetics.GeneticAlgorithm;
 import workschedule.genetics.GeneticAlgorithmOptions;
 import workschedule.genetics.crossover.SinglePointCrossover;
+import workschedule.genetics.crossover.TwoPointCrossover;
 import workschedule.genetics.mutation.StandardMutation;
 import workschedule.genetics.scaling.PositiveFitnessScaling;
 import workschedule.genetics.selection.RouletteWheelSelection;
@@ -32,12 +33,15 @@ public final class Core {
     ChromosomeFactory factory = new WorkScheduleFactory(opts);
 
     GeneticAlgorithm ga = new GeneticAlgorithm(
-      GeneticAlgorithmOptions.builder().build(),
+      GeneticAlgorithmOptions.builder()
+        .setPopulationSize(200)
+        .setEliteCount(8)
+        .build(),
       factory,
       new RouletteWheelSelection(
         new PositiveFitnessScaling()
       ),
-      new SinglePointCrossover(),
+      new TwoPointCrossover(),
       new StandardMutation()
     );
 

@@ -44,7 +44,7 @@ public final class WorkDaysFitness extends AbstractFitness {
 
       // Iterate through schedule days
       while (scheduleDayIterator.hasNext()) {
-        if (chr.getParam(props.getShiftIndex(employee, scheduleDayIterator.next()))) {
+        if (chr.getGene(props.getShiftIndex(employee, scheduleDayIterator.next()))) {
           workDays++;
         }
       }
