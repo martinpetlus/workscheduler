@@ -14,12 +14,14 @@ public final class GeneticAlgorithmOptions {
       return new GeneticAlgorithmOptions(this);
     }
 
-    public void setPopulationSize(final int populationSize) {
+    public Builder setPopulationSize(final int populationSize) {
       this.populationSize = populationSize;
+      return this;
     }
 
-    public void setEliteCount(final int eliteCount) {
+    public Builder setEliteCount(final int eliteCount) {
       this.eliteCount = eliteCount;
+      return this;
     }
   }
 
