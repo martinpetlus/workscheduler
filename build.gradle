@@ -31,7 +31,7 @@ sourceSets {
 
 jar {
     manifest {
-        attributes 'Main-Class': 'workschedule.Core'
+        attributes 'Main-Class': 'workscheduler.Core'
     }
 
     // http://stackoverflow.com/questions/4871656/using-gradle-to-build-a-jar-with-dependencies

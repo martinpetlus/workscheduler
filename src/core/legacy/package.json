@@ -1,11 +1,11 @@
 {
-  "name": "workschedule",
+  "name": "workscheduler",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/martinpetlus/workschedule.git"
+    "url": "https://github.com/martinpetlus/workscheduler.git"
   },
   "scripts": {
     "test": "./node_modules/.bin/jasmine-node src/specs --color --autotest --watch src",
