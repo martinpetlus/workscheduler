@@ -53,11 +53,11 @@ public final class MaxWorkDaysInWeekFitnessTest {
     chr.setGene(props.getShiftIndex(1, 1, Day.TUESDAY), true);
     chr.setGene(props.getShiftIndex(1, 1, Day.WEDNESDAY), true);
     chr.setGene(props.getShiftIndex(1, 1, Day.THURSDAY), true);
-    assertEquals(fitness.fitness(chr), 0);
+    assertEquals(fitness.score(chr), 0);
 
     chr.setGene(props.getShiftIndex(1, 1, Day.FRIDAY), true);
     chr.setGene(props.getShiftIndex(1, 1, Day.SATURDAY), true);
-    assertEquals(fitness.fitness(chr), -1);
+    assertEquals(fitness.score(chr), -1);
 
     chr.setGene(props.getShiftIndex(1, 4, Day.MONDAY), true);
     chr.setGene(props.getShiftIndex(1, 4, Day.TUESDAY), true);
@@ -66,7 +66,7 @@ public final class MaxWorkDaysInWeekFitnessTest {
     chr.setGene(props.getShiftIndex(1, 4, Day.FRIDAY), true);
     chr.setGene(props.getShiftIndex(1, 4, Day.SATURDAY), true);
     chr.setGene(props.getShiftIndex(1, 4, Day.SUNDAY), true);
-    assertEquals(fitness.fitness(chr), -3);
+    assertEquals(fitness.score(chr), -3);
   }
 
   @Test
@@ -79,12 +79,12 @@ public final class MaxWorkDaysInWeekFitnessTest {
     chr.setGene(props.getShiftIndex(2, 1, Day.TUESDAY), true);
     chr.setGene(props.getShiftIndex(2, 1, Day.WEDNESDAY), true);
     chr.setGene(props.getShiftIndex(2, 1, Day.THURSDAY), true);
-    assertEquals(fitness.fitness(chr), 0);
+    assertEquals(fitness.score(chr), 0);
 
     chr.setGene(props.getShiftIndex(1, 1, Day.FRIDAY), true);
     chr.setGene(props.getShiftIndex(1, 1, Day.SATURDAY), true);
     chr.setGene(props.getShiftIndex(2, 1, Day.FRIDAY), true);
     chr.setGene(props.getShiftIndex(2, 1, Day.SATURDAY), true);
-    assertEquals(fitness.fitness(chr), -2);
+    assertEquals(fitness.score(chr), -2);
   }
 }

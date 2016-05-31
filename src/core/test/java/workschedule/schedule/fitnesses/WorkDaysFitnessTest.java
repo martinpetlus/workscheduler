@@ -58,50 +58,50 @@ public final class WorkDaysFitnessTest {
   public void shouldComputeCorrectFitnessForOneEmployee() {
     setUpEmployees(1);
 
-    assertEquals(fitness.fitness(chr), -6);
+    assertEquals(fitness.score(chr), -6);
 
     chr.setGene(props.getShiftIndex(1, 1, Day.MONDAY), true);
     chr.setGene(props.getShiftIndex(1, 1, Day.TUESDAY), true);
     chr.setGene(props.getShiftIndex(1, 1, Day.WEDNESDAY), true);
     chr.setGene(props.getShiftIndex(1, 1, Day.THURSDAY), true);
-    assertEquals(fitness.fitness(chr), -2);
+    assertEquals(fitness.score(chr), -2);
 
     chr.setGene(props.getShiftIndex(1, 1, Day.FRIDAY), true);
     chr.setGene(props.getShiftIndex(1, 1, Day.SATURDAY), true);
-    assertEquals(fitness.fitness(chr), 0);
+    assertEquals(fitness.score(chr), 0);
 
     chr.setGene(props.getShiftIndex(1, 1, Day.SUNDAY), true);
-    assertEquals(fitness.fitness(chr), -1);
+    assertEquals(fitness.score(chr), -1);
   }
 
   @Test
   public void shouldComputeCorrectFitnessForTwoEmployees() {
     setUpEmployees(2);
 
-    assertEquals(fitness.fitness(chr), -12);
+    assertEquals(fitness.score(chr), -12);
 
     chr.setGene(props.getShiftIndex(1, 1, Day.MONDAY), true);
     chr.setGene(props.getShiftIndex(1, 1, Day.WEDNESDAY), true);
     chr.setGene(props.getShiftIndex(2, 1, Day.TUESDAY), true);
     chr.setGene(props.getShiftIndex(2, 1, Day.THURSDAY), true);
-    assertEquals(fitness.fitness(chr), -8);
+    assertEquals(fitness.score(chr), -8);
 
     chr.setGene(props.getShiftIndex(1, 2, Day.FRIDAY), true);
     chr.setGene(props.getShiftIndex(1, 2, Day.SATURDAY), true);
     chr.setGene(props.getShiftIndex(2, 2, Day.FRIDAY), true);
     chr.setGene(props.getShiftIndex(2, 2, Day.SATURDAY), true);
-    assertEquals(fitness.fitness(chr), -4);
+    assertEquals(fitness.score(chr), -4);
 
     chr.setGene(props.getShiftIndex(1, 3, Day.FRIDAY), true);
     chr.setGene(props.getShiftIndex(1, 3, Day.SATURDAY), true);
     chr.setGene(props.getShiftIndex(2, 3, Day.FRIDAY), true);
     chr.setGene(props.getShiftIndex(2, 3, Day.SATURDAY), true);
-    assertEquals(fitness.fitness(chr), 0);
+    assertEquals(fitness.score(chr), 0);
 
     chr.setGene(props.getShiftIndex(1, 4, Day.FRIDAY), true);
     chr.setGene(props.getShiftIndex(1, 4, Day.SATURDAY), true);
     chr.setGene(props.getShiftIndex(2, 4, Day.FRIDAY), true);
     chr.setGene(props.getShiftIndex(2, 4, Day.SATURDAY), true);
-    assertEquals(fitness.fitness(chr), -4);
+    assertEquals(fitness.score(chr), -4);
   }
 }

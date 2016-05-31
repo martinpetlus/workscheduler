@@ -29,7 +29,7 @@ public final class MaxWorkDaysInWeekFitness extends AbstractFitness {
   }
 
   @Override
-  public int fitness(final Chromosome chr) {
+  public int score(final Chromosome chr) {
     int result = 0;
 
     Iterator<Integer> employeeIterator = props.employees();
@@ -55,7 +55,7 @@ public final class MaxWorkDaysInWeekFitness extends AbstractFitness {
           }
         }
 
-        // Decrease fitness only if maximum of work days in week is exceeded
+        // Decrease score only if maximum of work days in week is exceeded
         result += Math.min(0, option.get() - workDays);
       }
     }

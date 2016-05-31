@@ -29,7 +29,7 @@ public final class MinEmployeesAtWorkFitness extends AbstractFitness {
   }
 
   @Override
-  public int fitness(final Chromosome chr) {
+  public int score(final Chromosome chr) {
     int result = 0;
 
     Iterator<ScheduleDay> scheduleDaysIterator = props.scheduleDays();

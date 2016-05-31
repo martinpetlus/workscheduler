@@ -29,7 +29,7 @@ public final class WorkDaysFitness extends AbstractFitness {
   }
 
   @Override
-  public int fitness(final Chromosome chr) {
+  public int score(final Chromosome chr) {
     int result = 0;
 
     Iterator<Integer> employeeIterator = props.employees();
@@ -49,7 +49,7 @@ public final class WorkDaysFitness extends AbstractFitness {
         }
       }
 
-      // Only exact number of work days produces 0 fitness decrease
+      // Only exact number of work days produces 0 score decrease
       result -= Math.abs(option.get() - workDays);
     }
 

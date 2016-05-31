@@ -13,11 +13,11 @@ public final class CompositeFitness implements Fitness {
   }
 
   @Override
-  public int fitness(final Chromosome chr) {
+  public int score(final Chromosome chr) {
     int result = 0;
 
     for (Fitness fitness: delegates) {
-      result += fitness.fitness(chr);
+      result += fitness.score(chr);
     }
 
     return result;

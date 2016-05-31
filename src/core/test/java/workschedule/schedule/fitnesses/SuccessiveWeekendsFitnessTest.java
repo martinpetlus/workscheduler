@@ -80,7 +80,7 @@ public final class SuccessiveWeekendsFitnessTest {
     chr.setGene(props.getShiftIndex(1, 3, Day.SUNDAY), true);
     chr.setGene(props.getShiftIndex(1, 4, Day.SATURDAY), true);
     chr.setGene(props.getShiftIndex(1, 4, Day.SUNDAY), true);
-    assertEquals(fitness.fitness(chr), 0);
+    assertEquals(fitness.score(chr), 0);
   }
 
   @Test
@@ -91,7 +91,7 @@ public final class SuccessiveWeekendsFitnessTest {
     chr.setGene(props.getShiftIndex(1, 1, Day.SUNDAY), true);
     chr.setGene(props.getShiftIndex(1, 2, Day.SATURDAY), true);
     chr.setGene(props.getShiftIndex(1, 2, Day.SUNDAY), true);
-    assertEquals(fitness.fitness(chr), 0);
+    assertEquals(fitness.score(chr), 0);
   }
 
   @Test
@@ -100,7 +100,7 @@ public final class SuccessiveWeekendsFitnessTest {
 
     chr.setGene(props.getShiftIndex(1, 4, Day.SATURDAY), true);
     chr.setGene(props.getShiftIndex(1, 4, Day.SUNDAY), true);
-    assertEquals(fitness.fitness(chr), -2);
+    assertEquals(fitness.score(chr), -2);
   }
 
   @Test
@@ -110,26 +110,26 @@ public final class SuccessiveWeekendsFitnessTest {
     chr.setGene(props.getShiftIndex(1, 2, Day.SATURDAY), true);
     chr.setGene(props.getShiftIndex(1, 2, Day.SUNDAY), true);
     chr.setGene(props.getShiftIndex(1, 3, Day.SATURDAY), true);
-    assertEquals(fitness.fitness(chr), -5);
+    assertEquals(fitness.score(chr), -5);
   }
 
   @Test
   public void shouldComputeCorrectFitnessWithTwoEmployees() {
     setUpOther(2, 4, 2, 2);
 
-    assertEquals(fitness.fitness(chr), -8);
+    assertEquals(fitness.score(chr), -8);
 
     chr.setGene(props.getShiftIndex(1, 3, Day.SATURDAY), true);
     chr.setGene(props.getShiftIndex(1, 3, Day.SUNDAY), true);
     chr.setGene(props.getShiftIndex(2, 4, Day.SATURDAY), true);
     chr.setGene(props.getShiftIndex(2, 4, Day.SUNDAY), true);
-    assertEquals(fitness.fitness(chr), -4);
+    assertEquals(fitness.score(chr), -4);
 
     chr.setGene(props.getShiftIndex(1, 4, Day.SATURDAY), true);
     chr.setGene(props.getShiftIndex(1, 4, Day.SUNDAY), true);
     chr.setGene(props.getShiftIndex(2, 3, Day.SATURDAY), true);
     chr.setGene(props.getShiftIndex(2, 3, Day.SUNDAY), true);
-    assertEquals(fitness.fitness(chr), 0);
+    assertEquals(fitness.score(chr), 0);
   }
 
   @Test
@@ -146,6 +146,6 @@ public final class SuccessiveWeekendsFitnessTest {
     chr.setGene(props.getShiftIndex(1, 7, Day.SUNDAY), true);
     chr.setGene(props.getShiftIndex(1, 8, Day.SATURDAY), true);
     chr.setGene(props.getShiftIndex(1, 8, Day.SUNDAY), true);
-    assertEquals(fitness.fitness(chr), -8);
+    assertEquals(fitness.score(chr), -8);
   }
 }

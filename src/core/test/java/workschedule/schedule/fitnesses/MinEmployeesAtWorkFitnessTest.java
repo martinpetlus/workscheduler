@@ -49,15 +49,15 @@ public final class MinEmployeesAtWorkFitnessTest {
 
   @Test
   public void shouldComputeCorrectFitness() {
-    assertEquals(fitness.fitness(chr), -28);
+    assertEquals(fitness.score(chr), -28);
 
     chr.setGene(props.getShiftIndex(1, 1, Day.FRIDAY), true);
-    assertEquals(fitness.fitness(chr), -27);
+    assertEquals(fitness.score(chr), -27);
 
     chr.setGene(props.getShiftIndex(2, 1, Day.FRIDAY), true);
-    assertEquals(fitness.fitness(chr), -27);
+    assertEquals(fitness.score(chr), -27);
 
     chr.setGene(props.getShiftIndex(2, 1, Day.SATURDAY), true);
-    assertEquals(fitness.fitness(chr), -26);
+    assertEquals(fitness.score(chr), -26);
   }
 }

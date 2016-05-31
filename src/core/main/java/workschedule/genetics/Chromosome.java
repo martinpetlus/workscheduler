@@ -22,7 +22,7 @@ public final class Chromosome {
   }
 
   public int fitness() {
-    return fitness.fitness(this);
+    return fitness.score(this);
   }
 
   public boolean getGene(final int index) {
