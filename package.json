@@ -1,0 +1,51 @@
+{
+  "name": "workscheduler",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm -rf dist",
+    "build-dev": "npm run clean && webpack --progress",
+    "start-dev": "NODE_ENV=development node src/server/main.js",
+    "lint": "node_modules/.bin/eslint src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/martinpetlus/workscheduler.git"
+  },
+  "private": true,
+  "author": "Martin Petluš",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/martinpetlus/workscheduler/issues"
+  },
+  "homepage": "https://github.com/martinpetlus/workscheduler#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "immutable": "^3.8.1",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.4.1",
+    "redux": "^3.5.2"
+  },
+  "devDependencies": {
+    "babel-loader": "^6.2.4",
+    "babel-polyfill": "^6.9.1",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-register": "^6.9.0",
+    "eslint": "^2.11.1",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-immutablejs": "^0.1.3",
+    "eslint-plugin-import": "^1.8.1",
+    "eslint-plugin-jsx-a11y": "^1.2.2",
+    "eslint-plugin-react": "^5.1.1",
+    "file-loader": "^0.8.5",
+    "webpack": "^1.13.1"
+  },
+  "engines": {
+    "node": "6.2.x"
+  }
+}
