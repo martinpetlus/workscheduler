@@ -1,7 +1,17 @@
 import path from 'path';
 import express from 'express';
+import webpack from 'webpack';
+import webpackConfig from '../../webpack.config';
+import webpackDevMiddleware from 'webpack-dev-middleware';
 
 const app = express();
+
+const compiler = webpack(webpackConfig);
+
+app.use(webpackDevMiddleware(compiler, {
+  noInfo: true,
+  publicPath: webpackConfig.output.publicPath,
+}));
 
 app.use('/', express.static(path.resolve(`${__dirname}/../../dist`)));
 
