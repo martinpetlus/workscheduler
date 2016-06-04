@@ -1,10 +1,12 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
-  entry: {
-    javascript: './src/client/main.js',
-    html: './src/client/index.html',
-  },
+  entry: [
+    'webpack-hot-middleware/client',
+    './src/client/main.js',
+    './src/client/index.html',
+  ],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -23,4 +25,9 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
+  ],
 };

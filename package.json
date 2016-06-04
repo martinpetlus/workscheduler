@@ -44,7 +44,8 @@
     "eslint-plugin-react": "^5.1.1",
     "file-loader": "^0.8.5",
     "webpack": "^1.13.1",
-    "webpack-dev-middleware": "^1.6.1"
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-hot-middleware": "^2.10.0"
   },
   "engines": {
     "node": "6.2.x"
