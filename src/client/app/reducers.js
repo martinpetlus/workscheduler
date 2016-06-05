@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux-immutable';
 
 import home from '../home/homeReducer';
 import user from '../user/userReducer';

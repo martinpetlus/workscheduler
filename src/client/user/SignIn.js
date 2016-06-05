@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { signIn as signIn } from './userActions';
+import { signIn } from './userActions';
 
 export class SignIn extends Component {
   constructor() {
@@ -24,9 +24,7 @@ SignIn.propTypes = {
 };
 
 function mapDispatchToProps(dispatch) {
-  return {
-    signIn: bindActionCreators(signIn, dispatch),
-  };
+  return bindActionCreators({ signIn }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(SignIn);
