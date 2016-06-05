@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/martinpetlus/workscheduler#readme",
   "dependencies": {
+    "axios": "^0.12.0",
     "express": "^4.13.4",
     "immutable": "^3.8.1",
     "react": "^15.1.0",
@@ -29,6 +30,7 @@
     "react-redux": "^4.4.5",
     "react-router": "^2.4.1",
     "redux": "^3.5.2",
+    "redux-actions": "^0.9.1",
     "redux-promise-middleware": "^3.0.0"
   },
   "devDependencies": {
