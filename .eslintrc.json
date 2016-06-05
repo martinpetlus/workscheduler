@@ -1,0 +1,20 @@
+{
+  "parserOptions": {
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true
+    }
+  },
+  "extends": "airbnb",
+  "plugins": [
+    "immutablejs"
+  ],
+  "rules": {
+    "immutablejs/no-native-map-set": "error",
+    "new-cap": [
+      "error",
+      {
+        "capIsNewExceptions": ["Map", "Set"]
+      }
+    ]
+  }
+}
