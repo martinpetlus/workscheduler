@@ -2,7 +2,6 @@ import 'babel-polyfill';
 
 import React from 'react';
 import { render } from 'react-dom';
-import { Provider } from 'react-redux';
 import { Map } from 'immutable';
 
 import Root from './app/Root';
@@ -13,9 +12,7 @@ const initialState = Map();
 const store = configureStore(initialState);
 
 render(
-  <Provider {...{ store }}>
-    <Root />
-  </Provider>,
+  <Root {...{ store }} />,
   document.getElementById('root')
 );
 
