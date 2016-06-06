@@ -1,30 +1,19 @@
-import React, { PropTypes, Component } from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { pure } from 'recompose';
 
-import { signIn } from './userActions';
+import { actionCreators } from './userActions';
 
-export class SignIn extends Component {
-  constructor() {
-    super();
-    this.signIn = () => this.props.signIn({});
-  }
-
-  render() {
-    return (
-      <div>
-        <button onClick={this.signIn}>Sign in</button>
-      </div>
-    );
-  }
+export function SignIn({ signIn }) {
+  return (
+    <div>
+      <button onClick={() => signIn({})}>Sign in</button>
+    </div>
+  );
 }
 
 SignIn.propTypes = {
   signIn: PropTypes.func.isRequired,
 };
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ signIn }, dispatch);
-}
-
-export default connect(null, mapDispatchToProps)(SignIn);
+export default connect(null, actionCreators)(pure(SignIn));

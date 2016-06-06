@@ -5,13 +5,15 @@ import createRequestActionTypes from '../app/utils/createRequestActionTypes';
 
 const SIGN_IN = 'SIGN_IN';
 
-export const userActionTypes = {
+export const actionTypes = {
   [SIGN_IN]: createRequestActionTypes(SIGN_IN),
 };
 
-export const signIn = createAction(
-  SIGN_IN,
-  (credentials) => ({
-    promise: axios.post('/api/signin', credentials),
-  })
-);
+export const actionCreators = {
+  signIn: createAction(
+    SIGN_IN,
+    (credentials) => ({
+      promise: axios.post('/api/signin', credentials),
+    })
+  ),
+};
