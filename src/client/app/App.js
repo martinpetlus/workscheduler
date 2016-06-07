@@ -1,8 +1,10 @@
 import React, { PropTypes } from 'react';
+import CSSModules from 'react-css-modules';
 
 import Header from './Header';
+import styles from './App.scss';
 
-function App({ children }) {
+export function App({ children }) {
   return (
     <div>
       <Header />
@@ -17,4 +19,4 @@ App.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default App;
+export default CSSModules(App, styles);

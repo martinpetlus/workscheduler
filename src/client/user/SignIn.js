@@ -1,8 +1,10 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { pure } from 'recompose';
+import { pure, compose } from 'recompose';
+import CSSModules from 'react-css-modules';
 
 import { actionCreators } from './userActions';
+import styles from './SignIn.scss';
 
 export function SignIn({ signIn }) {
   return (
@@ -16,4 +18,8 @@ SignIn.propTypes = {
   signIn: PropTypes.func.isRequired,
 };
 
-export default connect(null, actionCreators)(pure(SignIn));
+export default compose(
+  connect(null, actionCreators),
+  pure,
+  CSSModules
+)(SignIn, styles);

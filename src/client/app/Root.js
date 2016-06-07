@@ -13,8 +13,8 @@ function Root({ store }) {
   return (
     <Provider {...{ store }}>
       <Router history={hashHistory}>
-        <Route path="/" component={App}>
-          <IndexRoute onEnter={requireAuth} component={Home} />
+        <Route path="/" onEnter={requireAuth} component={App}>
+          <IndexRoute component={Home} />
         </Route>
         <Route path="/signin" component={SignIn} />
       </Router>

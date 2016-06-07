@@ -13,7 +13,7 @@
     "new-cap": [
       "error",
       {
-        "capIsNewExceptions": ["Map", "Set"]
+        "capIsNewExceptions": ["Map", "Set", "CSSModules"]
       }
     ]
   }
