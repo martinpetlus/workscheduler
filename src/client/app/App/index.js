@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 import CSSModules from 'react-css-modules';
 
-import Header from './Header';
-import styles from './App.scss';
+import Header from '../Header';
+import styles from './styles.scss';
 
 export function App({ children }) {
   return (
