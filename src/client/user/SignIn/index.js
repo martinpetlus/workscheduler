@@ -16,10 +16,13 @@ export function SignIn({
   fields: { email, password },
   submitting,
   handleSubmit,
+  location,
 }) {
+  const nextPathname = location.state && location.state.nextPathname || '/';
+
   return (
     <div>
-      <form onSubmit={handleSubmit(signIn)}>
+      <form onSubmit={handleSubmit(signIn.bind(null, nextPathname))}>
         <input
           type="email"
           placeholder="Your email"

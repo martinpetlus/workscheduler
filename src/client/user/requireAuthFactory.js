@@ -1,10 +1,10 @@
-export default (store) => (nextState, replaceState) => {
+export default (store) => (nextState, replace) => {
   const authenticated = store.getState().getIn(['user', 'authenticated']);
 
   if (!authenticated) {
-    replaceState(
-      { nextPathname: nextState.location.pathname },
-      '/signin'
-    );
+    replace({
+      pathname: '/signin',
+      state: { nextPathname: nextState.location.pathname },
+    });
   }
 };

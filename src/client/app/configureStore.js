@@ -2,13 +2,17 @@ import { createStore, applyMiddleware } from 'redux';
 import promiseMiddleware from 'redux-promise-middleware';
 
 import rootReducer from './reducers';
+import authMiddleware from './redux/authMiddleware';
 
 export default function configureStore(initialState) {
   const store = createStore(
     rootReducer,
     initialState,
     applyMiddleware(
-      promiseMiddleware()
+      authMiddleware(),
+      promiseMiddleware({
+        promiseTypeSuffixes: ['REQUEST', 'SUCCESS', 'FAILURE'],
+      })
     )
   );
 

@@ -12,8 +12,7 @@ export const actionTypes = {
 export const actionCreators = {
   signIn: createAction(
     SIGN_IN,
-    (credentials) => ({
-      promise: axios.post('/api/signin', credentials),
-    })
+    (nextPathname, credentials) => axios.post('/signin', credentials),
+    (nextPathname) => ({ nextPathname })
   ),
 };
