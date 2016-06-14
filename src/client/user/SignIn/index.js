@@ -5,6 +5,11 @@ import {
   reduxForm,
   propTypes as reduxFormPropTypes,
 } from 'redux-form';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
+import Divider from 'material-ui/Divider';
+import Paper from 'material-ui/Paper';
+import AppBar from 'material-ui/AppBar';
 
 import { actionCreators } from '../userActions';
 import schema from './schema';
@@ -22,24 +27,35 @@ export function SignIn({
 
   return (
     <div>
-      <form onSubmit={handleSubmit(signIn.bind(null, nextPathname))}>
-        <input
-          type="email"
-          placeholder="Your email"
-          {...email}
-        />
-        <input
-          type="password"
-          placeholder="Your password"
-          {...password}
-        />
-        <button
-          type="submit"
-          disabled={submitting}
-        >
-          Sign In
-        </button>
-      </form>
+      <AppBar title="Sign in" showMenuIconButton={false} />
+      <Paper zDeph={2} styleName="wrapper">
+        <form onSubmit={handleSubmit(signIn.bind(null, nextPathname))}>
+          <TextField
+            type="email"
+            floatingLabelText="Your email"
+            underlineShow={false}
+            fullWidth
+            {...email}
+          />
+          <Divider />
+          <TextField
+            type="password"
+            floatingLabelText="Your password"
+            underlineShow={false}
+            fullWidth
+            {...password}
+          />
+          <Divider />
+          <div styleName="controls">
+            <RaisedButton
+              type="submit"
+              primary
+              label="Sign in"
+              disabled={submitting}
+            />
+          </div>
+        </form>
+      </Paper>
     </div>
   );
 }

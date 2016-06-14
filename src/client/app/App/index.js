@@ -1,22 +1,23 @@
 import React, { PropTypes } from 'react';
 import CSSModules from 'react-css-modules';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import Header from '../Header';
 import styles from './styles.scss';
 
 export function App({ children }) {
   return (
-    <div>
-      <Header />
-      <div>
-        {children}
-      </div>
-    </div>
+    <MuiThemeProvider muiTheme={getMuiTheme()}>
+      {children}
+    </MuiThemeProvider>
   );
 }
 
 App.propTypes = {
   children: PropTypes.node.isRequired,
 };
+
+injectTapEventPlugin();
 
 export default CSSModules(App, styles);
