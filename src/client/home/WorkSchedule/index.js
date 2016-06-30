@@ -1,28 +1,39 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes, Component } from 'react';
 import { compose, pure } from 'recompose';
 import { connect } from 'react-redux';
 
 import { getWorkSchedule } from '../../app/reducers';
+import { actionCreators } from './actions';
 
-export function WorkSchedule({ workSchedule }) {
-  const { weeks } = workSchedule.toJS();
+class WorkSchedule extends Component {
+  componentDidMount() {
+    this.props.fetch();
+  }
 
-  return (
-    <div>
-      {weeks.map((week) => (
-        <div>{week}</div>
-      ))}
-    </div>
-  );
+  render() {
+    const { weeks } = this.props.workSchedule.toJS();
+
+    return (
+      <div>
+        {weeks.map((week) => (
+          <div>{week}</div>
+        ))}
+      </div>
+    );
+  }
 }
 
 WorkSchedule.propTypes = {
   workSchedule: PropTypes.object.isRequired,
+  fetch: PropTypes.func.isRequired,
 };
 
 export default compose(
-  connect((state) => ({
-    workSchedule: getWorkSchedule(state),
-  })),
+  connect(
+    (state) => ({
+      workSchedule: getWorkSchedule(state),
+    }),
+    actionCreators
+  ),
   pure
 )(WorkSchedule);
