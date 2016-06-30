@@ -2,7 +2,7 @@ import { combineReducers } from 'redux-immutable';
 import { reducer as formReducer } from 'redux-form';
 import { fromJS } from 'immutable';
 
-import home from '../home/homeReducer';
+import home, * as fromHome from '../home/homeReducer';
 import user from '../user/userReducer';
 
 const rootReducer = combineReducers({
@@ -14,3 +14,6 @@ const rootReducer = combineReducers({
 });
 
 export default rootReducer;
+
+export const getWorkSchedule = (state) =>
+  fromHome.getWorkSchedule(state.get('home'));

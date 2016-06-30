@@ -1,10 +1,10 @@
-import { Map } from 'immutable';
+import { combineReducers } from 'redux-immutable';
 
-const initialState = Map();
+import workSchedule from './WorkSchedule/reducer';
 
-export default function homeReducer(state = initialState, action) {
-  switch (action.type) {
-    default:
-      return state;
-  }
-}
+export default combineReducers({
+  workSchedule,
+});
+
+export const getWorkSchedule = (state) =>
+  state.get('workSchedule');

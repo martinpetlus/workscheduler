@@ -1,7 +1,16 @@
 import React from 'react';
+import AppBar from 'material-ui/AppBar';
+import { pure } from 'recompose';
 
-export default function Home() {
+import WorkSchedule from './WorkSchedule';
+
+export function Home() {
   return (
-    <h1>Home</h1>
+    <div>
+      <AppBar title="Home" />
+      <WorkSchedule />
+    </div>
   );
 }
+
+export default pure(Home);
