@@ -1,7 +1,17 @@
-export default (actionType) =>
-  ['REQUEST', 'SUCCESS', 'FAILURE'].reduce((requestTypes, reqType) => {
-    // eslint-disable-next-line no-param-reassign
-    requestTypes[reqType] = `${actionType}_${reqType}`;
+const REQUEST_TYPES = ['REQUEST', 'SUCCESS', 'FAILURE'];
 
-    return requestTypes;
-  }, {});
+export default (actionType) =>
+  (Array.isArray(actionType) ? actionType : [actionType]).reduce(
+    (reqActionTypes, currActionType) => {
+      // eslint-disable-next-line no-param-reassign
+      reqActionTypes[currActionType] = REQUEST_TYPES.reduce((requestTypes, reqType) => {
+        // eslint-disable-next-line no-param-reassign
+        requestTypes[reqType] = `${currActionType}_${reqType}`;
+
+        return requestTypes;
+      }, {});
+
+      return reqActionTypes;
+    },
+    {}
+  );

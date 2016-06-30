@@ -5,9 +5,7 @@ import createRequestActionTypes from '../app/utils/createRequestActionTypes';
 
 const SIGN_IN = 'SIGN_IN';
 
-export const actionTypes = {
-  [SIGN_IN]: createRequestActionTypes(SIGN_IN),
-};
+export const actionTypes = createRequestActionTypes(SIGN_IN);
 
 export const actionCreators = {
   signIn: createAction(
