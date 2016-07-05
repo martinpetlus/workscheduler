@@ -4,38 +4,38 @@ apply plugin: 'idea'
 sourceCompatibility = 1.8
 
 repositories {
-    jcenter()
+  jcenter()
 }
 
 dependencies {
-    compile 'com.google.code.gson:gson:2.6.2'
+  compile 'com.google.code.gson:gson:2.6.2'
 
-    testCompile 'junit:junit:4.12'
-    testCompile 'org.powermock:powermock-mockito-release-full:1.6.4'
-    testCompile 'org.easymock:easymock:3.4'
-    testCompile 'org.powermock:powermock-api-easymock:1.6.4'
+  testCompile 'junit:junit:4.12'
+  testCompile 'org.powermock:powermock-mockito-release-full:1.6.4'
+  testCompile 'org.easymock:easymock:3.4'
+  testCompile 'org.powermock:powermock-api-easymock:1.6.4'
 }
 
 sourceSets {
-    main {
-        java {
-            srcDir 'src/core/main/java'
-        }
+  main {
+    java {
+      srcDir 'src/core/main/java'
     }
-    test {
-        java {
-            srcDir 'src/core/test/java'
-        }
+  }
+  test {
+    java {
+      srcDir 'src/core/test/java'
     }
+  }
 }
 
 jar {
-    manifest {
-        attributes 'Main-Class': 'workscheduler.Core'
-    }
+  manifest {
+    attributes 'Main-Class': 'workscheduler.Core'
+  }
 
-    // http://stackoverflow.com/questions/4871656/using-gradle-to-build-a-jar-with-dependencies
-    from {
-        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
-    }
+  // http://stackoverflow.com/questions/4871656/using-gradle-to-build-a-jar-with-dependencies
+  from {
+    configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+  }
 }
