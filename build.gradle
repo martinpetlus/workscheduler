@@ -1,11 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'idea'
-apply plugin: 'war'
-apply plugin: 'jetty'
 
 sourceCompatibility = 1.8
-
-webAppDirName = 'src/core/main/webapp'
 
 repositories {
   jcenter()
@@ -13,8 +9,6 @@ repositories {
 
 dependencies {
   compile 'com.google.code.gson:gson:2.6.2'
-
-  compile 'org.glassfish.jersey.containers:jersey-container-servlet:2.23.1'
 
   testCompile 'junit:junit:4.12'
   testCompile 'org.powermock:powermock-mockito-release-full:1.6.4'
@@ -32,5 +26,16 @@ sourceSets {
     java {
       srcDir 'src/core/test/java'
     }
+  }
+}
+
+jar {
+  manifest {
+    attributes 'Main-Class': 'workscheduler.Core'
+  }
+
+  // http://stackoverflow.com/questions/4871656/using-gradle-to-build-a-jar-with-dependencies
+  from {
+    configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
   }
 }
