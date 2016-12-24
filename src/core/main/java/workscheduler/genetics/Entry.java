@@ -23,6 +23,6 @@ public final class Entry {
   }
 
   public void setValue(final double value) {
-      this.value = value;
+    this.value = value;
   }
 }
