@@ -15,5 +15,7 @@ const rootReducer = combineReducers({
 
 export default rootReducer;
 
+export const getUser = (state) => state.get('user');
+
 export const getWorkSchedule = (state) =>
   fromHome.getWorkSchedule(state.get('home'));
