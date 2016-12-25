@@ -90,7 +90,7 @@ public final class GeneticAlgorithm {
         .get();
 
       if (best.getValue() >= 0) {
-        System.out.println(best.getValue());
+        System.out.println(this.factory.toJson(best.getChromosome()));
         break;
       }
 

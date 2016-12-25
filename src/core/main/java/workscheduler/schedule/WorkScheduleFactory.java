@@ -1,5 +1,7 @@
 package workscheduler.schedule;
 
+import com.google.gson.Gson;
+
 import workscheduler.genetics.Chromosome;
 import workscheduler.genetics.ChromosomeFactory;
 import workscheduler.genetics.Entry;
@@ -14,6 +16,8 @@ import java.util.Comparator;
 import java.util.List;
 
 public final class WorkScheduleFactory implements ChromosomeFactory {
+  private static final Gson gson = new Gson();
+
   public static final Comparator<Entry> DESCENDING =
     (final Entry entry1, final Entry entry2) ->
       (int) (entry2.getValue() - entry1.getValue());
@@ -52,5 +56,10 @@ public final class WorkScheduleFactory implements ChromosomeFactory {
   @Override
   public Comparator<Entry> descending() {
     return DESCENDING;
+  }
+
+  @Override
+  public String toJson(final Chromosome chromosome) {
+    return gson.toJson(WorkSchedule.of(props, chromosome));
   }
 }
