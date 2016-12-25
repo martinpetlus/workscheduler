@@ -75,8 +75,6 @@ public final class GeneticAlgorithm {
     int generation = 1;
 
     while (true) {
-      System.out.println(generation++);
-
       List<Entry> entries = this.population
         .stream()
         .map(chromosome -> Entry.of(chromosome, chromosome.fitness()))

@@ -18,7 +18,6 @@ public final class Core {
     Gson gson = new Gson();
 
     SerializableScheduleOptions opts = gson.fromJson(args[0], SerializableScheduleOptions.class);
-    System.out.println(opts);
 
     ChromosomeFactory factory = new WorkScheduleFactory(opts.toScheduleOptions());
 
