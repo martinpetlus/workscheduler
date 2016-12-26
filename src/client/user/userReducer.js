@@ -12,7 +12,7 @@ const initialState = Map({
 });
 
 const saveUserToStorage = user => {
-  const { id, name, email, authenticated } = user.toJSON();
+  const { id, name, email, authenticated } = user.toJS();
   localStorage.setItem('id', id);
   localStorage.setItem('name', name);
   localStorage.setItem('email', email);
@@ -23,7 +23,7 @@ export default function userReducer(state = initialState, action) {
   switch (action.type) {
     case actionTypes.SIGN_IN.REQUEST:
       return state.merge({
-        ...state.toJSON(),
+        ...state.toJS(),
         authenticated: false,
         authenticating: true,
         authenticationError: null,
