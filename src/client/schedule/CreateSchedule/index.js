@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import AppBar from 'material-ui/AppBar';
 import { compose } from 'recompose';
 import TextField from 'material-ui/TextField';
@@ -11,53 +11,60 @@ import {
 
 import schema from './schema';
 import getFormState from '../../app/utils/getFormState';
+import { actionCreators } from '../scheduleActions';
 
 export function CreateSchedule({
   fields: { name, weeks, employees },
   submitting,
   handleSubmit,
+  createSchedule,
 }) {
   return (
-    <div>
+    <form
+      onSubmit={handleSubmit(createSchedule)}
+    >
       <AppBar
         title="Create Schedule"
         iconElementRight={
-          <FlatButton label="Create" disabled={submitting} />
+          <FlatButton
+            type="submit"
+            label="Create"
+            disabled={submitting}
+          />
         }
-        onRightIconButtonTouchTap={event => event}
       />
       <Paper zDeph={2}>
-        <form
-          onSubmit={handleSubmit(x => x)}
-        >
-          <TextField
-            type="text"
-            floatingLabelText="Schedule name"
-            {...name}
-            errorText={name.error}
-          />
-          <br />
-          <TextField
-            type="number"
-            floatingLabelText="Schedule work weeks"
-            {...weeks}
-            errorText={weeks.error}
-          />
-          <br />
-          <TextField
-            type="number"
-            floatingLabelText="Number of empoyees"
-            {...employees}
-            errorText={employees.error}
-          />
-        </form>
+        <TextField
+          name="name"
+          floatingLabelText="Schedule name"
+          autoComplete="off"
+          {...name}
+          errorText={name.error}
+        />
+        <br />
+        <TextField
+          type="number"
+          name="weeks"
+          floatingLabelText="Schedule work weeks"
+          {...weeks}
+          errorText={weeks.error}
+        />
+        <br />
+        <TextField
+          type="number"
+          name="employees"
+          floatingLabelText="Number of employees"
+          {...employees}
+          errorText={employees.error}
+        />
       </Paper>
-    </div>
+    </form>
   );
 }
 
 CreateSchedule.propTypes = {
   ...reduxFormPropTypes,
+  createSchedule: PropTypes.func.isRequired,
 };
 
 export default compose(
@@ -67,6 +74,8 @@ export default compose(
       fields: schema.fields,
       validate: schema.validate,
       getFormState,
-    }
+    },
+    null,
+    actionCreators
   )
 )(CreateSchedule);
