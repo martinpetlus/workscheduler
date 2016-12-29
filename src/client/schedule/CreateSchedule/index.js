@@ -22,6 +22,7 @@ export function CreateSchedule({
   return (
     <form
       onSubmit={handleSubmit(createSchedule)}
+      noValidate
     >
       <AppBar
         title="Create Schedule"
@@ -39,7 +40,7 @@ export function CreateSchedule({
           floatingLabelText="Schedule name"
           autoComplete="off"
           {...name}
-          errorText={name.error}
+          errorText={name.touched && name.error}
         />
         <br />
         <TextField
@@ -47,7 +48,7 @@ export function CreateSchedule({
           name="weeks"
           floatingLabelText="Schedule work weeks"
           {...weeks}
-          errorText={weeks.error}
+          errorText={weeks.touched && weeks.error}
         />
         <br />
         <TextField
@@ -55,7 +56,7 @@ export function CreateSchedule({
           name="employees"
           floatingLabelText="Number of employees"
           {...employees}
-          errorText={employees.error}
+          errorText={employees.touched && employees.error}
         />
       </Paper>
     </form>

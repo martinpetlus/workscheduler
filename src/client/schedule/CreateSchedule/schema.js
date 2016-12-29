@@ -2,6 +2,7 @@ import buildSchema from 'redux-form-schema';
 
 const schema = {
   name: {
+    label: 'Schedule name',
     required: true,
     validate: {
       length: {
@@ -11,6 +12,7 @@ const schema = {
     },
   },
   weeks: {
+    label: 'Weeks',
     required: true,
     validate: {
       int: {
@@ -20,6 +22,7 @@ const schema = {
     },
   },
   employees: {
+    label: 'Employees',
     required: true,
     validate: {
       int: {
