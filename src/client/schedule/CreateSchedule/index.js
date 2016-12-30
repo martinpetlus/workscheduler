@@ -13,7 +13,7 @@ import { connect } from 'react-redux';
 
 import schema from './schema';
 import { actionCreators } from '../scheduleActions';
-import { valuesToJS } from '../../app/utils/reduxForm';
+import { valuesToJS, parseNumber } from '../../app/utils/reduxForm';
 
 export function CreateSchedule({
   submitting,
@@ -47,6 +47,7 @@ export function CreateSchedule({
         <Field
           type="number"
           name="weeks"
+          parse={parseNumber}
           component={TextField}
           floatingLabelText="Schedule work weeks"
         />
@@ -54,6 +55,7 @@ export function CreateSchedule({
         <Field
           type="number"
           name="employees"
+          parse={parseNumber}
           component={TextField}
           floatingLabelText="Number of employees"
         />
