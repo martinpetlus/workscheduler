@@ -10,6 +10,7 @@ import TextField from 'material-ui/TextField';
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
 import AppBar from 'material-ui/AppBar';
+import { connect } from 'react-redux';
 
 import { actionCreators } from '../userActions';
 import schema from './schema';
@@ -65,14 +66,11 @@ SignIn.propTypes = {
 };
 
 export default compose(
-  reduxForm(
-    {
-      form: 'signIn',
-      fields: schema.fields,
-      validate: schema.validate,
-    },
-    null,
-    actionCreators
-  ),
+  reduxForm({
+    form: 'signIn',
+    fields: schema.fields,
+    validate: schema.validate,
+  }),
+  connect(null, actionCreators),
   CSSModules
 )(SignIn, styles);
