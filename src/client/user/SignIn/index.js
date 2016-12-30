@@ -3,23 +3,25 @@ import { compose } from 'recompose';
 import CSSModules from 'react-css-modules';
 import {
   reduxForm,
+  Field,
   propTypes as reduxFormPropTypes,
 } from 'redux-form/immutable';
 import RaisedButton from 'material-ui/RaisedButton';
-import TextField from 'material-ui/TextField';
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
 import AppBar from 'material-ui/AppBar';
 import { connect } from 'react-redux';
+import { TextField } from 'redux-form-material-ui';
 
 import { actionCreators } from '../userActions';
 import schema from './schema';
 import styles from './styles.scss';
+import { valuesToJS } from '../../app/utils/reduxForm';
 
 export function SignIn({
   signIn,
-  fields: { email, password },
   submitting,
+  pristine,
   handleSubmit,
   location,
 }) {
@@ -30,20 +32,22 @@ export function SignIn({
       <AppBar title="Sign in" showMenuIconButton={false} />
       <Paper zDeph={2} styleName="wrapper">
         <form onSubmit={handleSubmit(signIn.bind(null, nextPathname))}>
-          <TextField
+          <Field
+            name="email"
             type="email"
+            component={TextField}
             floatingLabelText="Your email"
             underlineShow={false}
             fullWidth
-            {...email}
           />
           <Divider />
-          <TextField
+          <Field
+            name="password"
             type="password"
+            component={TextField}
             floatingLabelText="Your password"
             underlineShow={false}
             fullWidth
-            {...password}
           />
           <Divider />
           <div styleName="controls">
@@ -51,7 +55,7 @@ export function SignIn({
               type="submit"
               primary
               label="Sign in"
-              disabled={submitting}
+              disabled={submitting || pristine}
             />
           </div>
         </form>
@@ -69,7 +73,7 @@ export default compose(
   reduxForm({
     form: 'signIn',
     fields: schema.fields,
-    validate: schema.validate,
+    validate: valuesToJS(schema.validate),
   }),
   connect(null, actionCreators),
   CSSModules
