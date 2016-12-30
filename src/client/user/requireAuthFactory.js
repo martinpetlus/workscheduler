@@ -1,7 +1,7 @@
-import { getUser } from '../app/reducers';
+import { userSelector } from '../app/reducers';
 
 export default (store) => (nextState, replace) => {
-  const authenticated = getUser(store.getState()).get('authenticated');
+  const authenticated = userSelector(store.getState()).get('authenticated');
 
   if (!authenticated) {
     replace({

@@ -14,7 +14,7 @@ const rootReducer = combineReducers({
 
 export default rootReducer;
 
-export const getUser = (state) => state.get('user');
+export const userSelector = (state) => state.get('user');
 
 export const scheduleSelector = state => state.get('schedule');
 
