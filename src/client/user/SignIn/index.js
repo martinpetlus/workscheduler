@@ -4,7 +4,7 @@ import CSSModules from 'react-css-modules';
 import {
   reduxForm,
   propTypes as reduxFormPropTypes,
-} from 'redux-form';
+} from 'redux-form/immutable';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import Divider from 'material-ui/Divider';
@@ -13,7 +13,6 @@ import AppBar from 'material-ui/AppBar';
 
 import { actionCreators } from '../userActions';
 import schema from './schema';
-import getFormState from '../../app/utils/getFormState';
 import styles from './styles.scss';
 
 export function SignIn({
@@ -71,7 +70,6 @@ export default compose(
       form: 'signIn',
       fields: schema.fields,
       validate: schema.validate,
-      getFormState,
     },
     null,
     actionCreators

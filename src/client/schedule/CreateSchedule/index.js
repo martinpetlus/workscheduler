@@ -1,21 +1,23 @@
 import React, { PropTypes } from 'react';
 import AppBar from 'material-ui/AppBar';
 import { compose } from 'recompose';
-import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
 import FlatButton from 'material-ui/FlatButton';
 import {
   reduxForm,
+  Field,
   propTypes as reduxFormPropTypes,
-} from 'redux-form';
+} from 'redux-form/immutable';
+import { TextField } from 'redux-form-material-ui';
+import { connect } from 'react-redux';
 
 import schema from './schema';
-import getFormState from '../../app/utils/getFormState';
 import { actionCreators } from '../scheduleActions';
+import { valuesToJS } from '../../app/utils/reduxForm';
 
 export function CreateSchedule({
-  fields: { name, weeks, employees },
   submitting,
+  pristine,
   handleSubmit,
   createSchedule,
 }) {
@@ -30,33 +32,30 @@ export function CreateSchedule({
           <FlatButton
             type="submit"
             label="Create"
-            disabled={submitting}
+            disabled={submitting || pristine}
           />
         }
       />
       <Paper zDeph={2}>
-        <TextField
+        <Field
           name="name"
+          component={TextField}
           floatingLabelText="Schedule name"
           autoComplete="off"
-          {...name}
-          errorText={name.touched && name.error}
         />
         <br />
-        <TextField
+        <Field
           type="number"
           name="weeks"
+          component={TextField}
           floatingLabelText="Schedule work weeks"
-          {...weeks}
-          errorText={weeks.touched && weeks.error}
         />
         <br />
-        <TextField
+        <Field
           type="number"
           name="employees"
+          component={TextField}
           floatingLabelText="Number of employees"
-          {...employees}
-          errorText={employees.touched && employees.error}
         />
       </Paper>
     </form>
@@ -69,14 +68,10 @@ CreateSchedule.propTypes = {
 };
 
 export default compose(
-  reduxForm(
-    {
-      form: 'createSchedule',
-      fields: schema.fields,
-      validate: schema.validate,
-      getFormState,
-    },
-    null,
-    actionCreators
-  )
+  reduxForm({
+    form: 'createSchedule',
+    fields: schema.fields,
+    validate: valuesToJS(schema.validate),
+  }),
+  connect(null, actionCreators)
 )(CreateSchedule);
