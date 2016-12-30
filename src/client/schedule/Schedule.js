@@ -1,12 +1,33 @@
-import React from 'react';
-import { pure } from 'recompose';
+import React, { PropTypes } from 'react';
+import { pure, compose } from 'recompose';
+import { connect } from 'react-redux';
 
 import CreateSchedule from './CreateSchedule';
+import { isScheduleCreating } from './scheduleReducer';
+import { scheduleSelector } from '../app/reducers';
 
-export function Schedule() {
+export function Schedule({
+  creating,
+}) {
   return (
-    <CreateSchedule />
+    <div>
+      {creating && 'Schedule creation in progress'}
+      <CreateSchedule />
+    </div>
   );
 }
 
-export default pure(Schedule);
+Schedule.propTypes = {
+  creating: PropTypes.bool.isRequired,
+};
+
+function mapStateToProps(state) {
+  return {
+    creating: isScheduleCreating(scheduleSelector(state)),
+  };
+}
+
+export default compose(
+  connect(mapStateToProps),
+  pure
+)(Schedule);
