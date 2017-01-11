@@ -1,16 +1,27 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import AppBar from 'material-ui/AppBar';
-import { pure } from 'recompose';
+import { compose } from 'recompose';
+import { connect } from 'react-redux';
 
 import WorkSchedule from './WorkSchedule';
+import { actionCreators } from '../app/App/actions';
 
-export function Home() {
+export function Home(props) {
   return (
     <div>
-      <AppBar title="Home" />
+      <AppBar
+        title="Home"
+        onLeftIconButtonTouchTap={props.openDrawer}
+      />
       <WorkSchedule />
     </div>
   );
 }
 
-export default pure(Home);
+Home.propTypes = {
+  openDrawer: PropTypes.func.isRequired,
+};
+
+export default compose(
+  connect(null, actionCreators)
+)(Home);

@@ -4,8 +4,10 @@ import { reducer as form } from 'redux-form/immutable';
 import home, * as fromHome from '../home/homeReducer';
 import user from '../user/userReducer';
 import schedule from '../schedule/scheduleReducer';
+import app from './App/reducer';
 
 const rootReducer = combineReducers({
+  app,
   home,
   user,
   form,
@@ -13,6 +15,8 @@ const rootReducer = combineReducers({
 });
 
 export default rootReducer;
+
+export const appSelector = (state) => state.get('app');
 
 export const userSelector = (state) => state.get('user');
 
