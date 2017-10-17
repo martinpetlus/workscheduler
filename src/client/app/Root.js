@@ -1,12 +1,11 @@
 import React, { PropTypes } from 'react';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux';
 import { injectGlobal, ThemeProvider } from 'styled-components';
 
 import App from 'containers/App';
 import Home from 'pages/Home';
 import SignIn from 'pages/SignIn';
-// import Schedule from '../schedule/Schedule';
 import requireAuthFactory from 'modules/user/requireAuthFactory';
 
 // eslint-disable-next-line no-unused-expressions
@@ -28,17 +27,16 @@ const theme = {
   headerHeight: 35,
 };
 
-const Root = ({ store }) => {
+const Root = ({ store, history }) => {
   const requireAuth = requireAuthFactory(store);
 
   return (
     <ThemeProvider theme={theme}>
-      <Provider {...{ store }}>
-        <Router history={browserHistory}>
+      <Provider store={store}>
+        <Router history={history}>
           <Route path="/" component={App}>
             <IndexRoute onEnter={requireAuth} component={Home} />
             <Route path="signin" component={SignIn} />
-            {/* <Route path="schedule" onEnter={requireAuth} component={Schedule} /> */}
           </Route>
         </Router>
       </Provider>
@@ -48,6 +46,7 @@ const Root = ({ store }) => {
 
 Root.propTypes = {
   store: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 export default Root;

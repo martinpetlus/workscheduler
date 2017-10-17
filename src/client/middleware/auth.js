@@ -1,19 +1,17 @@
-import { hashHistory } from 'react-router';
-
 import { actionTypes } from 'modules/user';
 
-export default function authMiddleware() {
+export default function authMiddleware(history) {
   return () => (next) => (action) => {
     const { type, meta } = action;
 
-    const ret = next(action);
+    const result = next(action);
 
     if (meta &&
         meta.nextPathname &&
         type === actionTypes.SIGN_IN.SUCCESS) {
-      hashHistory.replace(meta.nextPathname);
+      history.replace(meta.nextPathname);
     }
 
-    return ret;
+    return result;
   };
 }

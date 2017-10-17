@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { exec } from 'child_process';
 
-const router = Router();
+const router = new Router();
 
 router.post('/', (req, res) => {
   res.status(200).end();

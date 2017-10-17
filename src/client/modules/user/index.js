@@ -11,7 +11,7 @@ const localState = localStateFactory(moduleName);
 const getIsAuthenticated = globalizeSelector(localState, fromReducer.getIsAuthenticated);
 const getUser = globalizeSelector(localState, fromReducer.getUser);
 
-export { actionCreator, actionTypes } from './UserActions';
+export { actionCreators, actionTypes } from './UserActions';
 
 export {
   moduleName,

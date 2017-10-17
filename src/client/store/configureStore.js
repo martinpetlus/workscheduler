@@ -5,12 +5,11 @@ import rootReducer from '../app/reducers';
 import authMiddleware from '../middleware/auth';
 import { REQUEST_TYPES } from 'utils/createRequestActionTypes';
 
-export default function configureStore(initialState) {
+export default function configureStore(history) {
   const store = createStore(
     rootReducer,
-    initialState,
     applyMiddleware(
-      authMiddleware(),
+      authMiddleware(history),
       promiseMiddleware({
         promiseTypeSuffixes: REQUEST_TYPES,
       })
