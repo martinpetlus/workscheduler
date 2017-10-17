@@ -10,7 +10,7 @@ export const actionTypes = createRequestActionTypes(SIGN_IN);
 export const actionCreators = {
   signIn: createAction(
     SIGN_IN,
-    (nextPathname, credentials) => axios.post('/signin', credentials),
+    (nextPathname, credentials) => axios.post('/api/signin', credentials),
     (nextPathname) => ({ nextPathname })
   ),
 };
