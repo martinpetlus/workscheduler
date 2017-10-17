@@ -2,17 +2,14 @@ import 'babel-polyfill';
 
 import React from 'react';
 import { render } from 'react-dom';
-import { Map } from 'immutable';
 
 import Root from './app/Root';
-import configureStore from './app/configureStore';
+import configureStore from './store/configureStore';
 
-const initialState = Map();
-
-const store = configureStore(initialState);
+const store = configureStore({});
 
 render(
-  <Root {...{ store }} />,
+  <Root store={store} />,
   document.getElementById('root')
 );
 

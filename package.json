@@ -25,6 +25,7 @@
   "dependencies": {
     "axios": "^0.12.0",
     "body-parser": "^1.15.1",
+    "eslint-import-resolver-alias": "^1.0.3",
     "express": "^4.13.4",
     "immutable": "^3.8.1",
     "material-ui": "^0.15.0",
@@ -38,9 +39,9 @@
     "redux-actions": "^0.9.1",
     "redux-form": "^6.4.2",
     "redux-form-material-ui": "^4.1.2",
-    "redux-form-schema": "0.0.3",
     "redux-immutable": "^3.0.6",
-    "redux-promise-middleware": "^3.0.0"
+    "redux-promise-middleware": "^3.0.0",
+    "styled-components": "^2.2.1"
   },
   "devDependencies": {
     "babel-loader": "^6.2.4",
@@ -66,8 +67,5 @@
     "webpack": "^1.13.1",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.10.0"
-  },
-  "engines": {
-    "node": "6.2.x"
   }
 }

@@ -7,7 +7,7 @@ import router from './controllers';
 export default (app) => {
   app.use(bodyParser.json());
 
-  app.use('/', express.static(path.join(__dirname, '../../dist')));
+  app.use('/', express.static(path.join(__dirname, '..', '..', 'dist')));
 
   app.use(router);
 };
