@@ -1,24 +1,24 @@
 import React, { PropTypes } from 'react';
 
 import Input from 'components/Input';
-import InputRow from 'components/InputRow';
+import FormGroup from 'components/FormGroup';
 
-const renderInputRow = ({
+const renderFormGroup = ({
   input,
   label,
   type,
   meta: { touched, error, warning },
 }) => (
-  <InputRow
+  <FormGroup
     label={label}
     error={touched && error}
     warning={touched && warning}
   >
     <Input {...input} placeholder={label} type={type} />
-  </InputRow>
+  </FormGroup>
 );
 
-renderInputRow.propTypes = {
+renderFormGroup.propTypes = {
   input: PropTypes.object.isRequired,
   label: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
@@ -29,7 +29,7 @@ renderInputRow.propTypes = {
   }),
 };
 
-export { renderInputRow };
+export { renderFormGroup };
 
 export const required = value => (value ? undefined : 'Required');
 

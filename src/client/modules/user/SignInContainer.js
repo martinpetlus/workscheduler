@@ -6,8 +6,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
 import Button from 'components/Button';
-import InputRowDivider from 'components/InputRowDivider';
-import { renderInputRow, required, email, minLength } from 'utils/reduxForm';
+import FormGroupSeparator from 'components/FormGroupSeparator';
+import { renderFormGroup, required, email, minLength } from 'utils/reduxForm';
 import { actionCreators } from './UserActions';
 
 const ButtonsWrapper = styled.div`
@@ -29,17 +29,17 @@ const SignIn = ({
     <Field
       name="email"
       type="text"
-      component={renderInputRow}
+      component={renderFormGroup}
       label="Email"
       validate={[required, email]}
     />
-    <InputRowDivider />
+    <FormGroupSeparator />
     <Field
       name="password"
       type="password"
-      component={renderInputRow}
+      component={renderFormGroup}
       label="Password"
-      validate={[required, minLength(7)]}
+      validate={[required, minLength(5)]}
     />
     <ButtonsWrapper>
       <Button type="submit" disabled={submitting}>Sign in</Button>

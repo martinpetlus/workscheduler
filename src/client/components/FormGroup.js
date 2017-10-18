@@ -11,28 +11,28 @@ const Error = styled.div`
   text-align: right;
 `;
 
-const StyledInputRow = styled.div`
+const StyledFormGroup = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 5px;
 `;
 
-const InputRow = ({ label, children, error, warning }) => (
+const FormGroup = ({ label, children, error, warning }) => (
   <div>
-    <StyledInputRow>
+    <StyledFormGroup>
       <label>{label}</label>
       {children}
-    </StyledInputRow>
+    </StyledFormGroup>
     {error && <Error>{error}</Error>}
     {!error && warning && <Warning>{warning}</Warning>}
   </div>
 );
 
-InputRow.propTypes = {
+FormGroup.propTypes = {
   label: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   error: PropTypes.string,
   warning: PropTypes.string,
 };
 
-export default InputRow;
+export default FormGroup;
