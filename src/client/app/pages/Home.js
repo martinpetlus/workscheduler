@@ -1,5 +1,12 @@
 import React from 'react';
+import { compose } from 'recompose';
 
-export default () => (
+import withWindowTitle from 'components/withWindowTitle';
+
+const HomePage = () => (
   <div>Hello World!!!</div>
 );
+
+export default compose(
+  withWindowTitle('Home')
+)(HomePage);

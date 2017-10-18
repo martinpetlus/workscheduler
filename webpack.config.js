@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const config = require('./config');
 
 module.exports = {
   entry: [
@@ -46,5 +47,8 @@ module.exports = {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin({
+      APP_NAME: JSON.stringify(config.appName),
+    }),
   ],
 };
