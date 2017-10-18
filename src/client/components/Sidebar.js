@@ -11,6 +11,7 @@ const Nav = styled.nav`
   width: ${(props) => props.theme.sidebarWidth}px;
   background: #efefef;
   z-index: 1;
+  padding-left: 10px;
 `;
 
 const Sidebar = ({ onNewWorkScheduleClick }) => (
