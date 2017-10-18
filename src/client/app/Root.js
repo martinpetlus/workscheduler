@@ -4,8 +4,8 @@ import { Provider } from 'react-redux';
 import { injectGlobal, ThemeProvider } from 'styled-components';
 
 import App from 'containers/App';
-import Home from 'pages/Home';
-import SignIn from 'pages/SignIn';
+import HomePage from 'pages/HomePage';
+import SignInPage from 'pages/SignInPage';
 import requireAuthFactory from 'modules/user/requireAuthFactory';
 
 // eslint-disable-next-line no-unused-expressions
@@ -36,8 +36,8 @@ const Root = ({ store, history }) => {
       <Provider store={store}>
         <Router history={history}>
           <Route path="/" component={App}>
-            <IndexRoute onEnter={requireAuth} component={Home} />
-            <Route path="signin" component={SignIn} />
+            <IndexRoute onEnter={requireAuth} component={HomePage} />
+            <Route path="signin" component={SignInPage} />
           </Route>
         </Router>
       </Provider>
