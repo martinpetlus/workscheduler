@@ -2,7 +2,7 @@ import localStateFactory from 'utils/localStateFactory';
 import globalizeSelector from 'utils/globalizeSelector';
 import reducer, * as fromReducer from './userReducer';
 import requireAuthFactory from './requireAuthFactory';
-import SignIn from './containers/SignIn';
+import SignInForm from './containers/SignInForm';
 
 const moduleName = 'user';
 
@@ -19,6 +19,6 @@ export {
   requireAuthFactory,
   getIsAuthenticated,
   getUser,
-  SignIn,
+  SignInForm,
 };
 

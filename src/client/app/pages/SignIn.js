@@ -2,10 +2,14 @@ import React from 'react';
 import { compose } from 'recompose';
 
 import withWindowTitle from 'components/withWindowTitle';
-import { SignIn } from 'modules/user';
+import { SignInForm } from 'modules/user';
 
 const SignInPage = () => (
-  <SignIn />
+  <div>
+    <h2>Sign in</h2>
+    <hr />
+    <SignInForm />
+  </div>
 );
 
 export default compose(

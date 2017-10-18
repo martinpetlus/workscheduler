@@ -15,7 +15,7 @@ const FormFooter = styled.div`
   text-align: right;
 `;
 
-const SignIn = ({
+const SignInForm = ({
   handleSubmit,
   submitting,
   signIn,
@@ -24,8 +24,6 @@ const SignIn = ({
   <form
     onSubmit={handleSubmit(signIn.bind(null, (state && state.nextPathname) || '/'))}
   >
-    <h2>Sign in</h2>
-    <hr />
     <Field
       id="signin-email"
       name="email"
@@ -49,7 +47,7 @@ const SignIn = ({
   </form>
 );
 
-SignIn.propTypes = {
+SignInForm.propTypes = {
   ...propTypes,
 };
 
@@ -57,4 +55,4 @@ export default compose(
   withRouter,
   reduxForm({ form: 'signIn' }),
   connect(null, actionCreators)
-)(SignIn);
+)(SignInForm);
