@@ -27,18 +27,20 @@ const SignIn = ({
     <h2>Sign in</h2>
     <hr />
     <Field
+      id="signin-email"
       name="email"
       type="text"
-      component={renderFormGroup}
       label="Email"
+      component={renderFormGroup}
       validate={[required, email]}
     />
     <FormGroupSeparator />
     <Field
+      id="signin-password"
       name="password"
       type="password"
-      component={renderFormGroup}
       label="Password"
+      component={renderFormGroup}
       validate={[required, minLength(5)]}
     />
     <ButtonsWrapper>

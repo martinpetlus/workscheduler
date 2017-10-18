@@ -4,21 +4,24 @@ import Input from 'components/Input';
 import FormGroup from 'components/FormGroup';
 
 const renderFormGroup = ({
+  id,
   input,
   label,
   type,
   meta: { touched, error, warning },
 }) => (
   <FormGroup
+    id={id}
     label={label}
     error={touched && error}
     warning={touched && warning}
   >
-    <Input {...input} placeholder={label} type={type} />
+    <Input {...input} id={id} placeholder={label} type={type} />
   </FormGroup>
 );
 
 renderFormGroup.propTypes = {
+  id: PropTypes.string.isRequired,
   input: PropTypes.object.isRequired,
   label: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
