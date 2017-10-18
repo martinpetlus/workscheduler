@@ -25,6 +25,7 @@ injectGlobal`
 
 const theme = {
   headerHeight: 42,
+  sidebarWidth: 300,
 };
 
 const Root = ({ store, history }) => {
