@@ -1,4 +1,4 @@
-import { actionTypes } from 'modules/user';
+import { SUCCESS_TYPE } from 'utils/createRequestActionTypes';
 
 export default function authMiddleware(history) {
   return () => (next) => (action) => {
@@ -8,7 +8,7 @@ export default function authMiddleware(history) {
 
     if (meta &&
         meta.nextPathname &&
-        type === actionTypes.SIGN_IN.SUCCESS) {
+        type.endsWith(SUCCESS_TYPE)) {
       history.replace(meta.nextPathname);
     }
 

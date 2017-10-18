@@ -1,4 +1,8 @@
-export const REQUEST_TYPES = ['REQUEST', 'SUCCESS', 'FAILURE'];
+export const REQUEST_TYPE = 'REQUEST';
+export const SUCCESS_TYPE = 'SUCCESS';
+export const FAILURE_TYPE = 'FAILURE';
+
+export const REQUEST_TYPES = [REQUEST_TYPE, SUCCESS_TYPE, FAILURE_TYPE];
 
 export default (actionType) =>
   (Array.isArray(actionType) ? actionType : [actionType]).reduce(

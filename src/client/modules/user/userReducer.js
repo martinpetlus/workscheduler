@@ -31,6 +31,8 @@ export default (state = initialState, action) => {
         authenticationError: action.payload,
       };
     }
+    case actionTypes.SIGN_OUT.SUCCESS:
+      return initialState;
     default:
       return state;
   }

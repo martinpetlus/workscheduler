@@ -24,7 +24,7 @@ injectGlobal`
 `;
 
 const theme = {
-  headerHeight: 35,
+  headerHeight: 42,
 };
 
 const Root = ({ store, history }) => {
