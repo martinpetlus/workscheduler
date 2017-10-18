@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
-import HeaderContainer from './HeaderContainer';
+import Header from './Header';
 
 const ContentWrapper = styled.div`
   width: 700px;
@@ -14,7 +14,7 @@ const ContentWrapper = styled.div`
 export function App({ children }) {
   return (
     <div>
-      <HeaderContainer />
+      <Header />
       <ContentWrapper>
         {children}
       </ContentWrapper>
