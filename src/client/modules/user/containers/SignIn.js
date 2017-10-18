@@ -7,8 +7,8 @@ import { withRouter } from 'react-router';
 
 import Button from 'components/Button';
 import FormGroupSeparator from 'components/FormGroupSeparator';
-import { renderFormGroup, required, email, minLength } from 'utils/reduxForm';
-import { actionCreators } from './UserActions';
+import { renderFormGroup, required, email } from 'utils/reduxForm';
+import { actionCreators } from '../UserActions';
 
 const ButtonsWrapper = styled.div`
   padding-top: 20px;
@@ -41,7 +41,7 @@ const SignIn = ({
       type="password"
       label="Password"
       component={renderFormGroup}
-      validate={[required, minLength(5)]}
+      validate={[required]}
     />
     <ButtonsWrapper>
       <Button type="submit" disabled={submitting}>Sign in</Button>

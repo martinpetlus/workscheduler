@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { SignInContainer } from 'modules/user';
+import { SignIn } from 'modules/user';
 
 export default () => (
-  <SignInContainer />
+  <SignIn />
 );
