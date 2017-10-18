@@ -10,7 +10,7 @@ import FormGroupSeparator from 'components/FormGroupSeparator';
 import { renderFormGroup, required, email } from 'utils/reduxForm';
 import { actionCreators } from '../UserActions';
 
-const ButtonsWrapper = styled.div`
+const FormFooter = styled.div`
   padding-top: 20px;
   text-align: right;
 `;
@@ -43,9 +43,9 @@ const SignIn = ({
       component={renderFormGroup}
       validate={[required]}
     />
-    <ButtonsWrapper>
+    <FormFooter>
       <Button type="submit" disabled={submitting}>Sign in</Button>
-    </ButtonsWrapper>
+    </FormFooter>
   </form>
 );
 
