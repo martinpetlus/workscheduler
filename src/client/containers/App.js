@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-// import injectTapEventPlugin from 'react-tap-event-plugin';
 import { connect } from 'react-redux';
 
 import Header from './Header';
@@ -30,8 +29,6 @@ App.propTypes = {
   children: PropTypes.node.isRequired,
   authenticated: PropTypes.bool.isRequired,
 };
-
-// injectTapEventPlugin();
 
 const mapStateToProps = (state) => ({
   authenticated: getIsAuthenticated(state),
