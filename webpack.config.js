@@ -23,22 +23,24 @@ module.exports = {
     },
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
+        loader: 'babel-loader',
         exclude: /node_modules/,
-        loader: 'babel',
       },
       {
         test: /\.html$/,
-        loader: 'file?name=[name].[ext]',
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]'
+        }
       },
     ],
   },
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
       APP_NAME: JSON.stringify(config.appName),
     }),
