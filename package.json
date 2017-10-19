@@ -2,7 +2,6 @@
   "name": "workscheduler",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha $(find src -path '*Spec.js') --compilers js:babel-register --recursive",
     "test:watch": "npm test -- --watch",
@@ -16,7 +15,7 @@
     "url": "git+https://github.com/martinpetlus/workscheduler.git"
   },
   "private": true,
-  "author": "Martin Petluš",
+  "author": "Martin Petluš <martinpetlus@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/martinpetlus/workscheduler/issues"
