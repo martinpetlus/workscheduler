@@ -7,16 +7,13 @@ import { withRouter } from 'react-router';
 
 import Button from 'components/Button';
 import FormGroupSeparator from 'components/FormGroupSeparator';
+import FormFooter from 'components/FormFooter';
 import { renderFormGroup, required, email } from 'utils/reduxForm';
 import { actionCreators } from '../UserActions';
 
-const FormFooter = styled.div`
-  padding-top: 20px;
-  text-align: right;
-`;
-
 const SignInForm = ({
   handleSubmit,
+  pristine,
   submitting,
   signIn,
   location: { state },
@@ -42,7 +39,7 @@ const SignInForm = ({
       validate={[required]}
     />
     <FormFooter>
-      <Button type="submit" disabled={submitting}>Sign in</Button>
+      <Button type="submit" disabled={pristine || submitting}>Sign in</Button>
     </FormFooter>
   </form>
 );

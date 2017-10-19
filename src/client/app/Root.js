@@ -6,6 +6,7 @@ import { injectGlobal, ThemeProvider } from 'styled-components';
 import App from 'containers/App';
 import HomePage from 'pages/HomePage';
 import SignInPage from 'pages/SignInPage';
+import WorkSchedulesPage from 'pages/WorkSchedulesPage';
 import requireAuthFactory from 'modules/user/requireAuthFactory';
 
 // eslint-disable-next-line no-unused-expressions
@@ -38,6 +39,7 @@ const Root = ({ store, history }) => {
           <Route path="/" component={App}>
             <IndexRoute onEnter={requireAuth} component={HomePage} />
             <Route path="signin" component={SignInPage} />
+            <Route path="workschedules" onEnter={requireAuth} component={WorkSchedulesPage} />
           </Route>
         </Router>
       </Provider>
