@@ -1,9 +1,9 @@
 import { createStore, applyMiddleware } from 'redux';
 import promiseMiddleware from 'redux-promise-middleware';
 
+import { REQUEST_TYPES } from 'utils/createRequestActionTypes';
 import rootReducer from '../app/reducers';
 import authMiddleware from '../middleware/auth';
-import { REQUEST_TYPES } from 'utils/createRequestActionTypes';
 
 export default function configureStore(history) {
   const store = createStore(
@@ -12,8 +12,8 @@ export default function configureStore(history) {
       authMiddleware(history),
       promiseMiddleware({
         promiseTypeSuffixes: REQUEST_TYPES,
-      })
-    )
+      }),
+    ),
   );
 
   if (module.hot) {

@@ -1,1 +1,1 @@
-export default (mountPoint) => (state) => state[mountPoint];
+export default mountPoint => state => state[mountPoint];

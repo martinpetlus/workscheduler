@@ -21,6 +21,7 @@ module.exports = {
       containers: path.join(__dirname, 'src', 'client', 'containers'),
       pages: path.join(__dirname, 'src', 'client', 'app', 'pages'),
     },
+    extensions: ['.js', '.json', '.jsx'],
   },
   module: {
     rules: [

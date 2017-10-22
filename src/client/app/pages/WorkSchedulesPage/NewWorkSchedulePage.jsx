@@ -12,6 +12,4 @@ const NewWorkSchedulePage = () => (
   </div>
 );
 
-export default compose(
-  withWindowTitle('New Work Schedule')
-)(NewWorkSchedulePage);
+export default compose(withWindowTitle('New Work Schedule'))(NewWorkSchedulePage);

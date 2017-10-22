@@ -10,6 +10,6 @@ export const actionTypes = createRequestActionTypes(NEW_WORK_SCHEDULE);
 export const actionCreators = {
   newWorkSchedule: createAction(
     NEW_WORK_SCHEDULE,
-    (options) => axios.post('/api/workschedule', options)
+    options => axios.post('/api/workschedule', options),
   ),
 };

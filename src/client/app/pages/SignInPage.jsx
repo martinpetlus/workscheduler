@@ -12,6 +12,4 @@ const SignInPage = () => (
   </div>
 );
 
-export default compose(
-  withWindowTitle('Sign In')
-)(SignInPage);
+export default compose(withWindowTitle('Sign In'))(SignInPage);

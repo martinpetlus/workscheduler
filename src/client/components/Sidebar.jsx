@@ -6,10 +6,10 @@ import Link from './Link';
 
 const Nav = styled.nav`
   position: fixed;
-  top: ${(props) => props.theme.headerHeight}px;
+  top: ${props => props.theme.headerHeight}px;
   left: 0;
   bottom: 0;
-  width: ${(props) => props.theme.sidebarWidth}px;
+  width: ${props => props.theme.sidebarWidth}px;
   background: #efefef;
   z-index: 1;
   padding-left: 10px;

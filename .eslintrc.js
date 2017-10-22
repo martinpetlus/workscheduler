@@ -1,8 +1,9 @@
 const path = require('path');
 
 module.exports = {
-  extends: "airbnb",
+  extends: 'airbnb',
   env: {
+    browser: true,
     mocha: true
   },
   parserOptions: {
@@ -12,13 +13,9 @@ module.exports = {
   },
   settings: {
     'import/resolver': {
-      'alias': [
-        ['utils', path.join(__dirname, 'src', 'client', 'utils')],
-        ['modules', path.join(__dirname, 'src', 'client', 'modules')],
-        ['components', path.join(__dirname, 'src', 'client', 'components')],
-        ['containers', path.join(__dirname, 'src', 'client', 'containers')],
-        ['pages', path.join(__dirname, 'src', 'client', 'app', 'pages')],
-      ]
+      webpack: {
+        config: path.join(__dirname, 'webpack.config.js')
+      }
     }
   }
-}
+};

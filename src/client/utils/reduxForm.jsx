@@ -30,7 +30,7 @@ renderFormGroup.propTypes = {
     touched: PropTypes.bool.isRequired,
     error: PropTypes.string,
     warning: PropTypes.string,
-  }),
+  }).isRequired,
 };
 
 export { renderFormGroup };
@@ -56,7 +56,7 @@ export const maxLength = max => value => (
 );
 
 export const number = value => (
-  value && isNaN(Number(value))
+  value && Number.isNaN(Number(value))
     ? 'Must be a number'
     : undefined
 );

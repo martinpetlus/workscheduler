@@ -1,6 +1,6 @@
 import { getIsAuthenticated } from './index';
 
-export default (store) => (nextState, replace) => {
+export default store => (nextState, replace) => {
   const authenticated = getIsAuthenticated(store.getState());
 
   if (!authenticated) {

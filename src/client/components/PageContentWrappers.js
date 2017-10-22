@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 const BaseWrapper = styled.div`
-  padding-top: ${(props) => props.theme.headerHeight}px;
+  padding-top: ${props => props.theme.headerHeight}px;
 `;
 
 export const WithSidebar = BaseWrapper.extend`
-  margin-left: ${(props) => props.theme.sidebarWidth}px;
+  margin-left: ${props => props.theme.sidebarWidth}px;
   padding-left: 10px;
   padding-right: 10px
 `;

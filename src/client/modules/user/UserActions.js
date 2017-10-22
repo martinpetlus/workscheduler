@@ -15,11 +15,11 @@ export const actionCreators = {
   signIn: createAction(
     SIGN_IN,
     (nextPathname, credentials) => axios.post('/api/signin', credentials),
-    (nextPathname) => ({ nextPathname })
+    nextPathname => ({ nextPathname }),
   ),
   signOut: createAction(
     SIGN_OUT,
     () => axios.get('/api/signout'),
-    () => ({ nextPathname: '/signin' })
+    () => ({ nextPathname: '/signin' }),
   ),
 };

@@ -7,12 +7,12 @@ import {
   actionCreators,
 } from 'modules/user';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   user: getUser(state),
   authenticated: getIsAuthenticated(state),
 });
 
 export default connect(
   mapStateToProps,
-  { onSignOutClick: actionCreators.signOut }
+  { onSignOutClick: actionCreators.signOut },
 )(Header);

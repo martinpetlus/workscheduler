@@ -4,5 +4,5 @@ import Sidebar from 'components/Sidebar';
 
 export default connect(
   null,
-  { onNewWorkScheduleClick: () => ({}) }
+  { onNewWorkScheduleClick: () => ({}) },
 )(Sidebar);

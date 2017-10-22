@@ -1,7 +1,9 @@
 import express from 'express';
+/* eslint-disable import/no-extraneous-dependencies */
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
+/* eslint-enable import/no-extraneous-dependencies */
 
 import webpackConfig from '../../webpack.config';
 import setup from './setup';

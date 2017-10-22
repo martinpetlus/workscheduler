@@ -7,6 +7,4 @@ const HomePage = () => (
   <div>Hello World!!!</div>
 );
 
-export default compose(
-  withWindowTitle('Home')
-)(HomePage);
+export default compose(withWindowTitle('Home'))(HomePage);

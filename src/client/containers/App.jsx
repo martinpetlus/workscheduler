@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import Header from './Header';
-import Sidebar from './Sidebar';
 import { getIsAuthenticated } from 'modules/user';
 import { WithSidebar, WithoutSidebar } from 'components/PageContentWrappers';
+import Header from './Header';
+import Sidebar from './Sidebar';
 
 export function App({ children, authenticated }) {
   return (
@@ -31,7 +31,7 @@ App.propTypes = {
   authenticated: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   authenticated: getIsAuthenticated(state),
 });
 

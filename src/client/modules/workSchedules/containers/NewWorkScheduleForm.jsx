@@ -67,5 +67,5 @@ NewWorkScheduleForm.propTypes = {
 export default compose(
   withRouter,
   reduxForm({ form: 'newWorkSchedule' }),
-  connect(null, null)
+  connect(null, null),
 )(NewWorkScheduleForm);

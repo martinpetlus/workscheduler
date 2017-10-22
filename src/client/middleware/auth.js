@@ -1,7 +1,7 @@
 import { SUCCESS_TYPE } from 'utils/createRequestActionTypes';
 
 export default function authMiddleware(history) {
-  return () => (next) => (action) => {
+  return () => next => (action) => {
     const { type, meta } = action;
 
     const result = next(action);

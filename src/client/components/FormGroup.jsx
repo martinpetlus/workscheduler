@@ -18,7 +18,13 @@ const StyledFormGroup = styled.div`
   margin-bottom: 5px;
 `;
 
-const FormGroup = ({ id, label, children, error, warning }) => (
+const FormGroup = ({
+  id,
+  label,
+  children,
+  error,
+  warning,
+}) => (
   <div>
     <StyledFormGroup>
       <label htmlFor={id}>{label}</label>
@@ -35,6 +41,11 @@ FormGroup.propTypes = {
   children: PropTypes.node.isRequired,
   error: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   warning: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+};
+
+FormGroup.defaultProps = {
+  error: '',
+  warning: '',
 };
 
 export default FormGroup;

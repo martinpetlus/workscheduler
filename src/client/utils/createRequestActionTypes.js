@@ -4,7 +4,7 @@ export const FAILURE_TYPE = 'FAILURE';
 
 export const REQUEST_TYPES = [REQUEST_TYPE, SUCCESS_TYPE, FAILURE_TYPE];
 
-export default (actionType) =>
+export default actionType =>
   (Array.isArray(actionType) ? actionType : [actionType]).reduce(
     (reqActionTypes, currActionType) => {
       // eslint-disable-next-line no-param-reassign
@@ -17,5 +17,5 @@ export default (actionType) =>
 
       return reqActionTypes;
     },
-    {}
+    {},
   );

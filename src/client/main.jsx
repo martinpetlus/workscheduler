@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import 'babel-polyfill';
 
 import React from 'react';
@@ -11,7 +12,7 @@ const store = configureStore(browserHistory);
 
 render(
   <Root store={store} history={browserHistory} />,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
 if (module.hot) {

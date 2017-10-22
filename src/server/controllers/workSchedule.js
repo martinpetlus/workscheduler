@@ -18,7 +18,7 @@ router.post('/', (req, res) => {
       }
 
       console.log(stdout);
-    }
+    },
   );
 });
 

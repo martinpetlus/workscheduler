@@ -10,7 +10,7 @@ const StyledHeader = styled.div`
   top: 0;
   right: 0;
   padding: 10px;
-  height: ${(props) => props.theme.headerHeight}px;
+  height: ${props => props.theme.headerHeight}px;
   border-bottom: 1px solid black;
   display: flex;
   justify-content: space-between;
@@ -24,9 +24,15 @@ const Header = ({ user, onSignOutClick, authenticated }) => (
 );
 
 Header.propTypes = {
-  user: PropTypes.object,
+  user: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+  }),
   onSignOutClick: PropTypes.func.isRequired,
   authenticated: PropTypes.bool.isRequired,
+};
+
+Header.defaultProps = {
+  user: null,
 };
 
 export default Header;

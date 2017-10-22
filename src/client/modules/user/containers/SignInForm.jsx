@@ -1,7 +1,6 @@
 import React from 'react';
 import { compose } from 'recompose';
 import { reduxForm, Field, propTypes } from 'redux-form';
-import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
@@ -51,5 +50,5 @@ SignInForm.propTypes = {
 export default compose(
   withRouter,
   reduxForm({ form: 'signIn' }),
-  connect(null, actionCreators)
+  connect(null, actionCreators),
 )(SignInForm);
