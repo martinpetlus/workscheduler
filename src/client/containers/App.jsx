@@ -7,24 +7,22 @@ import { WithSidebar, WithoutSidebar } from 'components/PageContentWrappers';
 import Header from './Header';
 import Sidebar from './Sidebar';
 
-export function App({ children, authenticated }) {
-  return (
-    <div>
-      <Header />
-      {authenticated && <Sidebar />}
-      {authenticated &&
-        <WithSidebar>
-          {children}
-        </WithSidebar>
-      }
-      {!authenticated &&
-        <WithoutSidebar>
-          {children}
-        </WithoutSidebar>
-      }
-    </div>
-  );
-}
+const App = ({ children, authenticated }) => (
+  <div>
+    <Header />
+    {authenticated && <Sidebar />}
+    {authenticated &&
+      <WithSidebar>
+        {children}
+      </WithSidebar>
+    }
+    {!authenticated &&
+      <WithoutSidebar>
+        {children}
+      </WithoutSidebar>
+    }
+  </div>
+);
 
 App.propTypes = {
   children: PropTypes.node.isRequired,

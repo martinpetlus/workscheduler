@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { fieldPropTypes } from 'redux-form';
 
 import Input from 'components/Input';
 import FormGroup from 'components/FormGroup';
@@ -22,15 +23,10 @@ const renderFormGroup = ({
 );
 
 renderFormGroup.propTypes = {
+  ...fieldPropTypes,
   id: PropTypes.string.isRequired,
-  input: PropTypes.object.isRequired,
   label: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  meta: PropTypes.shape({
-    touched: PropTypes.bool.isRequired,
-    error: PropTypes.string,
-    warning: PropTypes.string,
-  }).isRequired,
 };
 
 export { renderFormGroup };

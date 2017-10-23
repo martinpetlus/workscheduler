@@ -49,7 +49,7 @@ const Root = ({ store, history }) => {
 };
 
 Root.propTypes = {
-  store: PropTypes.object.isRequired,
+  store: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   history: PropTypes.object.isRequired,
 };
 

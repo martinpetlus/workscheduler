@@ -27,7 +27,9 @@ const FormGroup = ({
 }) => (
   <div>
     <StyledFormGroup>
+      {/* eslint-disable jsx-a11y/label-has-for */}
       <label htmlFor={id}>{label}</label>
+      {/* eslint-enable jsx-a11y/label-has-for */}
       {children}
     </StyledFormGroup>
     {error && <Error>{error}</Error>}
