@@ -5,7 +5,7 @@ const config = require('./config');
 module.exports = {
   entry: [
     'webpack-hot-middleware/client',
-    './src/client/main.js',
+    './src/client/main.jsx',
     './src/client/index.html',
   ],
   output: {
@@ -26,7 +26,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
       },
@@ -34,8 +34,8 @@ module.exports = {
         test: /\.html$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]'
-        }
+          name: '[name].[ext]',
+        },
       },
     ],
   },
