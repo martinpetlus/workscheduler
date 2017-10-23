@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { compose } from 'recompose';
 
 import { getIsAuthenticated } from 'modules/user';
 import { WithSidebar, WithoutSidebar } from 'components/PageContentWrappers';
@@ -33,4 +35,7 @@ const mapStateToProps = state => ({
   authenticated: getIsAuthenticated(state),
 });
 
-export default connect(mapStateToProps)(App);
+export default compose(
+  withRouter,
+  connect(mapStateToProps),
+)(App);

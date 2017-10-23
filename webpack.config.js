@@ -46,4 +46,5 @@ module.exports = {
       APP_NAME: JSON.stringify(config.appName),
     }),
   ],
+  devtool: 'source-map',
 };

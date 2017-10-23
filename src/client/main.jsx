@@ -3,15 +3,16 @@ import 'babel-polyfill';
 
 import React from 'react';
 import { render } from 'react-dom';
-import { browserHistory } from 'react-router';
+import createHistory from 'history/createBrowserHistory';
 
 import Root from './app/Root';
 import configureStore from './store/configureStore';
 
-const store = configureStore(browserHistory);
+const history = createHistory();
+const store = configureStore(history);
 
 render(
-  <Root store={store} history={browserHistory} />,
+  <Root store={store} history={history} />,
   document.getElementById('root'),
 );
 

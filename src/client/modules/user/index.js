@@ -1,7 +1,6 @@
 import localStateFactory from 'utils/localStateFactory';
 import globalizeSelector from 'utils/globalizeSelector';
 import reducer, * as fromReducer from './userReducer';
-import requireAuthFactory from './requireAuthFactory';
 import SignInForm from './containers/SignInForm';
 
 const moduleName = 'user';
@@ -16,7 +15,6 @@ export { actionCreators, actionTypes } from './UserActions';
 export {
   moduleName,
   reducer,
-  requireAuthFactory,
   getIsAuthenticated,
   getUser,
   SignInForm,

@@ -40,4 +40,4 @@ export default (state = initialState, action) => {
 
 export const getIsAuthenticated = state => state.authenticated;
 
-export const getUser = state => state;
+export const getUser = state => (state.authenticated ? state : null);

@@ -2,7 +2,7 @@ import React from 'react';
 import { compose } from 'recompose';
 import { reduxForm, Field, propTypes } from 'redux-form';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
 
 import Button from 'components/Button';
 import FormGroupSeparator from 'components/FormGroupSeparator';
