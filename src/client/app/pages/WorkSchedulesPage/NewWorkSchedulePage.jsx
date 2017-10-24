@@ -1,7 +1,7 @@
 import React from 'react';
 import { compose } from 'recompose';
 
-import NewWorkScheduleForm from 'modules/workSchedules';
+import { NewWorkScheduleForm } from 'modules/workSchedules';
 import withWindowTitle from 'components/withWindowTitle';
 
 const NewWorkSchedulePage = () => (

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Link from './Link';
@@ -15,21 +14,14 @@ const Nav = styled.nav`
   padding-left: 10px;
 `;
 
-const Sidebar = ({ onNewWorkScheduleClick }) => (
+const Sidebar = () => (
   <Nav>
     <h4>
-      <Link
-        to="/workschedule/new"
-        onClick={onNewWorkScheduleClick}
-      >
+      <Link to="/workschedules/new">
         New Work Schedule
       </Link>
     </h4>
   </Nav>
 );
-
-Sidebar.propTypes = {
-  onNewWorkScheduleClick: PropTypes.func.isRequired,
-};
 
 export default Sidebar;

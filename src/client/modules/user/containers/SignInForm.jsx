@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { compose } from 'recompose';
-import { reduxForm, Field, propTypes } from 'redux-form';
+import { reduxForm, Field, propTypes as reduxFormPropTypes } from 'redux-form';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
@@ -14,8 +15,8 @@ const SignInForm = ({
   handleSubmit,
   pristine,
   submitting,
-  signIn,
   location: { state },
+  signIn,
 }) => (
   <form
     onSubmit={handleSubmit(signIn.bind(null, (state && state.nextPathname) || '/'))}
@@ -44,7 +45,8 @@ const SignInForm = ({
 );
 
 SignInForm.propTypes = {
-  ...propTypes,
+  ...reduxFormPropTypes,
+  signIn: PropTypes.func.isRequired,
 };
 
 export default compose(

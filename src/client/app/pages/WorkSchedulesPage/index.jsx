@@ -1,0 +1,25 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+import { compose } from 'recompose';
+
+import PrivateRoute from 'containers/PrivateRoute';
+import withWindowTitle from 'components/withWindowTitle';
+import NewWorkSchedulePage from './NewWorkSchedulePage';
+
+const WorkSchedulesPage = ({ match }) => (
+  <div>
+    <PrivateRoute path={`${match.url}/new`} component={NewWorkSchedulePage} />
+  </div>
+);
+
+WorkSchedulesPage.propTypes = {
+  match: PropTypes.shape({
+    url: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
+export default compose(
+  withRouter,
+  withWindowTitle('Work Schedules'),
+)(WorkSchedulesPage);

@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { compose } from 'recompose';
-import { reduxForm, Field, propTypes } from 'redux-form';
+import { reduxForm, Field, propTypes as reduxFormPropTypes } from 'redux-form';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
@@ -16,19 +17,18 @@ import {
   minValue,
   maxValue,
 } from 'utils/reduxForm';
+import { actionCreators } from '../WorkSchedulesActions';
 
 const NewWorkScheduleForm = ({
   handleSubmit,
   pristine,
   submitting,
-  signIn,
   location: { state },
+  newWorkSchedule,
 }) => (
   <form
-    onSubmit={handleSubmit(signIn.bind(null, (state && state.nextPathname) || '/'))}
+    onSubmit={handleSubmit(newWorkSchedule.bind(null, (state && state.nextPathname) || '/'))}
   >
-    <h2>Sign in</h2>
-    <hr />
     <Field
       id="newworkschedule-name"
       name="name"
@@ -46,6 +46,7 @@ const NewWorkScheduleForm = ({
       component={renderFormGroup}
       validate={[required, number, minValue(1), maxValue(8)]}
     />
+    <FormGroupSeparator />
     <Field
       id="newworkschedule-employees"
       name="employees"
@@ -61,11 +62,12 @@ const NewWorkScheduleForm = ({
 );
 
 NewWorkScheduleForm.propTypes = {
-  ...propTypes,
+  ...reduxFormPropTypes,
+  newWorkSchedule: PropTypes.func.isRequired,
 };
 
 export default compose(
   withRouter,
   reduxForm({ form: 'newWorkSchedule' }),
-  connect(null, null),
+  connect(null, actionCreators),
 )(NewWorkScheduleForm);
