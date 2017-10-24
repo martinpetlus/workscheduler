@@ -1,19 +1,22 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import promiseMiddleware from 'redux-promise-middleware';
 
 import { REQUEST_TYPES } from 'utils/createRequestActionTypes';
 import rootReducer from '../app/reducers';
 import authMiddleware from '../middleware/auth';
 
+// eslint-disable-next-line no-underscore-dangle
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 export default function configureStore(history) {
   const store = createStore(
     rootReducer,
-    applyMiddleware(
+    composeEnhancers(applyMiddleware(
       authMiddleware(history),
       promiseMiddleware({
         promiseTypeSuffixes: REQUEST_TYPES,
       }),
-    ),
+    )),
   );
 
   if (module.hot) {
