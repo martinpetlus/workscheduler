@@ -3,6 +3,7 @@ import { compose } from 'recompose';
 
 import { NewWorkScheduleForm } from 'modules/workSchedules';
 import withWindowTitle from 'components/withWindowTitle';
+import { withSidebar } from 'components/LayoutWrappers';
 
 const NewWorkSchedulePage = () => (
   <div>
@@ -12,4 +13,7 @@ const NewWorkSchedulePage = () => (
   </div>
 );
 
-export default compose(withWindowTitle('New Work Schedule'))(NewWorkSchedulePage);
+export default compose(
+  withWindowTitle('New Work Schedule'),
+  withSidebar,
+)(NewWorkSchedulePage);

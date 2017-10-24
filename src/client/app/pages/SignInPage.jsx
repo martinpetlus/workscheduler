@@ -4,6 +4,7 @@ import { compose } from 'recompose';
 import { withRouter, Redirect } from 'react-router-dom';
 
 import withWindowTitle from 'components/withWindowTitle';
+import { withoutSidebar } from 'components/LayoutWrappers';
 import { SignInForm } from 'modules/user';
 
 class SignInPage extends Component {
@@ -45,4 +46,5 @@ class SignInPage extends Component {
 export default compose(
   withRouter,
   withWindowTitle('Sign In'),
+  withoutSidebar,
 )(SignInPage);
