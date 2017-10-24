@@ -14,6 +14,7 @@ const SignInForm = ({
   handleSubmit,
   pristine,
   submitting,
+  invalid,
   signIn,
 }) => (
   <form onSubmit={handleSubmit(signIn)}>
@@ -35,7 +36,7 @@ const SignInForm = ({
       validate={[required]}
     />
     <FormFooter>
-      <Button type="submit" disabled={pristine || submitting}>Sign in</Button>
+      <Button type="submit" disabled={pristine || submitting || invalid}>Sign in</Button>
     </FormFooter>
   </form>
 );

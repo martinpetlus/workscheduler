@@ -22,6 +22,7 @@ const NewWorkScheduleForm = ({
   handleSubmit,
   pristine,
   submitting,
+  invalid,
   newWorkSchedule,
 }) => (
   <form onSubmit={handleSubmit(newWorkSchedule)}>
@@ -52,7 +53,7 @@ const NewWorkScheduleForm = ({
       validate={[required, number, minValue(1), maxValue(12)]}
     />
     <FormFooter>
-      <Button type="submit" disabled={pristine || submitting}>Create</Button>
+      <Button type="submit" disabled={pristine || submitting || invalid}>Create</Button>
     </FormFooter>
   </form>
 );
