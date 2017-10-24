@@ -1,6 +1,7 @@
 const path = require('path');
 
 module.exports = {
+  parser: 'babel-eslint',
   extends: 'airbnb',
   env: {
     browser: true,
@@ -11,10 +12,14 @@ module.exports = {
       experimentalObjectRestSpread: true
     }
   },
+  plugins: [
+    'class-property'
+  ],
   rules: {
-    "jsx-a11y/anchor-is-valid": ["error", {
-      "components": ["Link"],
-      "specialLink": ["to"]
+    'class-property/class-property-semicolon': ['error', 'always'],
+    'jsx-a11y/anchor-is-valid': ['error', {
+      components: ['Link'],
+      specialLink: ['to']
     }]
   },
   settings: {

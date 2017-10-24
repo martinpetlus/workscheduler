@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { compose } from 'recompose';
 import { reduxForm, Field, propTypes as reduxFormPropTypes } from 'redux-form';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 
 import Button from 'components/Button';
 import FormFooter from 'components/FormFooter';
@@ -23,12 +22,9 @@ const NewWorkScheduleForm = ({
   handleSubmit,
   pristine,
   submitting,
-  location: { state },
   newWorkSchedule,
 }) => (
-  <form
-    onSubmit={handleSubmit(newWorkSchedule.bind(null, (state && state.nextPathname) || '/'))}
-  >
+  <form onSubmit={handleSubmit(newWorkSchedule)}>
     <Field
       id="newworkschedule-name"
       name="name"
@@ -67,7 +63,6 @@ NewWorkScheduleForm.propTypes = {
 };
 
 export default compose(
-  withRouter,
   reduxForm({ form: 'newWorkSchedule' }),
   connect(null, actionCreators),
 )(NewWorkScheduleForm);
