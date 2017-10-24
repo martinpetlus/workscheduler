@@ -1,12 +1,11 @@
 import { actionTypes } from './UserActions';
 
 const initialState = {
-  nick: null,
   name: null,
   email: null,
   authenticated: false,
   authenticating: false,
-  authenticationError: false,
+  authenticationError: null,
 };
 
 export default (state = initialState, action) => {
@@ -23,6 +22,7 @@ export default (state = initialState, action) => {
         ...action.payload.data,
         authenticated: true,
         authenticating: false,
+        authenticationError: null,
       };
     }
     case actionTypes.SIGN_IN.FAILURE: {
