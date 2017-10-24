@@ -7,11 +7,11 @@ import Input from 'components/Input';
 import FormGroup from 'components/FormGroup';
 
 const renderFormGroup = ({
-  id,
   input,
+  meta: { touched, error, warning },
+  id,
   label,
   type,
-  meta: { touched, error, warning },
 }) => (
   <FormGroup
     id={id}
