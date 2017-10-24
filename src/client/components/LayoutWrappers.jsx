@@ -25,7 +25,6 @@ export const withSidebar = BaseComponent => props => [
   </WithSidebar>,
 ];
 
-
 export const withoutSidebar = BaseComponent => props => (
   <WithoutSidebar>
     <BaseComponent {...props} />
