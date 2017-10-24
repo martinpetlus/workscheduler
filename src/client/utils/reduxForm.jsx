@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { fieldPropTypes } from 'redux-form';
+import memoize from 'lodash.memoize';
 
 import Input from 'components/Input';
 import FormGroup from 'components/FormGroup';
@@ -39,17 +40,17 @@ export const email = value => (
     : undefined
 );
 
-export const minLength = min => value => (
+export const minLength = memoize(min => value => (
   value && value.length < min
     ? `Must be ${min} characters or more`
     : undefined
-);
+));
 
-export const maxLength = max => value => (
+export const maxLength = memoize(max => value => (
   value && value.length > max
     ? `Must be ${max} characters or less`
     : undefined
-);
+));
 
 export const number = value => (
   value && Number.isNaN(Number(value))
@@ -57,14 +58,14 @@ export const number = value => (
     : undefined
 );
 
-export const minValue = min => value => (
-  value && value < min
+export const minValue = memoize(min => value => (
+  value && Number(value) < min
     ? `Must be at least ${min}`
     : undefined
-);
+));
 
-export const maxValue = max => value => (
-  value && value < max
+export const maxValue = memoize(max => value => (
+  value && Number(value) > max
     ? `Must be at maximum ${max}`
     : undefined
-);
+));
