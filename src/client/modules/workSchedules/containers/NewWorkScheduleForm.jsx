@@ -52,6 +52,66 @@ const NewWorkScheduleForm = ({
       component={renderFormGroup}
       validate={[required, number, minValue(1), maxValue(12)]}
     />
+    <FormGroupSeparator />
+    <Field
+      id="newworkschedule-workdays"
+      name="workdays"
+      type="number"
+      label="Desired workdays in week"
+      placeholder="Desired workdays"
+      component={renderFormGroup}
+      validate={[required, number, minValue(1), maxValue(7)]}
+    />
+    <FormGroupSeparator />
+    <Field
+      id="newworkschedule-maxworkdaysinweek"
+      name="maxWorkdaysInWeek"
+      type="number"
+      label="Maximum workdays in week"
+      placeholder="Maximum workdays"
+      component={renderFormGroup}
+      validate={[required, number, minValue(1), maxValue(7)]}
+    />
+    <FormGroupSeparator />
+    <Field
+      id="newworkschedule-maxsuccessiveworkdays"
+      name="maxSuccessiveWorkdays"
+      type="number"
+      label="Maximum successive workdays in week"
+      placeholder="Maximum successive workdays"
+      component={renderFormGroup}
+      validate={[required, number, minValue(1), maxValue(7)]}
+    />
+    <FormGroupSeparator />
+    <Field
+      id="newworkschedule-minemployeesatwork"
+      name="minEmployeesAtWork"
+      type="number"
+      label="Minimum employees at work per day"
+      placeholder="Minimum employees"
+      component={renderFormGroup}
+      validate={[required, number, minValue(1), maxValue(12)]}
+    />
+    <FormGroupSeparator />
+    <Field
+      id="newworkschedule-successivefreeweekends"
+      name="successiveFree"
+      type="number"
+      label="Successive free weekends"
+      placeholder="Free weekends"
+      component={renderFormGroup}
+      validate={[required, number, minValue(1), maxValue(8)]}
+    />
+    <FormGroupSeparator />
+    <Field
+      id="newworkschedule-successiveworkweekends"
+      name="successiveWork"
+      type="number"
+      label="Successive work weekends"
+      placeholder="Work weekends"
+      component={renderFormGroup}
+      validate={[required, number, minValue(1), maxValue(8)]}
+    />
     <FormFooter>
       <Button type="submit" disabled={pristine || submitting || invalid}>Create</Button>
     </FormFooter>

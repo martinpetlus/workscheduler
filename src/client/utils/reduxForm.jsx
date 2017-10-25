@@ -12,6 +12,7 @@ const renderFormGroup = ({
   id,
   label,
   type,
+  placeholder,
 }) => (
   <FormGroup
     id={id}
@@ -19,7 +20,7 @@ const renderFormGroup = ({
     error={touched && error}
     warning={touched && warning}
   >
-    <Input {...input} id={id} placeholder={label} type={type} />
+    <Input {...input} id={id} placeholder={placeholder || label} type={type} />
   </FormGroup>
 );
 
@@ -28,6 +29,8 @@ renderFormGroup.propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/require-default-props
+  placeholder: PropTypes.string,
 };
 
 export { renderFormGroup };
