@@ -31,6 +31,24 @@ const loadState = () => {
   return initialState;
 };
 
+const saveState = (state) => {
+  const {
+    id,
+    name,
+    email,
+    token,
+    expires,
+  } = state;
+
+  localStorage.setItem('id', id);
+  localStorage.setItem('name', name);
+  localStorage.setItem('email', email);
+  localStorage.setItem('token', token);
+  localStorage.setItem('expires', expires);
+
+  return state;
+};
+
 export default (state = loadState(), action) => {
   switch (action.type) {
     case actionTypes.SIGN_IN.REQUEST:
@@ -41,12 +59,12 @@ export default (state = loadState(), action) => {
         authError: null,
       };
     case actionTypes.SIGN_IN.SUCCESS: {
-      return {
+      return saveState({
         ...action.payload.data,
         authenticated: true,
         authenticating: false,
         authError: null,
-      };
+      });
     }
     case actionTypes.SIGN_IN.FAILURE: {
       return {
@@ -55,7 +73,7 @@ export default (state = loadState(), action) => {
       };
     }
     case actionTypes.SIGN_OUT.SUCCESS:
-      return initialState;
+      return saveState(initialState);
     default:
       return state;
   }
