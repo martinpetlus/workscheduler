@@ -5,6 +5,7 @@ import { compose } from 'recompose';
 
 import PrivateRoute from 'containers/PrivateRoute';
 import withWindowTitle from 'components/withWindowTitle';
+import { withSidebar } from 'components/LayoutWrappers';
 import NewWorkSchedulePage from './NewWorkSchedulePage';
 
 const WorkSchedulesPage = ({ match }) => (
@@ -22,4 +23,5 @@ WorkSchedulesPage.propTypes = {
 export default compose(
   withRouter,
   withWindowTitle('Work Schedules'),
+  withSidebar,
 )(WorkSchedulesPage);
