@@ -15,19 +15,19 @@ const WorkDays = (Base, props) => class extends Base {
     // Iterate through employees
     while (curr1 = employeesIter.next()) {
       let curr2
-        , workDays = 0
+        , workdays = 0
         , periodDaysIter = props.periodDays();
 
       // Iterate through period days
       while (curr2 = periodDaysIter.next()) {
         // Check for work day
         if (this[props.shiftIndex(curr1, curr2)]) {
-          workDays += 1;
+          workdays += 1;
         }
       }
 
       // Only exact work days produces 0 fitness decrease
-      result += -Math.abs(props.opts.workDays - workDays);
+      result += -Math.abs(props.opts.workdays - workdays);
     }
 
     if (__DEV__) {
@@ -39,7 +39,7 @@ const WorkDays = (Base, props) => class extends Base {
 }
 
 WorkDays.requiredOpts = {
-  workDays: true
+  workdays: true
 };
 
 module.exports = WorkDays;

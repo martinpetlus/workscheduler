@@ -1,13 +1,13 @@
 package workscheduler.schedule.options;
 
 public final class WorkDaysOption implements Option<WorkDaysOption> {
-  private final int workDays;
+  private final int workdays;
 
-  public WorkDaysOption(final int workDays) {
-    this.workDays = workDays;
+  public WorkDaysOption(final int workdays) {
+    this.workdays = workdays;
   }
 
   public int get() {
-    return workDays;
+    return workdays;
   }
 }

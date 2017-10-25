@@ -44,19 +44,19 @@ public final class MaxWorkDaysInWeekFitness extends AbstractFitness {
       while (weekIterator.hasNext()) {
         int week = weekIterator.next();
 
-        int workDays = 0;
+        int workdays = 0;
 
         Iterator<Day> dayIterator = props.days();
 
         // Compute number of work days in week
         while (dayIterator.hasNext()) {
           if (chr.getGene(props.getShiftIndex(employee, week, dayIterator.next()))) {
-            workDays++;
+            workdays++;
           }
         }
 
         // Decrease score only if maximum of work days in week is exceeded
-        result += Math.min(0, option.get() - workDays);
+        result += Math.min(0, option.get() - workdays);
       }
     }
 

@@ -19,7 +19,7 @@ const factory = new WorkPeriodFactory({
   weeks: 4,
   employees: 7,
   minEmployeesAtWork: 3,
-  workDays: 16,
+  workdays: 16,
   maxSuccessiveWorkDays: 3,
   maxWorkDaysInWeek: 5,
   successiveFreeWeekends: 2,

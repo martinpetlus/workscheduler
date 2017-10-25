@@ -36,7 +36,7 @@ public final class WorkDaysFitness extends AbstractFitness {
 
     // Iterate through all employees
     while (employeeIterator.hasNext()) {
-      int workDays = 0;
+      int workdays = 0;
 
       Integer employee = employeeIterator.next();
 
@@ -45,12 +45,12 @@ public final class WorkDaysFitness extends AbstractFitness {
       // Iterate through schedule days
       while (scheduleDayIterator.hasNext()) {
         if (chr.getGene(props.getShiftIndex(employee, scheduleDayIterator.next()))) {
-          workDays++;
+          workdays++;
         }
       }
 
       // Only exact number of work days produces 0 score decrease
-      result -= Math.abs(option.get() - workDays);
+      result -= Math.abs(option.get() - workdays);
     }
 
     return result;

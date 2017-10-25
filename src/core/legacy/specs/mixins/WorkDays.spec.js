@@ -20,7 +20,7 @@ describe('WorkDays mixin', function() {
       props = new WorkPeriodProperties({
         weeks: 4,
         employees: 1,
-        workDays: 6
+        workdays: 6
       });
 
       const clazz = WorkDays(Chromosome, props);
@@ -42,7 +42,7 @@ describe('WorkDays mixin', function() {
       props = new WorkPeriodProperties({
         weeks: 4,
         employees: 1,
-        workDays: 6
+        workdays: 6
       });
 
       const clazz = WorkDays(Chromosome, props);
@@ -75,7 +75,7 @@ describe('WorkDays mixin', function() {
       props = new WorkPeriodProperties({
         weeks: 4,
         employees: 2,
-        workDays: 6
+        workdays: 6
       });
 
       const clazz = WorkDays(Chromosome, props);

@@ -20,18 +20,18 @@ const MaxWorkDaysInWeek = (Base, props) => class extends Base {
       // Iterate through weeks
       while (curr2 = weeksIter.next()) {
         let curr3
-          , workDays = 0
+          , workdays = 0
           , daysIter = props.days();
 
         // Compute number of work days in week
         while (curr3 = daysIter.next()) {
           if (this[props.shiftIndex(curr1, curr2, curr3)]) {
-            workDays += 1;
+            workdays += 1;
           }
         }
 
         // Decrease fitness only if maximum of work days in week is exceeded
-        result += Math.min(0, props.opts.maxWorkDaysInWeek - workDays);
+        result += Math.min(0, props.opts.maxWorkDaysInWeek - workdays);
       }
     }
 

@@ -18,7 +18,7 @@ public final class WorkSchedule {
   }
 
   public static final class WorkWeek {
-    private final List<WorkDay> workDays = new ArrayList<>();
+    private final List<WorkDay> workdays = new ArrayList<>();
   }
 
   private final List<WorkWeek> workWeeks = new ArrayList<>();
@@ -46,7 +46,7 @@ public final class WorkSchedule {
           int employee = employeesIterator.next();
 
           if (chromosome.getGene(props.getShiftIndex(employee, week, day))) {
-            workWeek.workDays.add(new WorkDay(day, employee));
+            workWeek.workdays.add(new WorkDay(day, employee));
             break;
           }
         }
