@@ -18,11 +18,11 @@ import workscheduler.schedule.options.EmployeesOption;
 import workscheduler.schedule.options.ScheduleOptions;
 import workscheduler.schedule.ScheduleProperties;
 import workscheduler.schedule.options.WeeksOption;
-import workscheduler.schedule.options.WorkDaysOption;
+import workscheduler.schedule.options.WorkdaysOption;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({ ScheduleOptions.class, EmployeesOption.class })
-public final class WorkDaysFitnessTest {
+public final class WorkdaysFitnessTest {
   private ScheduleOptions optsMock;
 
   private EmployeesOption employeesOptionMock;
@@ -39,12 +39,12 @@ public final class WorkDaysFitnessTest {
     employeesOptionMock = createMock(EmployeesOption.class);
 
     expect(optsMock.forClass(WeeksOption.class)).andReturn(new WeeksOption(4)).anyTimes();
-    expect(optsMock.forClass(WorkDaysOption.class)).andReturn(new WorkDaysOption(6)).anyTimes();
+    expect(optsMock.forClass(WorkdaysOption.class)).andReturn(new WorkdaysOption(6)).anyTimes();
     expect(optsMock.forClass(EmployeesOption.class)).andReturn(employeesOptionMock).anyTimes();
     replay(optsMock);
 
     props = new ScheduleProperties(optsMock);
-    fitness = new WorkDaysFitness(props);
+    fitness = new WorkdaysFitness(props);
   }
 
   private void setUpEmployees(final int employees) {

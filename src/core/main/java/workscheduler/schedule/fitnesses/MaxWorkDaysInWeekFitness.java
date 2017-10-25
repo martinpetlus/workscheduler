@@ -3,29 +3,29 @@ package workscheduler.schedule.fitnesses;
 import workscheduler.genetics.Chromosome;
 import workscheduler.schedule.Day;
 import workscheduler.schedule.ScheduleProperties;
-import workscheduler.schedule.options.MaxWorkDaysInWeekOption;
+import workscheduler.schedule.options.MaxWorkdaysInWeekOption;
 import workscheduler.schedule.options.ScheduleOptions;
 
 import java.util.Iterator;
 
-public final class MaxWorkDaysInWeekFitness extends AbstractFitness {
+public final class MaxWorkdaysInWeekFitness extends AbstractFitness {
   final static FitnessProvider PROVIDER = new FitnessProvider() {
     @Override
     public boolean shouldApply(final ScheduleOptions opts) {
-      return opts.contains(MaxWorkDaysInWeekOption.class);
+      return opts.contains(MaxWorkdaysInWeekOption.class);
     }
 
     @Override
     public Fitness create(final ScheduleProperties props) {
-      return new MaxWorkDaysInWeekFitness(props);
+      return new MaxWorkdaysInWeekFitness(props);
     }
   };
 
-  private final MaxWorkDaysInWeekOption option;
+  private final MaxWorkdaysInWeekOption option;
 
-  public MaxWorkDaysInWeekFitness(final ScheduleProperties props) {
+  public MaxWorkdaysInWeekFitness(final ScheduleProperties props) {
     super(props);
-    option = opts.forClass(MaxWorkDaysInWeekOption.class);
+    option = opts.forClass(MaxWorkdaysInWeekOption.class);
   }
 
   @Override

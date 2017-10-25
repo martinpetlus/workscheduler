@@ -3,20 +3,20 @@
 
 const Chromosome = require('../../ga/Chromosome')
   , WorkPeriodProperties = require('../../props/WorkPeriodProperties')
-  , MaxWorkDaysInWeek = require('../../mixins/MaxWorkDaysInWeek')
+  , MaxWorkdaysInWeek = require('../../mixins/MaxWorkdaysInWeek')
   , setParamTrue = require('../set-param-true');
 
-describe('MaxWorkDaysInWeek mixin', function() {
+describe('MaxWorkdaysInWeek mixin', function() {
   let chr, props;
 
   beforeEach(function() {
     props = new WorkPeriodProperties({
       weeks: 4,
       employees: 3,
-      maxWorkDaysInWeek: 5
+      maxWorkdaysInWeek: 5
     });
 
-    const clazz = MaxWorkDaysInWeek(Chromosome, props);
+    const clazz = MaxWorkdaysInWeek(Chromosome, props);
 
     chr = new clazz(props.length());
   });

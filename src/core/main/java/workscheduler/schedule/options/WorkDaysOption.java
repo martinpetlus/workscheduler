@@ -1,9 +1,9 @@
 package workscheduler.schedule.options;
 
-public final class WorkDaysOption implements Option<WorkDaysOption> {
+public final class WorkdaysOption implements Option<WorkdaysOption> {
   private final int workdays;
 
-  public WorkDaysOption(final int workdays) {
+  public WorkdaysOption(final int workdays) {
     this.workdays = workdays;
   }
 

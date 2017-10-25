@@ -1,13 +1,13 @@
 package workscheduler.schedule.options;
 
-public final class MaxWorkDaysInWeekOption implements Option<MaxWorkDaysInWeekOption> {
-  private final int maxWorkDaysInWeek;
+public final class MaxWorkdaysInWeekOption implements Option<MaxWorkdaysInWeekOption> {
+  private final int maxWorkdaysInWeek;
 
-  public MaxWorkDaysInWeekOption(final int maxWorkDaysInWeek) {
-    this.maxWorkDaysInWeek = maxWorkDaysInWeek;
+  public MaxWorkdaysInWeekOption(final int maxWorkdaysInWeek) {
+    this.maxWorkdaysInWeek = maxWorkdaysInWeek;
   }
 
   public int get() {
-    return maxWorkDaysInWeek;
+    return maxWorkdaysInWeek;
   }
 }

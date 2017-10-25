@@ -6,7 +6,7 @@
 
 'use strict';
 
-const MaxWorkDaysInWeek = (Base, props) => class extends Base {
+const MaxWorkdaysInWeek = (Base, props) => class extends Base {
   fitness() {
     let curr1
       , result = 0
@@ -31,20 +31,20 @@ const MaxWorkDaysInWeek = (Base, props) => class extends Base {
         }
 
         // Decrease fitness only if maximum of work days in week is exceeded
-        result += Math.min(0, props.opts.maxWorkDaysInWeek - workdays);
+        result += Math.min(0, props.opts.maxWorkdaysInWeek - workdays);
       }
     }
 
     if (__DEV__) {
-      debugs.fitness.log(this, 'MaxWorkDaysInWeek', result);
+      debugs.fitness.log(this, 'MaxWorkdaysInWeek', result);
     }
 
     return super.fitness() + result;
   }
 }
 
-MaxWorkDaysInWeek.requiredOpts = {
-  maxWorkDaysInWeek: true
+MaxWorkdaysInWeek.requiredOpts = {
+  maxWorkdaysInWeek: true
 };
 
-module.exports = MaxWorkDaysInWeek;
+module.exports = MaxWorkdaysInWeek;

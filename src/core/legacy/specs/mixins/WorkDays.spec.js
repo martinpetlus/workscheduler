@@ -3,14 +3,14 @@
 
 const Chromosome = require('../../ga/Chromosome')
   , WorkPeriodProperties = require('../../props/WorkPeriodProperties')
-  , WorkDays = require('../../mixins/WorkDays')
+  , Workdays = require('../../mixins/Workdays')
   , setParamTrue = require('../set-param-true');
 
-describe('WorkDays mixin', function() {
+describe('Workdays mixin', function() {
   let clazz, props;
 
   beforeEach(function() {
-    clazz = WorkDays(Chromosome);
+    clazz = Workdays(Chromosome);
   });
 
   describe('super methods calls', function() {
@@ -23,7 +23,7 @@ describe('WorkDays mixin', function() {
         workdays: 6
       });
 
-      const clazz = WorkDays(Chromosome, props);
+      const clazz = Workdays(Chromosome, props);
 
       chr = new clazz(props.length());
     });
@@ -45,7 +45,7 @@ describe('WorkDays mixin', function() {
         workdays: 6
       });
 
-      const clazz = WorkDays(Chromosome, props);
+      const clazz = Workdays(Chromosome, props);
 
       chr = new clazz(props.length());
     });
@@ -78,7 +78,7 @@ describe('WorkDays mixin', function() {
         workdays: 6
       });
 
-      const clazz = WorkDays(Chromosome, props);
+      const clazz = Workdays(Chromosome, props);
 
       chr = new clazz(props.length());
     });

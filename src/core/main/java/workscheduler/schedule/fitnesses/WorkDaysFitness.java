@@ -4,28 +4,28 @@ import workscheduler.genetics.Chromosome;
 import workscheduler.schedule.ScheduleDay;
 import workscheduler.schedule.ScheduleProperties;
 import workscheduler.schedule.options.ScheduleOptions;
-import workscheduler.schedule.options.WorkDaysOption;
+import workscheduler.schedule.options.WorkdaysOption;
 
 import java.util.Iterator;
 
-public final class WorkDaysFitness extends AbstractFitness {
+public final class WorkdaysFitness extends AbstractFitness {
   final static FitnessProvider PROVIDER = new FitnessProvider() {
     @Override
     public boolean shouldApply(final ScheduleOptions opts) {
-      return opts.contains(WorkDaysOption.class);
+      return opts.contains(WorkdaysOption.class);
     }
 
     @Override
     public Fitness create(final ScheduleProperties props) {
-      return new WorkDaysFitness(props);
+      return new WorkdaysFitness(props);
     }
   };
 
-  private final WorkDaysOption option;
+  private final WorkdaysOption option;
 
-  public WorkDaysFitness(final ScheduleProperties props) {
+  public WorkdaysFitness(final ScheduleProperties props) {
     super(props);
-    option = opts.forClass(WorkDaysOption.class);
+    option = opts.forClass(WorkdaysOption.class);
   }
 
   @Override

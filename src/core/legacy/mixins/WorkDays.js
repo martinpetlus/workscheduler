@@ -6,7 +6,7 @@
 
 'use strict';
 
-const WorkDays = (Base, props) => class extends Base {
+const Workdays = (Base, props) => class extends Base {
   fitness() {
     let curr1
       , result = 0
@@ -31,15 +31,15 @@ const WorkDays = (Base, props) => class extends Base {
     }
 
     if (__DEV__) {
-      debugs.fitness.log(this, 'WorkDays', result);
+      debugs.fitness.log(this, 'Workdays', result);
     }
 
     return super.fitness() + result;
   };
 }
 
-WorkDays.requiredOpts = {
+Workdays.requiredOpts = {
   workdays: true
 };
 
-module.exports = WorkDays;
+module.exports = Workdays;

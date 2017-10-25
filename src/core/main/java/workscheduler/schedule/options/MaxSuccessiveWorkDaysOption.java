@@ -1,13 +1,13 @@
 package workscheduler.schedule.options;
 
-public final class MaxSuccessiveWorkDaysOption implements Option<MaxSuccessiveWorkDaysOption> {
-  private final int maxSuccessiveWorkDays;
+public final class MaxSuccessiveWorkdaysOption implements Option<MaxSuccessiveWorkdaysOption> {
+  private final int maxSuccessiveWorkdays;
 
-  public MaxSuccessiveWorkDaysOption(final int maxSuccessiveWorkDays) {
-    this.maxSuccessiveWorkDays = maxSuccessiveWorkDays;
+  public MaxSuccessiveWorkdaysOption(final int maxSuccessiveWorkdays) {
+    this.maxSuccessiveWorkdays = maxSuccessiveWorkdays;
   }
 
   public int get() {
-    return maxSuccessiveWorkDays;
+    return maxSuccessiveWorkdays;
   }
 }
