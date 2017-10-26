@@ -121,9 +121,15 @@ const NewWorkScheduleForm = ({
 NewWorkScheduleForm.propTypes = {
   ...reduxFormPropTypes,
   newWorkSchedule: PropTypes.func.isRequired,
+  onSubmitSuccess: PropTypes.func.isRequired,
 };
 
 export default compose(
-  reduxForm({ form: 'newWorkSchedule' }),
+  reduxForm({
+    form: 'newWorkSchedule',
+    onSubmitSuccess: (result, dispatch, ownProps) => {
+      ownProps.onSubmitSuccess();
+    },
+  }),
   connect(null, actionCreators),
 )(NewWorkScheduleForm);
