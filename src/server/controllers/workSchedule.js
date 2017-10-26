@@ -9,7 +9,7 @@ router.post('/', (req, res) => {
   const opts = JSON.stringify(req.body);
 
   exec(
-    `java -jar workscheduler.jar ${opts}`,
+    `java -jar workscheduler.jar '${opts}'`,
     { cwd: `${__dirname}/../../../build/libs` },
     (error, stdout) => {
       if (error) {
