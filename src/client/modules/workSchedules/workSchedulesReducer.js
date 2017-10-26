@@ -13,6 +13,11 @@ const byId = (state = {}, { type, payload }) => {
         },
         {},
       );
+    case actionTypes.NEW_WORK_SCHEDULE.SUCCESS:
+      return {
+        ...state,
+        [payload.data.id]: payload.data,
+      };
     default:
       return state;
   }
@@ -22,6 +27,8 @@ const allIds = (state = [], { type, payload }) => {
   switch (type) {
     case actionTypes.FETCH_WORK_SCHEDULES.SUCCESS:
       return payload.data.map(workSchedule => workSchedule.id);
+    case actionTypes.NEW_WORK_SCHEDULE.SUCCESS:
+      return [...state, payload.data.id];
     default:
       return state;
   }

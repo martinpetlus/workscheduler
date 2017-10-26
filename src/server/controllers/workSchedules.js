@@ -1,16 +1,24 @@
 import { Router } from 'express';
 import { exec } from 'child_process';
 
+import { create, get, getAll } from '../models/WorkSchedule';
+
 const router = new Router();
 
-router.get('/', (req, res) => {
-  res.status(200).json([{
-    id: 'xyz', name: 'Test work schedule',
-  }]);
+router.get('/', async (req, res) => {
+  res.status(200).json(await getAll());
 });
 
-router.post('/new', (req, res) => {
-  res.status(200).end();
+router.get('/:id', async (req, res) => {
+  try {
+    res.status(200).json(await get(req.params.id));
+  } catch (error) {
+    res.status(404).json(error);
+  }
+});
+
+router.post('/new', async (req, res) => {
+  res.status(200).json(await create(req.body));
 
   const opts = JSON.stringify(req.body);
 

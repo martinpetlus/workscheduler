@@ -26,7 +26,7 @@ class WorkSchedulesOverviewPage extends Component {
         <h2>Overview</h2>
         <section>
           {this.props.workSchedules.map(workSchedule => (
-            <WorkScheduleOverview {...workSchedule} />
+            <WorkScheduleOverview key={workSchedule.id} {...workSchedule} />
           ))}
         </section>
       </div>

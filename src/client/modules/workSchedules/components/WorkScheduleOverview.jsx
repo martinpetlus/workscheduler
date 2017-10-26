@@ -5,6 +5,7 @@ import styled from 'styled-components';
 const Box = styled.div`
   border: 2px solid #efefef;
   padding: 5px;
+  margin-bottom: 5px;
 `;
 
 const Name = styled.h4`
