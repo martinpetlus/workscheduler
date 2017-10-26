@@ -1,6 +1,8 @@
 package workscheduler.schedule.options;
 
 public final class SerializableScheduleOptions {
+  private String name;
+
   private int employees;
 
   private int maxSuccessiveWorkdays;
