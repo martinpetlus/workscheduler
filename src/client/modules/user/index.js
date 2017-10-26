@@ -7,16 +7,14 @@ const moduleName = 'user';
 
 const localState = localStateFactory(moduleName);
 
-const getIsAuthenticated = globalizeSelector(localState, fromReducer.getIsAuthenticated);
-const getUser = globalizeSelector(localState, fromReducer.getUser);
+export const getIsAuthenticated = globalizeSelector(localState, fromReducer.getIsAuthenticated);
+export const getUser = globalizeSelector(localState, fromReducer.getUser);
 
 export { actionCreators, actionTypes } from './UserActions';
 
 export {
   moduleName,
   reducer,
-  getIsAuthenticated,
-  getUser,
   SignInForm,
 };
 

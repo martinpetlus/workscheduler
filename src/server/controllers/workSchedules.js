@@ -4,7 +4,9 @@ import { exec } from 'child_process';
 const router = new Router();
 
 router.get('/', (req, res) => {
-  res.status(200).json([]);
+  res.status(200).json([{
+    id: 'xyz', name: 'Test work schedule',
+  }]);
 });
 
 router.post('/new', (req, res) => {

@@ -87,4 +87,4 @@ export const getIsAuthenticated = (state) => {
   return true;
 };
 
-export const getUser = state => (state.authenticated ? state : null);
+export const getUser = state => (getIsAuthenticated(state) ? state : null);
