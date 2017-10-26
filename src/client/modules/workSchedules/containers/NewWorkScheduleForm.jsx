@@ -65,7 +65,7 @@ const NewWorkScheduleForm = ({
     <FormGroupSeparator />
     <Field
       id="newworkschedule-maxworkdaysinweek"
-      name="maxWorkdaysInWeek"
+      name="maxWorkdaysPerWeek"
       type="number"
       label="Maximum workdays in week"
       placeholder="Maximum workdays"

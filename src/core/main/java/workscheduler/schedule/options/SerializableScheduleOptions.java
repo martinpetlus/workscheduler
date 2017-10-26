@@ -7,7 +7,7 @@ public final class SerializableScheduleOptions {
 
   private int maxSuccessiveWorkdays;
 
-  private int maxWorkdaysInWeek;
+  private int maxWorkdaysPerWeek;
 
   private int minEmployeesAtWork;
 
@@ -25,7 +25,7 @@ public final class SerializableScheduleOptions {
     opts.add(EmployeesOption.class, new EmployeesOption(employees));
     opts.add(WeeksOption.class, new WeeksOption(weeks));
     opts.add(MaxSuccessiveWorkdaysOption.class, new MaxSuccessiveWorkdaysOption(maxSuccessiveWorkdays));
-    opts.add(MaxWorkdaysInWeekOption.class, new MaxWorkdaysInWeekOption(maxWorkdaysInWeek));
+    opts.add(MaxWorkdaysPerWeekOption.class, new MaxWorkdaysPerWeekOption(maxWorkdaysPerWeek));
     opts.add(WorkdaysOption.class, new WorkdaysOption(workdays));
     opts.add(MinEmployeesAtWorkOption.class, new MinEmployeesAtWorkOption(minEmployeesAtWork));
     opts.add(SuccessiveWeekendsOption.class, new SuccessiveWeekendsOption(successiveFree, successiveWork));
@@ -46,8 +46,8 @@ public final class SerializableScheduleOptions {
     sb.append(employees);
     sb.append('\n');
 
-    sb.append("maxWorkdaysInWeek: ");
-    sb.append(maxWorkdaysInWeek);
+    sb.append("maxWorkdaysPerWeek: ");
+    sb.append(maxWorkdaysPerWeek);
     sb.append('\n');
 
     sb.append("maxSuccessiveWorkdays: ");

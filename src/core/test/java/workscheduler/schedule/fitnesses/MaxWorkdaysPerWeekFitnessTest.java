@@ -15,14 +15,14 @@ import static org.easymock.EasyMock.expect;
 import workscheduler.genetics.Chromosome;
 import workscheduler.schedule.Day;
 import workscheduler.schedule.options.EmployeesOption;
-import workscheduler.schedule.options.MaxWorkdaysInWeekOption;
+import workscheduler.schedule.options.MaxWorkdaysPerWeekOption;
 import workscheduler.schedule.options.ScheduleOptions;
 import workscheduler.schedule.ScheduleProperties;
 import workscheduler.schedule.options.WeeksOption;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({ ScheduleOptions.class })
-public final class MaxWorkdaysInWeekFitnessTest {
+public final class MaxWorkdaysPerWeekFitnessTest {
   private ScheduleOptions optsMock;
 
   private ScheduleProperties props;
@@ -37,13 +37,13 @@ public final class MaxWorkdaysInWeekFitnessTest {
 
     expect(optsMock.forClass(WeeksOption.class)).andReturn(new WeeksOption(4)).anyTimes();
     expect(optsMock.forClass(EmployeesOption.class)).andReturn(new EmployeesOption(3)).anyTimes();
-    expect(optsMock.forClass(MaxWorkdaysInWeekOption.class))
-      .andReturn(new MaxWorkdaysInWeekOption(5))
+    expect(optsMock.forClass(MaxWorkdaysPerWeekOption.class))
+      .andReturn(new MaxWorkdaysPerWeekOption(5))
       .anyTimes();
     replay(optsMock);
 
     props = new ScheduleProperties(optsMock);
-    fitness = new MaxWorkdaysInWeekFitness(props);
+    fitness = new MaxWorkdaysPerWeekFitness(props);
     chr = new Chromosome(props.getLength(), null);
   }
 

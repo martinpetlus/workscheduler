@@ -18,7 +18,7 @@ public enum FitnessRegistry implements Iterable<FitnessProvider> {
     register(SuccessiveWeekendsFitness.PROVIDER);
     register(MinEmployeesAtWorkFitness.PROVIDER);
     register(MaxSuccessiveWorkdaysFitness.PROVIDER);
-    register(MaxWorkdaysInWeekFitness.PROVIDER);
+    register(MaxWorkdaysPerWeekFitness.PROVIDER);
   }
 
   @Override
