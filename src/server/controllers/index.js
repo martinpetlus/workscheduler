@@ -1,11 +1,11 @@
 import { Router } from 'express';
 
 import auth from './auth';
-import workSchedule from './workSchedule';
+import workSchedules from './workSchedules';
 
 const router = new Router();
 
 router.use('/', auth);
-router.use('/workschedule', workSchedule);
+router.use('/workschedules', workSchedules);
 
 export default router;

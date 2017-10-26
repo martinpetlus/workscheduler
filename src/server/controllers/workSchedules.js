@@ -3,7 +3,11 @@ import { exec } from 'child_process';
 
 const router = new Router();
 
-router.post('/', (req, res) => {
+router.get('/', (req, res) => {
+  res.status(200).json([]);
+});
+
+router.post('/new', (req, res) => {
   res.status(200).end();
 
   const opts = JSON.stringify(req.body);
