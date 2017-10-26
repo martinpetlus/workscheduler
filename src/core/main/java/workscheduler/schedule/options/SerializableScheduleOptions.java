@@ -37,33 +37,36 @@ public final class SerializableScheduleOptions {
   public String toString() {
     StringBuilder sb = new StringBuilder();
 
-    sb.append("weeks: ");
-    sb.append(weeks);
+    sb.append("name: ");
+    sb.append(this.name);
     sb.append('\n');
 
+    sb.append("weeks: ");
+    sb.append(this.weeks);
+    sb.append('\n');
 
     sb.append("employees: ");
-    sb.append(employees);
+    sb.append(this.employees);
     sb.append('\n');
 
     sb.append("maxWorkdaysPerWeek: ");
-    sb.append(maxWorkdaysPerWeek);
+    sb.append(this.maxWorkdaysPerWeek);
     sb.append('\n');
 
     sb.append("maxSuccessiveWorkdays: ");
-    sb.append(maxSuccessiveWorkdays);
+    sb.append(this.maxSuccessiveWorkdays);
     sb.append('\n');
 
     sb.append("successiveFree: ");
-    sb.append(weeks);
+    sb.append(this.weeks);
     sb.append('\n');
 
     sb.append("successiveWork: ");
-    sb.append(successiveWork);
+    sb.append(this.successiveWork);
     sb.append('\n');
 
     sb.append("workdays: ");
-    sb.append(workdays);
+    sb.append(this.workdays);
 
     return sb.toString();
   }

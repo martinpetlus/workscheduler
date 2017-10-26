@@ -19,6 +19,9 @@ public final class Core {
 
     SerializableScheduleOptions opts = gson.fromJson(args[0], SerializableScheduleOptions.class);
 
+    System.out.println("Generating work schedule with following options...");
+    System.out.println(opts);
+
     ChromosomeFactory factory = new WorkScheduleFactory(opts.toScheduleOptions());
 
     GeneticAlgorithm ga = new GeneticAlgorithm(

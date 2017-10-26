@@ -87,6 +87,9 @@ public final class GeneticAlgorithm {
         )
         .get();
 
+      System.out.print("Generation: ");
+      System.out.println(generation++);
+
       if (best.getValue() >= 0) {
         System.out.println(this.factory.toJson(best.getChromosome()));
         break;

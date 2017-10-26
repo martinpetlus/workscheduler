@@ -14,6 +14,7 @@ const StyledHeader = styled.div`
   border-bottom: 1px solid black;
   display: flex;
   justify-content: space-between;
+  background-color: white;
 `;
 
 const Header = ({ user, onSignOutClick, authenticated }) => (
