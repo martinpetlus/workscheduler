@@ -17,6 +17,11 @@ const Nav = styled.nav`
 const Sidebar = () => (
   <Nav>
     <h4>
+      <Link to="/workschedules">
+        Work schedules overview
+      </Link>
+    </h4>
+    <h4>
       <Link to="/workschedules/new">
         New Work Schedule
       </Link>
